@@ -13,7 +13,7 @@ window.onload = window.onresize =function () {
         theCanvas.width = window.innerWidth;
         theCanvas.height = window.innerHeight;
         drawRoundedRect(50, 50, 1400, 600, 10, true, "rgba(255,255,255,0.5)");
-
+//test
 
         //内容
         context.font = 'bold 34px arial';
