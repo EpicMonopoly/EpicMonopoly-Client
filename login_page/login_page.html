@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="login_page.css" rel="stylesheet" type="text/css"/>
+
+    <title>Welcome</title>
+</head>
+<body>
+<div class="container">
+<canvas id="canvasPanel" >
+Your browser does not support html5 canvas.
+</canvas>
+    <form>
+        <input type="text" id="UserName" placeholder="Please Enter Your Name">
+        <img src="body_background.JPG" id="Pencil">
+    </form>
+    <form enctype="multipart/form-data">
+        <input type="file" id="userAvator"/>
+        <img alt="Image Previewer" id="previewer" >
+        <button onclick="upload">上传到服务器</button></li>
+    </form>
+</div>
+<!-- 脚本引用最好放在这里，否则js 在HTML之前load会报错-->
+<script type="text/javascript" src="login_page.js"></script>
+</body>
+</html>
