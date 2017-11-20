@@ -15,11 +15,13 @@ Your browser does not support html5 canvas.
         <input type="text" id="UserName" placeholder="Please Enter Your Name">
         <img src="body_background.JPG" id="Pencil">
     </form>
-    <form enctype="multipart/form-data">
-        <input type="file" id="userAvator"/>
-        <img alt="Image Previewer" id="previewer" >
-        <button onclick="upload">上传到服务器</button></li>
-    </form>
+    <select id="selectAvatar" name = "selectAvatar" onchange="document.images['showAvatar'].src=options[selectedIndex].value;" >
+        <option value="body_background.jpg">picture one</option>
+        <option value="avatar.jpg">picture two</option>
+    </select>
+    <div id ="avatarShow" style="position:absolute;left:520px;top:240px;"><img id="showAvatar"src="body_background.JPG" ></div>
+    <div id ="joinRoomPanel"style="position:absolute;left:550px;top:500px;"><button id="joinRoom">Join Room</button></div>
+    <div id ="selectRoomPanel"style="position:absolute;left:550px;top:530px;"><button id="selectRoom">Select Room</button></div>
 </div>
 <!-- 脚本引用最好放在这里，否则js 在HTML之前load会报错-->
 <script type="text/javascript" src="login_page.js"></script>
