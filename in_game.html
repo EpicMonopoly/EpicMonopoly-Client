@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" style="background: url('img/in_game_background.jpg') no-repeat center center;" >
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/in_game.css">
+        <title>In Game</title>
+    </head>
+    <body>
+        <script src="js/in_game.js"></script>
+        <div class="hidden" id="tradeWindow">
+            <a class="statusbar" onclick="hideWindow('tradeWindow')" >
+                <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
+            </a>
+            trading!
+        </div>
+        <div id="mainContainer">
+            <div id="leftPart" style="display: inline">
+                <div id="roomInfo" style="margin: 15px; font-size: 20px; font-weight: bold" >
+                    <img src="img/icon/money.png" style="float: left; width: 55px; height: 55px; margin-right: 15px">
+                    Room #666<br>  <!--TODO link to room number-->
+                    <a onclick="showCfg()" id="roomCfgBtn" style="font-size: 14px; font-weight: normal; color: white;">
+                        <img src="img/icon/info.png" style="width: 14px; height: 14px"> configuration</a>
+                </div>
+                <div id="playersList"> <!--TODO make to list?-->
+                    <div id="player1" class="playerInfo">
+                        <img src="img/avatar/icon_bug.png">Player1<br>$1500
+                        <a class="tradeBtn" id="trade1" onclick="callTrade()">
+                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                        </a>
+                    </div>
+                    <div id="player2" class="playerInfo">
+                        <img src="">Player2<br>$1000
+                        <a class="tradeBtn" id="trade2" onclick="callTrade()">
+                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                        </a>
+                    </div>
+                    <div id="player3" class="playerInfo">
+                        <img src="">Player3<br>$300
+                        <a class="tradeBtn" id="trade3" onclick="callTrade()">
+                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                        </a>
+                    </div>
+                    <div id="player4" class="playerInfo">
+                        <img src="">Player4<br>$750
+                        <a class="tradeBtn" id="trade4" onclick="callTrade()">
+                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                        </a>
+                    </div>
+                    <div id="player5" class="playerInfo">None</div>
+                    <div id="player6" class="playerInfo">None</div>
+                </div>
+                <!--<audio autoplay="autoplay" loop="loop" preload="auto" controls="controls"-->
+                       <!--src="backsound.wav">-->
+                    <!--你的浏览器不支持audio标签-->
+                <!--</audio>-->
+            </div>
+            <div id="midPart" style="display: inline; background-color: burlywood">
+                chessboard
+            </div>
+            <div id="rightPart" style="display: inline; height: 100%">
+                <div id="record">
+                    <h4 style="margin: 0">Record</h4>
+                    <div id="recordContent"></div>
+                </div>
+                <div id="states">
+                    <h4 style="margin: 0">States</h4>
+                    <div id="stateContent">Interest:
+                        Taxes rate:
+                        House in bank:
+                        Hotels in bank:
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
