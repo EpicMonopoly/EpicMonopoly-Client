@@ -1,4 +1,6 @@
 var game;
+var websocket = new WebSocket("")
+   websocket.send()
 window.onload = function() {
 
     game = new Phaser.Game(895, 895, Phaser.CANVAS, 'chessboard');
@@ -117,3 +119,4 @@ window.onload = function() {
 
     }
   }
+

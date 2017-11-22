@@ -4,6 +4,16 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/in_game.css">
         <title>In Game</title>
+        <style>
+            #game {
+                width: 400px;
+                margin: auto;
+                margin-top: 40px;
+                background-color: #f6f2ff;
+            }
+        </style>
+        <script type="text/javascript" src="../js/chessboard/phaser.js"></script>
+        <script type="text/javascript" src="../js/chessboard/jquery-3.2.1.js"></script>
     </head>
     <body>
         <script src="js/in_game.js"></script>
@@ -54,8 +64,10 @@
                     <!--你的浏览器不支持audio标签-->
                 <!--</audio>-->
             </div>
+
             <div id="midPart" style="display: inline; background-color: burlywood">
-                chessboard
+                <div id="game"></div>
+                <script type="text/javascript" src="../js/chessboard/Game.js"></script>
             </div>
             <div id="rightPart" style="display: inline; height: 100%">
                 <div id="record">

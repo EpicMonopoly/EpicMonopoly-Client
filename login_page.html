@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/login_page.css" rel="stylesheet" type="text/css"/>
+
+    <title>Welcome</title>
+</head>
+<body>
+<div id="wrapper"></div>
+<audio autoplay="autoplay" loop="loop" preload="auto"
+       src="sound/backsound.wav">
+    你的浏览器不支持audio标签
+</audio>
+<div class="container">
+<canvas id="canvasPanel" >
+Your browser does not support html5 canvas.
+</canvas>
+    <form>
+        <input type="text" id="UserName" placeholder="Please Enter Your Name">
+        <img src="img/icon/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;" >
+    </form>
+    <select id="selectAvatar" name = "selectAvatar" onchange="document.images['showAvatar'].src=options[selectedIndex].value;" >
+        <option value="img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
+        <option value="img//avatar//icon_apple.png"style="text-align: center">picture 2</option>
+        <option value="img//avatar//icon_aircraft.png"style="text-align: center">picture 3</option>
+        <option value="img//avatar//icon_github.png"style="text-align: center">picture 4</option>
+        <option value="img//avatar//icon_google.png"style="text-align: center">picture 5</option>
+        <option value="img//avatar//icon_wifi.png"style="text-align: center">picture 6</option>
+
+    </select>
+    <div id ="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"src="img//avatar//icon_bug.png" ></div>
+    <h3 style="font-size:20px;font-family: arial;position:absolute;left:660px;top:450px;">Start your game!</h3>
+    <div id ="joinRoomPanel"style="position:absolute;left:660px;top:560px;"><button id="joinRoom">Join Room</button></div>
+    <div id ="selectRoomPanel"style="position:absolute;left:660px;top:500px;"><button id="selectRoom">Select Room</button></div>
+</div>
+<!-- 脚本引用最好放在这里，否则js 在HTML之前load会报错-->
+<script type="text/javascript" src="js/login_page.js"></script>
+</body>
+</html>

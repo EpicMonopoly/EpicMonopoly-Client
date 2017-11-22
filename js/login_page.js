@@ -13,17 +13,17 @@ window.onload = window.onresize =function () {
         //背景
         theCanvas.width = window.innerWidth;
         theCanvas.height = window.innerHeight;
-        drawRoundedRect(250, 50, 800, 600, 10, true, "rgba(255,255,255,0.5)");
+        drawRoundedRect(340, 40, 800, 600, 10, true, "rgba(255,255,255,0.8)");
 
 
         //内容
         context.font = 'bold 24px arial';
         context.fillStyle = 'black';
-        context.fillText('Welcome to EpicMonopoly!', 360, 150);
+        context.fillText('Welcome to EpicMonopoly!', 430, 100);
 
         context.font = 'bold 18px arial';
         context.fillStyle = 'black';
-        context.fillText('Choose your avatar', 550, 200);
+        context.fillText('Choose your avatar', 650, 170);
 
         //TEST
 
