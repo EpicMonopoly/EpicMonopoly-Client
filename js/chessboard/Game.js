@@ -112,7 +112,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         }
 
         function update() {
-           
+
 
 
 

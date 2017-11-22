@@ -14,6 +14,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/in_game.css">
         <script type="text/javascript" src="js/in_game.js"></script>
+        <script type="text/javascript" src="js/chessboard/phaser.js"></script>
         <title>In Game</title>
     </head>
     <body>
@@ -22,6 +23,12 @@
                 <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
             </a>
             trading!
+        </div>
+        <div class="hidden" id="informationWindow">
+            <a class="statusbar" onclick="hideWindow('informationWindow')" >
+                <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
+            </a>
+            There should be some information!
         </div>
         <div id="mainContainer">
             <div id="leftPart" >
@@ -64,7 +71,7 @@
                     <!--你的浏览器不支持audio标签-->
                 <!--</audio>-->
             </div>
-            <div id="midPart" style="background-color: burlywood">
+            <div id="midPart" >
                 <div id="game" ></div>
                 <script type="text/javascript" src="/js/chessboard/Game.js"></script>
             </div>
@@ -88,6 +95,6 @@
                 </div>
             </div>
         </div>
-
+    <script type="text/javascript" src="js/chessboard/Game.js"></script>
     </body>
 </html>

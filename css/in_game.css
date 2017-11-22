@@ -33,11 +33,9 @@ a{
 #midPart{
     width: 650px;
     height: 650px;
-    border: 1px solid;
-    padding: 8px;
     position: relative;
     left: 10%;
-    top: 5%;
+    top: 7%;
     display: inline-block;
 }
 
