@@ -1,5 +1,3 @@
-var tradeBaseText = null;
-
 function showCfg() {
     
 }
@@ -10,17 +8,16 @@ function addToRecords(newEvent) {
     recordContent.scrollTop = recordContent.scrollHeight;
 }
 
-setTimeout(updateStates(1,2,3,4), 1500);  /*TODO add increase or decrease arrow*/
-function updateStates(newInterest, newTaxesRate, newHouseInBank, newHotelsInBank) {
+for (i = 0; i < 1000; ++i)
+    setTimeout(updateInterest(i), 1000);  /*TODO add increase or decrease arrow*/
+function updateInterest(newInterest) {
     var statesContent = document.getElementById("stateContent");
-    var states = "Interest: %f\nTaxes rate:\nHouse in bank:\nHotels in bank:", newInterest;
-    statesContent.textContent = states;
+    statesContent.rows[0].cells[0].innerHTML += i;
 }
 
 function callTrade() {
     var tradeWindow = document.getElementById("tradeWindow");
     tradeWindow.style.visibility = "visible";
-
 }
 
 function hideWindow(windowId) {

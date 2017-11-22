@@ -13,10 +13,10 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/in_game.css">
+        <script type="text/javascript" src="js/in_game.js"></script>
         <title>In Game</title>
     </head>
     <body>
-        <script src="js/in_game.js"></script>
         <div class="hidden" id="tradeWindow">
             <a class="statusbar" onclick="hideWindow('tradeWindow')" >
                 <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
@@ -24,7 +24,7 @@
             trading!
         </div>
         <div id="mainContainer">
-            <div id="leftPart" style="display: inline">
+            <div id="leftPart" >
                 <div id="roomInfo" style="margin: 15px; font-size: 20px; font-weight: bold" >
                     <img src="img/icon/money.png" style="float: left; width: 55px; height: 55px; margin-right: 15px">
                     Room #666<br>  <!--TODO link to room number-->
@@ -64,23 +64,27 @@
                     <!--你的浏览器不支持audio标签-->
                 <!--</audio>-->
             </div>
-
-            <div id="midPart" style="display: inline; background-color: burlywood">
-                <div id="game"></div>
-                <script type="text/javascript" src="../js/chessboard/Game.js"></script>
+            <div id="midPart" style="background-color: burlywood">
+                <div id="game" ></div>
+                <script type="text/javascript" src="/js/chessboard/Game.js"></script>
             </div>
-            <div id="rightPart" style="display: inline; height: 100%">
+            <div id="rightPart">
                 <div id="record">
                     <h4 style="margin: 0">Record</h4>
                     <div id="recordContent"></div>
                 </div>
                 <div id="states">
                     <h4 style="margin: 0">States</h4>
-                    <div id="stateContent">Interest:
-                        Taxes rate:
-                        House in bank:
-                        Hotels in bank:
-                    </div>
+                    <table id="stateContent" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td>House in bank</td><td>3</td>
+                            </tr>
+                            <tr>
+                                <td>Hotels in bank</td><td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

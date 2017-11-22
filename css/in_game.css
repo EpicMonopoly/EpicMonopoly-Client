@@ -27,16 +27,18 @@ a{
     height: 100%;
     padding: 8px;
     float: left;
+    display: inline
 }
 
 #midPart{
-    width: 900px;
-    height: 900px;
+    width: 650px;
+    height: 650px;
     border: 1px solid;
     padding: 8px;
     position: relative;
-    left: 30%;
-    top: 50%;
+    left: 10%;
+    top: 5%;
+    display: inline-block;
 }
 
 #rightPart{
@@ -44,6 +46,7 @@ a{
     height: 100%;
     padding: 8px;
     float: right;
+    display: inline
 }
 
 #roomInfo{
@@ -111,12 +114,18 @@ a{
 }
 
 #stateContent{
-    width: calc(100% - 8px);
-    height: calc(100% - 29px);
+    width: 100%;
+    height: calc(100% - 20px);
     border: 1px solid;
     /*overflow-x: scroll;*/
     white-space: pre-line;
     padding: 3px;
+    display: table;
+    line-height: 20px;
+}
+
+#stateContent td tr{
+    height: 20px;
 }
 
 .hidden{
