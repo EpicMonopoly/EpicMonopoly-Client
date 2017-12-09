@@ -17,11 +17,11 @@ window.onload = window.onresize =function () {
 
 
         //内容
-        context.font = 'bold 24px arial';
+        context.font = 'bold 24px';
         context.fillStyle = 'black';
         context.fillText('Welcome to EpicMonopoly!', 430, 100);
 
-        context.font = 'bold 18px arial';
+        context.font = 'bold 18px';
         context.fillStyle = 'black';
         context.fillText('Choose your avatar', 650, 170);
 

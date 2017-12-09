@@ -1,6 +1,5 @@
 .container{
     position: absolute;
-
 }
 body{
     position:fixed;
@@ -8,6 +7,7 @@ body{
     bottom:0;
     left:0;
     right:0;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 /*整个界面的背景*/
 {
@@ -55,67 +55,50 @@ button:focus {
     top:500px;
 }
 #selectAvatar{
+    -webkit-appearance:none;
+    -moz-appearance:none;
     position: absolute;
-    background:url("../img/icon/arrow.png")no-repeat left;
+    background:url("../img/icon/arrow_down.png") no-repeat left;
     background-position: 120px 5px;
     background-size:15% 70% ;
     left:660px;
     top:400px;
-    text-align:center;
+    height: 32px;
     width:150px;
-    padding:12px;
     margin-top:8px;
-    font-family:arial;
-    line-height:1;
+    padding-left: 12px;
     border-radius:5px;
-    background-color: #66b8ff;
-    color: #efffff;
+    /*background-color: #66b8ff;*/
+    /*color: #efffff;*/
     font-size:18px;
-    -webkit-appearance:none;
-    box-shadow:inset 0 0 10px 0 rgba(0,0,0,0.6);
-    outline:none
-}
-select:hover {
-    color: #f6f2ff
+    cursor: pointer;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
 #showAvatar{
     position:absolute;
-
     width:200px;
     height:200px;
 }
-#joinRoom{
+
+button{
     position: absolute;
     text-align:center;
+    border: none;
     width:150px;
-    padding:12px;
+    height: 35px;
+    padding: 5px;
     margin-top:8px;
-    font-family:arial;
     line-height:1;
-    border-radius:5px;
-    background-color: #1d63ab;
-    color: #efffff;
-    font-size:18px;
+    border-radius:4px;
+    background-color: #2185d0;
+    color: #fff;
+    font-size:16px;
     -webkit-appearance:none;
-    box-shadow:inset 0 0 10px 0 rgba(0,0,0,0.6);
-    outline:none
+    outline:none;
+    cursor: pointer;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
-#selectRoom{
-    position: absolute;
-    text-align:center;
-    width:150px;
-    padding:12px;
-    margin-top:8px;
-    font-family:arial;
-    line-height:1;
-    border-radius:5px;
-    background-color: #1d63ab;
-    color: #efffff;
-    font-size:18px;
-    -webkit-appearance:none;
-    box-shadow:inset 0 0 10px 0 rgba(0,0,0,0.6);
-    outline:none
-}
+
 
 
