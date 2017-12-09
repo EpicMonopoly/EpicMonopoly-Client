@@ -100,5 +100,10 @@ button{
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
+button:focus{
 
+}
 
+button::selection{
+
+}
