@@ -2,18 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
     <link href="css/login_page.css" rel="stylesheet" type="text/css"/>
-
     <title>Welcome</title>
 </head>
 <body>
+<div class="hidden shadowBox" id="cfgSetWindow">
+    <a class="statusbar" onclick="hideWindow('cfgSetWindow')" >
+        <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
+    </a>
+    Set room configuration here
+</div>
+<div class="hidden shadowBox" id="roomListWindow">
+    <a class="statusbar" onclick="hideWindow('roomListWindow')" >
+        <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
+    </a>
+    Room List
+</div>
 <div id="wrapper"></div>
 <audio autoplay="autoplay" loop="loop" preload="auto"
        src="sound/backsound.wav">
     你的浏览器不支持audio标签
 </audio>
 <div class="container">
-<canvas id="canvasPanel" >
+<canvas id="canvasPanel">
 Your browser does not support html5 canvas.
 </canvas>
     <form>
@@ -31,10 +43,15 @@ Your browser does not support html5 canvas.
     </select>
     <div id ="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"src="img//avatar//icon_bug.png" ></div>
     <h3 style="font-size:20px;position:absolute;left:660px;top:450px;">Start your game!</h3>
-    <div id ="selectRoomPanel"style="position:absolute;left:660px;top:505px;"><button id="createRoom">Create Room</button></div>
-    <div id ="joinRoomPanel"style="position:absolute;left:660px;top:560px;"><button id="joinRoom">Join Room</button></div>
+    <div id ="selectRoomPanel"style="position:absolute;left:660px;top:510px;">
+        <button id="createRoom" class="shadowBox" onclick="showWindow('cfgSetWindow')">Create Room</button>
+    </div>
+    <div id ="joinRoomPanel"style="position:absolute;left:660px;top:565px;">
+        <button id="joinRoom" class="shadowBox" onclick="showWindow('roomListWindow')">Join Room</button>
+    </div>
 </div>
 <!-- 脚本引用最好放在这里，否则js 在HTML之前load会报错-->
+<script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/login_page.js"></script>
 </body>
 </html>

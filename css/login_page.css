@@ -80,30 +80,3 @@ button:focus {
     width:200px;
     height:200px;
 }
-
-button{
-    position: absolute;
-    text-align:center;
-    border: none;
-    width:150px;
-    height: 35px;
-    padding: 5px;
-    margin-top:8px;
-    line-height:1;
-    border-radius:4px;
-    background-color: #2185d0;
-    color: #fff;
-    font-size:16px;
-    -webkit-appearance:none;
-    outline:none;
-    cursor: pointer;
-    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-}
-
-button:focus{
-
-}
-
-button::selection{
-
-}
