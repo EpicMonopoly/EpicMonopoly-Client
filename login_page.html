@@ -11,7 +11,14 @@
     <a class="statusbar" onclick="hideWindow('cfgSetWindow')" >
         <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
     </a>
-    Set room configuration here
+    <form>
+    <h3 style="left:10px;top:75px;">Create Room Name:</h3>
+    <input type="text" id="createNewRoom"  ><br>
+    <h3 style="left:10px;top:75px;">Room Name:</h3>
+    <input type="text"  >
+    <h3 style="left:10px;top:75px;">Room Name:</h3>
+    <input type="radio"   >
+    </form>
 </div>
 <div class="hidden shadowBox" id="roomListWindow">
     <a class="statusbar" onclick="hideWindow('roomListWindow')" >
@@ -33,12 +40,12 @@ Your browser does not support html5 canvas.
         <img src="img/icon/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;" >
     </form>
     <select id="selectAvatar" name = "selectAvatar" onchange="document.images['showAvatar'].src=options[selectedIndex].value;" >
-        <option value="img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
-        <option value="img//avatar//icon_apple.png"style="text-align: center">picture 2</option>
-        <option value="img//avatar//icon_aircraft.png"style="text-align: center">picture 3</option>
-        <option value="img//avatar//icon_github.png"style="text-align: center">picture 4</option>
-        <option value="img//avatar//icon_google.png"style="text-align: center">picture 5</option>
-        <option value="img//avatar//icon_wifi.png"style="text-align: center">picture 6</option>
+        <option id="avatar1" value="img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
+        <option id="avatar2" value="img//avatar//icon_apple.png"style="text-align: center">picture 2</option>
+        <option id="avatar3" value="img//avatar//icon_aircraft.png"style="text-align: center">picture 3</option>
+        <option id="avatar4" value="img//avatar//icon_github.png"style="text-align: center">picture 4</option>
+        <option id="avatar5" value="img//avatar//icon_google.png"style="text-align: center">picture 5</option>
+        <option id="avatar6" value="img//avatar//icon_wifi.png"style="text-align: center">picture 6</option>
 
     </select>
     <div id ="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"src="img//avatar//icon_bug.png" ></div>
