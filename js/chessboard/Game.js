@@ -5,7 +5,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("arrow", "img/assets/images/rectangle.png");
             game.load.image("player1", "img/avatar/icon_bug.png");
             game.load.image("background","img/chessboard_bgd.png");
-
+            game.load.json("")
         }
         var player1;
         var player1_x;
@@ -372,7 +372,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         }
 
         function update() {
-            move_player(player1,2,38);
+            move_player(player1,2,18);
 
 
 
@@ -387,4 +387,58 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             tradeWindow.style.visibility = "visible";
         }
 
+
+
+var messageContainer = document.getElementById("messages");
+var record = document.getElementById("recordContent");
+var resp = document.getElementById("resp");
+var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
+function WebSocketTest() {
+    if ("WebSocket" in window) {
+        messageContainer.innerHTML = "WebSocket is supported by your Browser!";
+        ws.onopen = function () {
+            ws.send("Message to send");
+        };
+        ws.onmessage = function (evt) {
+            var received_msg = evt.data;
+            try {
+                //尝试解析json
+                var dat = JSON.parse(received_msg);
+                resp.innerHTML = dat.response
+            } catch (e) {
+                // 不符合json格式的字符串打印出来
+                messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Message is received:" + received_msg;
+                record.scrollTop = record.scrollHeight;
+            }
+        };
+        ws.onclose = function () {
+            messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Connection is closed...";
+        };
+    } else {
+        messageContainer.innerHTML = "WebSocket is NOT supported by your Browser!";
+    }
+}
+function req() {
+    var text = {"type": "json", "request": "uid"}; //json对象
+    ws.send(JSON.stringify(text));//将json转化为字符串输出
+}
+function push() {
+    var msg = document.getElementById("choice").value;
+    messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Message is send: " + msg;
+    document.getElementById("choice").value = "";
+    ws.send(msg);
+}
+function S4() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+}
+function guid() {
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+}
+document.onkeydown = function (e) {
+    var event = e || window.event;
+    var key = event.which || event.keyCode || event.charCode;
+    if (key == 13) {
+        push();
+    }
+}
 

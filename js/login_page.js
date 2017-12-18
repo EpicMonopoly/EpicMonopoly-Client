@@ -80,7 +80,7 @@ function hideWindow(windowId) {
 }
 function getName() {
     var name = document.getElementById("UserName");
-    
+
     
 }
 
