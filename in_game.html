@@ -21,34 +21,31 @@
     </head>
     <body>
         <div class="hidden shadowBox" id="tradeWindow">
-            <a class="statusbar" onclick="hideWindow('tradeWindow')" >
-                <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
-            </a>
             <h4 style="margin: 2px">Trading</h4>
             <div class="tradeField">
                 <div><img src="img/avatar/icon_bug.png"></div>
                 <div style="display: block; height: 100%; float: left">
                     <div>$ <input type="text" title="" style="width: 65px; margin: 5px"></div>
-                    <div style="border: 1px solid; width: 100%; height: 55%; margin: 5px"></div>
+                    <div style="border: 1px solid; width: 100%; height: 65%; margin: 5px"></div>
                     <div>
-                        <button class="smallBtn">Cancel</button>
+                        <button class="smallBtn" onclick="hideWindow('tradeWindow')">Cancel</button>
                         <button class="smallBtn">Undo</button>
                         <button class="smallBtn">Confirm</button>
                     </div>
                 </div>
             </div>
             <hr>
-            <div class="tradeField">
+            <div class="tradeField" style="height: 40%">
                 <div><img src=""></div>
                 <div style="display: block; height: 100%; width: 78%; float: left">
                     <div>$ <input type="text" readonly title="" style="width: 65px; margin: 5px"></div>
-                    <div style="border: 1px solid; width: 100%; height: 55%; margin: 5px"></div>
+                    <div style="border: 1px solid; width: 100%; height: 75%; margin: 5px"></div>
                 </div>
             </div>
         </div>
         <div class="hidden shadowBox" id="informationWindow" style="text-align: center; height: auto">
             <a class="statusbar" onclick="hideWindow('informationWindow')" >
-                <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
+                <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px">
             </a>
             <h4 style="margin: 2px">Information</h4><hr>
             <div style="text-align: center">
@@ -80,41 +77,41 @@
         </div>
         <div class="hidden shadowBox" id="cfgWindow">
             <a class="statusbar" onclick="hideWindow('cfgWindow')" >
-                <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
+                <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px">
             </a>
             Show Room Configuration here
         </div>
         <div id="mainContainer">
             <div id="leftPart" >
                 <div id="roomInfo" style="margin: 15px; font-size: 20px; font-weight: bold" >
-                    <img src="img/icon/money.png" style="float: left; width: 55px; height: 55px; margin-right: 15px">
+                    <img src="img/icon_ui/money.png" style="float: left; width: 55px; height: 55px; margin-right: 15px">
                     Room #666<br>  <!--TODO link to room number-->
                     <a onclick="showWindow('cfgWindow')" id="roomCfgBtn" style="font-size: 14px; font-weight: normal; color: white;">
-                        <img src="img/icon/info.png" style="width: 14px; height: 14px"> configuration</a>
+                        <img src="img/icon_ui/info.png" style="width: 14px; height: 14px"> configuration</a>
                 </div>
                 <div id="playersList"> <!--TODO make to list?-->
                     <div id="player1" class="playerInfo shadowBox">
                         <img src="img/avatar/icon_bug.png">Player1<br>$1500
                         <a class="tradeBtn" id="trade1" onclick="showWindow('tradeWindow')">
-                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                            <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player2" class="playerInfo shadowBox">
                         <img src="">Player2<br>$1000
                         <a class="tradeBtn" id="trade2" onclick="showWindow('tradeWindow')">
-                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                            <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player3" class="playerInfo shadowBox">
                         <img src="">Player3<br>$300
                         <a class="tradeBtn" id="trade3" onclick="showWindow('tradeWindow')">
-                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                            <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player4" class="playerInfo shadowBox">
                         <img src="">Player4<br>$750
                         <a class="tradeBtn" id="trade4" onclick="showWindow('tradeWindow')">
-                            <img title="trade" src="img/icon/trade.png" style="float:right; width: 18px; height: 18px">
+                            <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player5" class="playerInfo shadowBox">None</div>

@@ -116,11 +116,12 @@ td{
 
 #tradeWindow{
     width: 300px;
+    height: 430px;
 }
 
 .tradeField{
     width: 100%;
-    height: calc(50% - 10px);
+    height: 52%;
     float: left;
     display: inline;
 }
