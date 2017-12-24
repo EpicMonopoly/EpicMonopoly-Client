@@ -34,8 +34,8 @@ a{
 
 
 .hidden{
-    width: 400px;
-    height: 400px;
+    width: auto;
+    height: auto;
     padding: 5px;
     border: 1.5px #666 solid;
     border-radius: 5px;
@@ -56,12 +56,29 @@ a{
 }
 
 .smallBtn{
+    text-align:center;
+    border: none;
     width: auto;
     height: 25px;
     padding: 5px 10px;
+    line-height:1;
+    border-radius:3px;
+    background-color: #2185d0;
+    color: #fff;
+    font-size:15px;
+    -webkit-appearance:none;
+    outline:none;
+    cursor: pointer;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     margin: 5px;
-    font-size: 15px;
-    border-radius: 3px;
+}
+
+.smallBtn:hover{
+    background-color: #0a6eb9;
+}
+
+.smallBtn:active{
+    background-color: #0055a0;
 }
 
 hr{

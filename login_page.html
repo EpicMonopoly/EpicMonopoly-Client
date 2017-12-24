@@ -7,21 +7,60 @@
     <title>Welcome</title>
 </head>
 <body>
-<div class="hidden shadowBox" id="cfgSetWindow">
-    <a class="statusbar" onclick="hideWindow('cfgSetWindow')" >
-        <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
-    </a>
-    <form>
-    <h3 style="left:10px;top:75px;">Create Room Name:</h3>
-    <input type="text" id="createNewRoom"  ><br>
-    <h3 style="left:10px;top:75px;">Room Name:</h3>
-    <input type="text"  >
-    <h3 style="left:10px;top:75px;">Room Name:</h3>
-    <input type="radio"   >
+<div class="hidden shadowBox" id="cfgSetWindow" style="left: 300px">
+    <form id="configurationsSet">
+        <h4>Room Name</h4>
+            <input type="text" id="roomNameField" title="" style="margin-left: 5px">
+        <h4>Level</h4>
+        <div class="radio">
+            <input id="levelEasy" type="radio" name="level" checked>
+            <label for="levelEasy" class="radio-label">Easy</label>
+        </div>
+        <div class="radio">
+            <input id="levelMedian" type="radio" name="level">
+            <label for="levelMedian" class="radio-label">Median</label>
+        </div>
+        <div class="radio">
+            <input id="levelHard" type="radio" name="level">
+            <label for="levelHard" class="radio-label">Hard</label>
+        </div>
+        <h4>Initial Fund</h4>
+        <div class="radio">
+            <input id="init1000" type="radio" name="initFund">
+            <label for="init1000" class="radio-label">1000</label>
+        </div>
+        <div class="radio">
+            <input id="init1500" type="radio" name="initFund" checked>
+            <label for="init1500" class="radio-label">1500</label>
+        </div>
+        <div class="radio">
+            <input id="init2000" type="radio" name="initFund">
+            <label for="init2000" class="radio-label">2000</label>
+        </div>
+        <h4>Go Salary</h4>
+        <div class="radio">
+            <input id="salaryNone" type="radio" name="salary">
+            <label for="salaryNone" class="radio-label">none</label>
+        </div>
+        <div class="radio">
+            <input id="salary200" type="radio" name="salary" checked>
+            <label for="salary200" class="radio-label">200</label>
+        </div>
+        <div class="radio">
+            <input id="salary400" type="radio" name="salary">
+            <label for="salary400" class="radio-label">400</label>
+        </div>
+        <h4>Limited Houses/Hotels</h4>
+        <input type="checkbox" id="limit" name="limit">
+        <label for="limit"><span></span></label>
+        <hr style="margin: 5px 0">
+        <input type="submit" class="smallBtn" value="Confirm">
+        <input type="reset" class="smallBtn" value="Reset">
+        <input type="button" class="smallBtn" value="Cancel" onclick="hideWindow('cfgSetWindow')">
     </form>
 </div>
 <div class="hidden shadowBox" id="roomListWindow">
-    <a class="statusbar" onclick="hideWindow('roomListWindow')" >
+    <a class="statusbar" onclick="hideWindow('roomListWindow')">
         <img title="close" src="img/icon/close.png" style="width: 12px; height: 12px">
     </a>
     Room List
@@ -32,28 +71,30 @@
     你的浏览器不支持audio标签
 </audio>
 <div class="container">
-<canvas id="canvasPanel">
-Your browser does not support html5 canvas.
-</canvas>
+    <canvas id="canvasPanel">
+        Your browser does not support html5 canvas.
+    </canvas>
     <form>
-        <input type="text" id="UserName" placeholder="Please Enter Your Name" style="font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;">
-        <img src="img/icon/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;" >
+        <input type="text" id="UserName" placeholder="Please Enter Your Name"
+               style="font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;">
+        <img src="img/icon/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;">
+        <select id="selectAvatar" name="selectAvatar"
+                onchange="document.images['showAvatar'].src=options[selectedIndex].value;" title="">
+            <option id="avatar1" value="img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
+            <option id="avatar2" value="img//avatar//icon_apple.png" style="text-align: center">picture 2</option>
+            <option id="avatar3" value="img//avatar//icon_aircraft.png" style="text-align: center">picture 3</option>
+            <option id="avatar4" value="img//avatar//icon_github.png" style="text-align: center">picture 4</option>
+            <option id="avatar5" value="img//avatar//icon_google.png" style="text-align: center">picture 5</option>
+            <option id="avatar6" value="img//avatar//icon_wifi.png" style="text-align: center">picture 6</option>
+        </select>
     </form>
-    <select id="selectAvatar" name = "selectAvatar" onchange="document.images['showAvatar'].src=options[selectedIndex].value;" >
-        <option id="avatar1" value="img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
-        <option id="avatar2" value="img//avatar//icon_apple.png"style="text-align: center">picture 2</option>
-        <option id="avatar3" value="img//avatar//icon_aircraft.png"style="text-align: center">picture 3</option>
-        <option id="avatar4" value="img//avatar//icon_github.png"style="text-align: center">picture 4</option>
-        <option id="avatar5" value="img//avatar//icon_google.png"style="text-align: center">picture 5</option>
-        <option id="avatar6" value="img//avatar//icon_wifi.png"style="text-align: center">picture 6</option>
-
-    </select>
-    <div id ="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"src="img//avatar//icon_bug.png" ></div>
+    <div id="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"
+                                                                              src="img/avatar/icon_bug.png"></div>
     <h3 style="font-size:20px;position:absolute;left:660px;top:450px;">Start your game!</h3>
-    <div id ="selectRoomPanel"style="position:absolute;left:660px;top:510px;">
+    <div id="selectRoomPanel" style="position:absolute;left:660px;top:510px;">
         <button id="createRoom" class="shadowBox" onclick="showWindow('cfgSetWindow')">Create Room</button>
     </div>
-    <div id ="joinRoomPanel"style="position:absolute;left:660px;top:565px;">
+    <div id="joinRoomPanel" style="position:absolute;left:660px;top:565px;">
         <button id="joinRoom" class="shadowBox" onclick="showWindow('roomListWindow')">Join Room</button>
     </div>
 </div>
