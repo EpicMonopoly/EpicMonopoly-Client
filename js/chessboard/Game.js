@@ -87,23 +87,18 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             position_x[20]=0;
             position_y[20]=0;
             var spriteTop = new Array(9);
-            spriteTop[1] = game.add.sprite(width + height * (1 - 1), 0, 'arrow');
-            spriteTop[2] = game.add.sprite(width + height * (2 - 1), 0, 'arrow');
-            spriteTop[3] = game.add.sprite(width + height * (3 - 1), 0, 'arrow');
-            spriteTop[4] = game.add.sprite(width + height * (4 - 1), 0, 'arrow');
-            spriteTop[5] = game.add.sprite(width + height * (5 - 1), 0, 'arrow');
-            spriteTop[6] = game.add.sprite(width + height * (6 - 1), 0, 'arrow');
-            spriteTop[7] = game.add.sprite(width + height * (7 - 1), 0, 'arrow');
-            spriteTop[8] = game.add.sprite(width + height * (8 - 1), 0, 'arrow');
-            spriteTop[9] = game.add.sprite(width + height * (9 - 1), 0, 'arrow');
-            for (i = 1; i <= 9; i++) {
-                spriteTop[i].width = height;
-                spriteTop[i].height = width;
+            for(i=1;i<10;i++)
+            {
+                spriteTop[i]=new Object();
+                spriteTop[i].id=10+i;
                 spriteTop[i].x=width+height*(i-1);
                 spriteTop[i].y=0;
+                //here should be the picture of the item
+                spriteTop[i].picture='arrow';
+                spriteTop[i]=game.add.sprite(spriteTop[i].x,spriteTop[i].y,spriteTop[i].picture);
                 spriteTop[i].inputEnabled = true;
                 spriteTop[i].input.useHandCursor = true;
-                spriteTop[i].events.onInputDown.add(listener, this);
+                spriteTop[i].events.onInputDown.add(listener,this,spriteTop[i].id);
                 position_x[10-i+20]=width+height*(i-1);
                 position_y[10-i+20]=0;
 
@@ -114,20 +109,15 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             position_x[30]=width+height*9;
             position_y[30]=0;
             var spriteLeft = new Array(9);
-            spriteLeft[1] = game.add.sprite(0, width + height * (1 - 1), 'arrow');
-            spriteLeft[2] = game.add.sprite(0, width + height * (2 - 1), 'arrow');
-            spriteLeft[3] = game.add.sprite(0, width + height * (3 - 1), 'arrow');
-            spriteLeft[4] = game.add.sprite(0, width + height * (4 - 1), 'arrow');
-            spriteLeft[5] = game.add.sprite(0, width + height * (5 - 1), 'arrow');
-            spriteLeft[6] = game.add.sprite(0, width + height * (6 - 1), 'arrow');
-            spriteLeft[7] = game.add.sprite(0, width + height * (7 - 1), 'arrow');
-            spriteLeft[8] = game.add.sprite(0, width + height * (8 - 1), 'arrow');
-            spriteLeft[9] = game.add.sprite(0, width + height * (9 - 1), 'arrow');
             for (i = 1; i <= 9; i++) {
+                spriteLeft[i]=new Object();
                 spriteLeft[i].width = width;
                 spriteLeft[i].height = height;
                 spriteLeft[i].x=0;
                 spriteLeft[i].y=width+height*(i-1);
+                //here should  be the picture of the item.
+                spriteLeft[i].picture='arrow';
+                spriteLeft[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i],y,spriteLeft[i].picture);
                 spriteLeft[i].inputEnabled = true;
                 spriteLeft[i].input.useHandCursor = true;
                 spriteLeft[i].events.onInputDown.add(listener, this);
@@ -140,20 +130,15 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             position_x[10]=0;
             position_y[10]=width+height*9;
             var spriteBottom = new Array(9);
-            spriteBottom[1] = game.add.sprite(width + height * (1 - 1), width + height * 9, 'arrow');
-            spriteBottom[2] = game.add.sprite(width + height * (2 - 1), width + height * 9, 'arrow');
-            spriteBottom[3] = game.add.sprite(width + height * (3 - 1), width + height * 9, 'arrow');
-            spriteBottom[4] = game.add.sprite(width + height * (4 - 1), width + height * 9, 'arrow');
-            spriteBottom[5] = game.add.sprite(width + height * (5 - 1), width + height * 9, 'arrow');
-            spriteBottom[6] = game.add.sprite(width + height * (6 - 1), width + height * 9, 'arrow');
-            spriteBottom[7] = game.add.sprite(width + height * (7 - 1), width + height * 9, 'arrow');
-            spriteBottom[8] = game.add.sprite(width + height * (8 - 1), width + height * 9, 'arrow');
-            spriteBottom[9] = game.add.sprite(width + height * (9 - 1), width + height * 9, 'arrow');
             for (i = 1; i <= 9; i++) {
+                spriteBottom[i]=new Object();
                 spriteBottom[i].width = height;
                 spriteBottom[i].height = width;
                 spriteBottom[i].x=width+height*(i-1);
                 spriteBottom[i].y=width+height*9;
+                //here should  be the picture of the item.
+                spriteBottom[i].picture='arrow';
+                spriteBottom[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
                 spriteBottom[i].inputEnabled = true;
                 spriteBottom[i].input.useHandCursor = true;
                 spriteBottom[i].events.onInputDown.add(listener, this);
@@ -161,20 +146,15 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 position_y[10-i]=width+height*9
             }
             var spriteRight = new Array(9);
-            spriteRight[1] = game.add.sprite(width + height * 9, width + height * (1 - 1), 'arrow');
-            spriteRight[2] = game.add.sprite(width + height * 9, width + height * (2 - 1), 'arrow');
-            spriteRight[3] = game.add.sprite(width + height * 9, width + height * (3 - 1), 'arrow');
-            spriteRight[4] = game.add.sprite(width + height * 9, width + height * (4 - 1), 'arrow');
-            spriteRight[5] = game.add.sprite(width + height * 9, width + height * (5 - 1), 'arrow');
-            spriteRight[6] = game.add.sprite(width + height * 9, width + height * (6 - 1), 'arrow');
-            spriteRight[7] = game.add.sprite(width + height * 9, width + height * (7 - 1), 'arrow');
-            spriteRight[8] = game.add.sprite(width + height * 9, width + height * (8 - 1), 'arrow');
-            spriteRight[9] = game.add.sprite(width + height * 9, width + height * (9 - 1), 'arrow');
             for (i = 1; i <= 9; i++) {
+                spriteRight[i]=new Object();
                 spriteRight[i].width = width;
                 spriteRight[i].height = height;
                 spriteRight[i].x=width+height*9;
                 spriteRight[i].y=width+height*(i-1);
+                //here should  be the picture of the item.
+                spriteRight[i].picture='arrow';
+                spriteRight[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
                 spriteRight[i].inputEnabled = true;
                 spriteRight[i].input.useHandCursor = true;
                 spriteRight[i].events.onInputDown.add(listener, this);
@@ -370,9 +350,11 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
         }
-
+        var dat;// the data to store json
         function update() {
-            move_player(player1,2,18);
+            //parse json file
+            WebSocketTest();
+
 
 
 
@@ -383,39 +365,60 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
         }
         function listener() {
-            var tradeWindow = document.getElementById("informationWindow");
-            tradeWindow.style.visibility = "visible";
+            var tableid = new Array(40)
+            for(i=0;i<40;i++)
+            {
+                tableid[i]=i;
+            }
+
+
+            var infoWindow = document.getElementById("informationWindow");
+            infoWindow.style.visibility = "visible";
         }
 
 
 
-var messageContainer = document.getElementById("messages");
-var record = document.getElementById("recordContent");
-var resp = document.getElementById("resp");
+
+
+
 var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 function WebSocketTest() {
     if ("WebSocket" in window) {
-        messageContainer.innerHTML = "WebSocket is supported by your Browser!";
         ws.onopen = function () {
             ws.send("Message to send");
         };
         ws.onmessage = function (evt) {
             var received_msg = evt.data;
             try {
-                //尝试解析json
-                var dat = JSON.parse(received_msg);
-                resp.innerHTML = dat.response
+                //parse json file
+                dat = JSON.parse(received_msg);
+                //if the file is to change the block
+                if (dat["set_name"] == "block_data")
+                {
+                    //change the data of the blocks
+                    for(i = 0;i<40;i++)
+                    {
+                        if (dat["data"]["block_id"] == i)
+                        {
+
+                        }
+                    }
+                }
+                if (dat.data_type == "")
+                {
+
+                }
             } catch (e) {
                 // 不符合json格式的字符串打印出来
-                messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Message is received:" + received_msg;
-                record.scrollTop = record.scrollHeight;
+
+
             }
         };
         ws.onclose = function () {
-            messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Connection is closed...";
+
         };
     } else {
-        messageContainer.innerHTML = "WebSocket is NOT supported by your Browser!";
+
     }
 }
 function req() {
@@ -424,7 +427,6 @@ function req() {
 }
 function push() {
     var msg = document.getElementById("choice").value;
-    messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Message is send: " + msg;
     document.getElementById("choice").value = "";
     ws.send(msg);
 }
@@ -434,11 +436,5 @@ function S4() {
 function guid() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-document.onkeydown = function (e) {
-    var event = e || window.event;
-    var key = event.which || event.keyCode || event.charCode;
-    if (key == 13) {
-        push();
-    }
-}
+
 
