@@ -1,0 +1,9 @@
+{
+	"type": "bank",
+	"data": [
+		{
+			"house_number": 32,
+			"hotel_number": 12
+		}
+	]
+}

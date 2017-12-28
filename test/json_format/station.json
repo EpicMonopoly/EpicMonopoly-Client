@@ -1,0 +1,35 @@
+{
+	"type": "station",
+	"data": [
+		{
+			"name": "Luohu",
+			"block_id": 23,
+			"position": 12,
+			"owner_id": "123456789",
+			"estate_value": 123456789,
+			"status": 1,
+			"mortgage_value": 123456789,
+			"payment": [
+				{"station_number": 1, "payment": 123456789},
+				{"station_number": 2, "payment": 123456789},
+				{"station_number": 3, "payment": 123456789},
+				{"station_number": 4, "payment": 123456789}
+			]
+		},
+		{
+			"name": "Luohu",
+			"block_id": 23,
+			"position": 12,
+			"owner_id": "123456789",
+			"estate_value": 123456789,
+			"status": 1,
+			"mortgage_value": 123456789,
+			"payment": [
+				{"station_number": 1, "payment": 123456789},
+				{"station_number": 2, "payment": 123456789},
+				{"station_number": 3, "payment": 123456789},
+				{"station_number": 4, "payment": 123456789}
+			]
+		}
+	]
+}

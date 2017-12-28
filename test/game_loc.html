@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+    var json_demo ={
+        "type": "bank",
+            "data": [
+            {
+                "house_number": 32,
+                "hotel_number": 12
+            }
+        ]
+    };
+    function type_read(json_obj) {
+        var type = json_obj.type;
+        switch (type){
+            case "init":
+                data_iter(json_obj.data);
+                break;
+            case "built":
+
+                break;
+            case "bank":
+
+                break;
+        }
+    }
+
+
+    function data_iter(data) {
+        var i;
+        for (i = 0;i < data.length; i++) {
+            type_read(data[i]);
+        }
+    }
+
+
+    document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>

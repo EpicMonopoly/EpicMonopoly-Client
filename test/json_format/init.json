@@ -1,0 +1,35 @@
+{
+    "type": "init",
+    "data":[
+        {
+            "type": "room_info",
+            "data":[
+                {
+                    "room_id": "a3sd54654ads",
+                    "initial_cash": 2000,
+                    "reward_pass_go": 200,
+                    "difficulty": "easy",
+                    "building_limitation": "no"
+                }
+            ]
+        },
+        {
+            "type": "player_info",
+            "data":[
+                {
+                    "name": "fsdsfdd",
+                    "player_id": "asdasd6542a1s3d"
+                }
+            ]
+        },
+        {
+            "type": "player_info",
+            "data":[
+                {
+                    "name": "fsdsfdd",
+                    "player_id": "asdasd6542a1s3d"
+                }
+            ]
+        }
+    ]
+}

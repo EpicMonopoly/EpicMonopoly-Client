@@ -1,0 +1,61 @@
+File index:
+	"bank.json": 1,
+	"block.json": 2,
+	"card.json": 3,
+	"estate.json": 4,
+	"map.json": 5,
+	"player.json": 6,
+	"player_list.json": 7,
+	"station.json": 8,
+	"trade.json": 9,
+	"utility.json": 10
+
+Property State:
+	-1: Nobody own
+	0: Mortgage
+	1: Someone own
+    2: Have building
+
+Chest/chance card type:
+    0: "Collection",
+    1: "Collect_from_players",
+    2: "Pay",
+    3: "Pay_for_repair",
+    4: "Move_indicate_position",
+    5: "Bail_card",
+    6: "Move_nearby",
+    7: "Move",
+    8: "Pay_to_players"
+
+Block type:
+    0: ["Go", "Go to jail", "In Jail", "Free Parking"]
+    1: ["Community Chest", "Chance"]
+    2: ["Income Tax", "Super Tax"]
+    3. estate.Estate
+    4. station.Station
+    5. utility.Utility
+
+data_dict:
+    0: chess_board
+    1: player_dict
+    2: epic_bank
+    3: chest_list
+    4: chance_list
+    5: station_list
+    6: utility_list
+    7: estate_list
+    8: corner_list
+    9: chest_block_list
+    10: chance_block_list
+    11: tax_list
+    12: ef
+    13: living_list
+
+player_status:
+    -1: broken/dead/out of game
+    0: In jail
+    1: Active
+
+room_status:
+    0: waiting
+    1: playing

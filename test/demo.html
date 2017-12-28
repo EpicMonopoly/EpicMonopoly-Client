@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+<a href="javascript:WebSocketTest()">Run WebSocket</a>
+<div id="recordContent" style="height:500px;width: auto;overflow-x: hidden;overflow-y: scroll;background:black;">
+    <div id="messages" style="color:white;"></div>
+</div>
+<div>
+    <form onsubmit="return false;">
+        <input type="text" id="choice">
+        <button onclick="push()" type="button">push</button>
+    </form>
+</div>
+<div>
+    <div id="resp">
+    </div>
+    <button onclick="req()" type="button">Get my ID</button>
+</div>
+</body>
+
+
+<script type="text/javascript">
+    var messageContainer = document.getElementById("messages");
+    var record = document.getElementById("recordContent");
+    var resp = document.getElementById("resp");
+    var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
+
+    function WebSocketTest() {
+        if ("WebSocket" in window) {
+            messageContainer.innerHTML = "WebSocket is supported by your Browser!";
+            ws.onopen = function () {
+                ws.send("Message to send");
+            };
+            ws.onmessage = function (evt) {
+                var received_msg = evt.data;
+                try {
+                    //尝试解析json
+                    var dat = JSON.parse(received_msg);
+                    resp.innerHTML = dat.response
+                } catch (e) {
+                    // 不符合json格式的字符串打印出来
+                    messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Message is received:" + received_msg;
+                    record.scrollTop = record.scrollHeight;
+                }
+            };
+            ws.onclose = function () {
+                messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Connection is closed...";
+            };
+
+        } else {
+            messageContainer.innerHTML = "WebSocket is NOT supported by your Browser!";
+        }
+    }
+
+    function req() {
+        var text = {"type": "json", "request": "uid"}; //json对象
+        ws.send(JSON.stringify(text));//将json转化为字符串输出
+    }
+
+    function push() {
+        var msg = document.getElementById("choice").value;
+        messageContainer.innerHTML = messageContainer.innerHTML + "<br/>Message is send: " + msg;
+        document.getElementById("choice").value = "";
+        ws.send(msg);
+    }
+
+    function S4() {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    }
+
+    function guid() {
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+    }
+
+    document.onkeydown = function (e) {
+        var event = e || window.event;
+        var key = event.which || event.keyCode || event.charCode;
+        if (key == 13) {
+            push();
+        }
+    }
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="text/javascript"></script>
+
+</html>

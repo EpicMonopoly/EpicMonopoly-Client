@@ -1,0 +1,46 @@
+{
+	"type": "estate",
+	"data": [
+		{
+			"name": "Nanshan",
+			"block_id": 23,
+			"position": 12,
+			"owner_id": "123456789",
+			"estate_value": 123456789,
+			"status": 1,
+			"street_id": 12,
+			"house_value": 123456789,
+			"house_number": 1,
+			"mortgage_value": 123456789,
+			"payment": [
+				{"house_number": 1, "payment": 123456789},
+				{"house_number": 2, "payment": 123456789},
+				{"house_number": 3, "payment": 123456789},
+				{"house_number": 4, "payment": 123456789},
+				{"house_number": 5, "payment": 123456789},
+				{"house_number": 6, "payment": 123456789}
+			]
+		},
+		{
+			"name": "Nanshan",
+			"block_id": 23,
+			"position": 12,
+			"owner_id": "123456789",
+			"estate_value": 123456789,
+			"status": 1,
+			"street_id": 12,
+			"house_value": 123456789,
+			"house_number": 1,
+			"mortgage_value": 123456789,
+			"payment": [
+				{"house_number": 1, "payment": 123456789},
+				{"house_number": 2, "payment": 123456789},
+				{"house_number": 3, "payment": 123456789},
+				{"house_number": 4, "payment": 123456789},
+				{"house_number": 5, "payment": 123456789},
+				{"house_number": 6, "payment": 123456789}
+			]
+		}
+
+	]
+}
