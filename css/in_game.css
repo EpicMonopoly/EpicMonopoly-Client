@@ -136,3 +136,7 @@ td{
 #informationWindow{
     width: 300px;
 }
+
+#icon_bug path{
+    fill: yellow;
+}
