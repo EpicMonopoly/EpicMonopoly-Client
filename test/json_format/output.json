@@ -1,0 +1,26 @@
+{
+    "type": "output",
+    "data":[
+        {
+            "type": "dice_result",
+            "data":[
+                {
+                    "player_id": "sf52sd+f6",
+                    "dice_result": [5, 1]
+                }
+            ]
+        },
+        {
+            "type": "player",
+            "data":[
+
+            ]
+        },
+        {
+            "type": "estate",
+            "data":[
+                
+            ]
+        }
+    ]
+}

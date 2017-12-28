@@ -1,0 +1,17 @@
+{
+	"type": "trade",
+	"data": [
+		{
+			"player_id": "123asd",
+			"money_give": 1111,
+			"asset_give": [12, 45, 31],
+			"card_give": 1
+		},
+		{
+			"player_id": "846dgf",
+			"money_give": 1221,
+			"asset_give": [7, 21, 9],
+			"card_give": 1
+		}
+	]
+}

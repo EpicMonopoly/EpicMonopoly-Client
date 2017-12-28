@@ -1,0 +1,11 @@
+{
+	"type": "block",
+	"data": [
+		{
+			"name": "go", // Go, go to jail, park, in jail, chest, opportunity, in come tax, luxury tax
+			"block_id": 23,
+			"position": 12,
+			"description": "xxxxxxx"
+		}
+	]
+}

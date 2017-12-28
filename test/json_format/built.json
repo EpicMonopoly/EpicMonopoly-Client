@@ -1,0 +1,10 @@
+{
+    "type": "built",
+    "data":[
+        {
+            "player_id": "sdfsdf5635",
+            "estate_id": 12,
+            "built_number": 1 // if built_number is -1, then remove one house
+        }
+    ]
+}

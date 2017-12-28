@@ -1,0 +1,9 @@
+{
+    "type": "input",
+    "data":[
+        {
+            "from_player_id": "asdas65435",
+            "request": 1 // the index of choice
+        }
+    ]
+}
