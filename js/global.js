@@ -7,4 +7,3 @@ function hideWindow(windowId) {
     var window = document.getElementById(windowId);
     window.style.visibility = "hidden";
 }
-

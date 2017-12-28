@@ -84,3 +84,59 @@ a{
 hr{
     margin: 2px;
 }
+
+.player-red path{
+    fill: #ff0000;
+}
+
+.player-green path{
+    fill: #00ff00;
+}
+
+.player-blue path{
+    fill: #0000ff;
+}
+
+.player-yellow path{
+    fill: #ffff00;
+}
+
+.player-pink path{
+    fill: #ff00ff;
+}
+
+.player-cyan path{
+    fill: #00ffff;
+}
+
+.street-1 path{
+    fill: #ff8080;
+}
+
+.street-2 path{
+    fill: #ffdf80;
+}
+
+.street-3 path{
+    fill: #bfff7f;
+}
+
+.street-4 path{
+    fill: #82ffa1;
+}
+
+.street-5 path{
+    fill: #80ffff;
+}
+
+.street-6 path{
+    fill: #82a1ff;
+}
+
+.street-7 path{
+    fill: #c182ff;
+}
+
+.street-8 path{
+    fill: #ff80df;
+}
