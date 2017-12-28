@@ -13,48 +13,48 @@
             <input type="text" id="roomNameField" title="" style="margin-left: 5px">
         <h4>Level</h4>
         <div class="radio">
-            <input id="levelEasy" type="radio" name="level" checked>
+            <input id="levelEasy" type="radio" name="level" value="easy" checked>
             <label for="levelEasy" class="radio-label">Easy</label>
         </div>
         <div class="radio">
-            <input id="levelMedian" type="radio" name="level">
+            <input id="levelMedian" type="radio" name="level" value="median">
             <label for="levelMedian" class="radio-label">Median</label>
         </div>
         <div class="radio">
-            <input id="levelHard" type="radio" name="level">
+            <input id="levelHard" type="radio" name="level" value="hard">
             <label for="levelHard" class="radio-label">Hard</label>
         </div>
         <h4>Initial Fund</h4>
         <div class="radio">
-            <input id="init1000" type="radio" name="initFund">
+            <input id="init1000" type="radio" name="initFund" value="1000">
             <label for="init1000" class="radio-label">1000</label>
         </div>
         <div class="radio">
-            <input id="init1500" type="radio" name="initFund" checked>
+            <input id="init1500" type="radio" name="initFund" value="1500" checked>
             <label for="init1500" class="radio-label">1500</label>
         </div>
         <div class="radio">
-            <input id="init2000" type="radio" name="initFund">
+            <input id="init2000" type="radio" name="initFund" value="2000">
             <label for="init2000" class="radio-label">2000</label>
         </div>
         <h4>Go Salary</h4>
         <div class="radio">
-            <input id="salaryNone" type="radio" name="salary">
+            <input id="salaryNone" type="radio" name="salary" value="0">
             <label for="salaryNone" class="radio-label">none</label>
         </div>
         <div class="radio">
-            <input id="salary200" type="radio" name="salary" checked>
+            <input id="salary200" type="radio" name="salary" value="200" checked>
             <label for="salary200" class="radio-label">200</label>
         </div>
         <div class="radio">
-            <input id="salary400" type="radio" name="salary">
+            <input id="salary400" type="radio" name="salary" value="400">
             <label for="salary400" class="radio-label">400</label>
         </div>
         <h4>Limited Houses/Hotels</h4>
         <input type="checkbox" id="limit" name="limit" checked>
         <label for="limit"><span></span></label>
         <hr style="margin: 5px 0">
-        <input type="submit" class="smallBtn" value="Confirm">
+        <input type="submit" class="smallBtn" value="Confirm" onclick="createRoom()">
         <input type="reset" class="smallBtn" value="Reset">
         <input type="button" class="smallBtn" value="Cancel" onclick="hideWindow('cfgSetWindow')">
     </form>
@@ -68,7 +68,7 @@
 <div id="wrapper"></div>
 <audio autoplay="autoplay" loop="loop" preload="auto"
        src="sound/backsound.wav">
-    你的浏览器不支持audio标签
+    Your browser does not support "audio" tag
 </audio>
 <div class="container">
     <canvas id="canvasPanel">

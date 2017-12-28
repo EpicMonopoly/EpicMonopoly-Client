@@ -80,14 +80,45 @@ function hideWindow(windowId) {
 }
 function getName() {
     var name = document.getElementById("UserName");
-
-    
 }
 
+function createRoom() {
+    var level, initFund, salary;
+    var roomName = document.getElementById("roomNameField").value;
+    var isLimited = Boolean(document.getElementById("limit").checked);
 
+    var levelRadio = document.getElementsByName("level");
+    var initFundRadio = document.getElementsByName("initFund");
+    var salaryRadio = document.getElementsByName("salary");
+    for (var i = 0, length = levelRadio.length; i < length; ++i) {
+        if (levelRadio[i].checked) {
+            level = levelRadio[i].value;
+            break;
+        }
+    }
+    for (i = 0, length = initFundRadio.length; i < length; ++i) {
+        if (initFundRadio[i].checked) {
+            initFund = initFundRadio[i].value;
+            break;
+        }
+    }
+    for (i = 0, length = salaryRadio.length; i < length; ++i) {
+        if (salaryRadio[i].checked) {
+            salary = salaryRadio[i].value;
+            break;
+        }
+    }
 
-
-
-
-
-
+    return {
+        "type": "room",
+        "data": [
+            {
+                "room_name": roomName,
+                "level": level,
+                "init_fund": initFund,
+                "go_salary": salary,
+                "is_limited": isLimited
+            }
+        ]
+    }
+}
