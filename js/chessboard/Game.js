@@ -1,3 +1,5 @@
+
+document.body.appendChild(new_element);
 var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, create: create,update:update});
 
 
@@ -5,8 +7,11 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("arrow", "img/assets/images/rectangle.png");
             game.load.image("player1", "img/avatar/icon_bug.png");
             game.load.image("background","img/chessboard_bgd.png");
-            game.load.json("")
+            game.load.json("");
         }
+        var block = new Array(40);//to save the object of every block
+        var picture = new Array(40);//to save the picture of every block
+        var icon = new Array();
         var player1;
         var player1_x;
         var player1_y;
@@ -71,21 +76,36 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.physics.enable(player1,Phaser.Physics.ARCADE);
         }
 
-        var width ;//width of the sprite
-        var height;//height of the sprite
+        function create_block(id) {
+
+        }
+
+
+        var width=80;//width of the sprite
+        var height=55;//height of the sprite
         function create() {
 
+
+
             /*
-            Draw the chessboard
+            create players
              */
-            width = 80;
-            height = 55;
+            create_player1(position_x[2],position_y[2],'player1');
+
+
+        }
+        function createChessBoard()
+        {
+            /*
+           Draw the chessboard
+            */
             game.add.tileSprite(0,0,655,655,"background");
-            var spriteCornerLeftTop = game.add.sprite(0, 0, 'arrow');
+            var spriteCornerLeftTop = game.add.sprite(0, 0, picture[20]);
             spriteCornerLeftTop.width = width;
             spriteCornerLeftTop.height = width;
             position_x[20]=0;
             position_y[20]=0;
+            block[20]=spriteCornerRightTop;
             var spriteTop = new Array(9);
             for(i=1;i<10;i++)
             {
@@ -94,20 +114,22 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteTop[i].x=width+height*(i-1);
                 spriteTop[i].y=0;
                 //here should be the picture of the item
-                spriteTop[i].picture='arrow';
+                spriteTop[i].picture=picture[10-i+20];
                 spriteTop[i]=game.add.sprite(spriteTop[i].x,spriteTop[i].y,spriteTop[i].picture);
                 spriteTop[i].inputEnabled = true;
                 spriteTop[i].input.useHandCursor = true;
                 spriteTop[i].events.onInputDown.add(listener,this,spriteTop[i].id);
                 position_x[10-i+20]=width+height*(i-1);
                 position_y[10-i+20]=0;
+                block[10-i+20]=spriteTop[i];
 
             }
-            var spriteCornerRightTop = game.add.sprite(width + height * 9, 0, 'arrow');
+            var spriteCornerRightTop = game.add.sprite(width + height * 9, 0, picture[30]);
             spriteCornerRightTop.width = width;
             spriteCornerRightTop.height = width;
             position_x[30]=width+height*9;
             position_y[30]=0;
+            block[30]=spriteCornerRightTop;
             var spriteLeft = new Array(9);
             for (i = 1; i <= 9; i++) {
                 spriteLeft[i]=new Object();
@@ -116,19 +138,21 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteLeft[i].x=0;
                 spriteLeft[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
-                spriteLeft[i].picture='arrow';
-                spriteLeft[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i].y,spriteLeft[i].picture);
+                spriteLeft[i].picture=picture[10+10-i];
+                spriteLeft[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i],y,spriteLeft[i].picture);
                 spriteLeft[i].inputEnabled = true;
                 spriteLeft[i].input.useHandCursor = true;
                 spriteLeft[i].events.onInputDown.add(listener, this);
                 position_x[10+10-i]=0;
                 position_y[10+10-i]=width+height*(i-1);
+                block[10+10-i]=spriteLeft[i];
             }
-            var spriteCornerLeftBottom = game.add.sprite(0, width + height * 9, 'arrow');
+            var spriteCornerLeftBottom = game.add.sprite(0, width + height * 9, picture[10]);
             spriteCornerLeftBottom.width = width;
             spriteCornerLeftBottom.height = width;
             position_x[10]=0;
             position_y[10]=width+height*9;
+            block[10] = spriteCornerLeftBottom;
             var spriteBottom = new Array(9);
             for (i = 1; i <= 9; i++) {
                 spriteBottom[i]=new Object();
@@ -137,13 +161,14 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteBottom[i].x=width+height*(i-1);
                 spriteBottom[i].y=width+height*9;
                 //here should  be the picture of the item.
-                spriteBottom[i].picture='arrow';
+                spriteBottom[i].picture=picture[10-i];
                 spriteBottom[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
                 spriteBottom[i].inputEnabled = true;
                 spriteBottom[i].input.useHandCursor = true;
                 spriteBottom[i].events.onInputDown.add(listener, this);
                 position_x[10-i]=width+height*(i-1);
-                position_y[10-i]=width+height*9
+                position_y[10-i]=width+height*9;
+                block[10-i]=spriteBottom[i];
             }
             var spriteRight = new Array(9);
             for (i = 1; i <= 9; i++) {
@@ -153,26 +178,21 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteRight[i].x=width+height*9;
                 spriteRight[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
-                spriteRight[i].picture='arrow';
+                spriteRight[i].picture=picture[30+10-i];
                 spriteRight[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
                 spriteRight[i].inputEnabled = true;
                 spriteRight[i].input.useHandCursor = true;
                 spriteRight[i].events.onInputDown.add(listener, this);
                 position_x[30+10-i]=width+height*9;
                 position_y[30+10-i]=width+height*(i-1);
+                block[30+10-i]=spriteRight[i];
             }
-            var spriteCornerRightBottom = game.add.sprite(width + height * 9, width + height * 9, 'arrow');
+            var spriteCornerRightBottom = game.add.sprite(width + height * 9, width + height * 9, picture[0]);
+            block[0]=spriteCornerRightBottom;
             spriteCornerRightBottom.width = width;
             spriteCornerRightBottom.height = width;
             position_x[0]=width+height*9;
             position_y[0]=width+height*9;
-
-
-            /*
-            create players
-             */
-            create_player1(position_x[2],position_y[2],'player1');
-
 
         }
         /*
@@ -376,12 +396,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             infoWindow.style.visibility = "visible";
         }
 
-
-
-
-
-
 var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
+var i, j;
 function WebSocketTest() {
     if ("WebSocket" in window) {
         ws.onopen = function () {
@@ -392,16 +408,20 @@ function WebSocketTest() {
             try {
                 //parse json file
                 dat = JSON.parse(received_msg);
-                //if the file is to change the block
-                if (dat["set_name"] == "block_data")
+                //this part is to initial block
+                if (dat["type"] == "block_data")
                 {
+                    var block_name,block_id,position,block_type,description;
                     //change the data of the blocks
-                    for(i = 0;i<40;i++)
+                    for(i=0;i<dat["data"].length;i++)
                     {
-                        if (dat["data"]["block_id"] == i)
-                        {
+                        block_name = dat["data"][i]["name"];
+                        block_id=dat["data"][i]["block_id"];
+                        position=dat["data"][i]["position"];
+                        block_type=dat["data"][i]["block_type"];
+                        description=dat["data"][i]["description"];
 
-                        }
+
                     }
                 }
                 if (dat.data_type == "")
@@ -436,5 +456,10 @@ function S4() {
 function guid() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
+
+
+
+
+
 
 
