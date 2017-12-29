@@ -6,7 +6,16 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
             game.load.image("player1", "img/avatar/icon_bug.png");
             game.load.image("background","img/chessboard_bgd.png");
-            game.load.image("parking","img/icon_chessboard/parking_lot.png")
+            game.load.image("go","img/icon_chessboard/go.png");
+            game.load.image("chest","img/icon_chessboard/community_chest.png");
+            game.load.image("station","img/icon_chessboard/railway_station.png");
+            game.load.image("chance","img/icon_chessboard/chance.png");
+            game.load.image("inJail","img/icon_chessboard/in_jail.png");
+            game.load.image("parking","img/icon_chessboard/parking_lot.png");
+            game.load.image("goJail","img/icon_chessboard/go_jail.png");
+
+            game.load.image("water","img/icon_chessboard/water.png");
+            game.load.image("electricity","img/icon_chessboard/electricity.png");
             game.load.json("");
         }
         var block = new Array(40);//to save the object of every block
@@ -142,8 +151,19 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         var height=55;//height of the sprite
         function create() {
 
-
+            picture[0]='go';
+            picture[2]='chest';
+            picture[5]='station';
+            picture[7]='chance';
+            picture[10]='inJail';
             picture[20]='parking';
+            picture[30]='goJail';
+
+            picture[3]='water';
+            picture[4]='electricity';
+            picture[8]='test';
+
+
          createChessBoard();
             /*
             create players
