@@ -1,4 +1,4 @@
-window.onload = window.onresize =function () {
+window.onload = window.onresize = function () {
 
 
     var theCanvas = document.getElementById("canvasPanel");
@@ -8,7 +8,7 @@ window.onload = window.onresize =function () {
     var message = "your text";
     drawScreen();
 
-//这是一个测试
+    //这是一个测试
     function drawScreen() {
         //背景
         theCanvas.width = window.innerWidth;
@@ -57,8 +57,7 @@ window.onload = window.onresize =function () {
         if (isFill) {
             context.fillStyle = color;
             context.fill();
-        }
-        else {
+        } else {
             context.strokeStyle = color;
             context.stroke();
         }
@@ -78,6 +77,7 @@ function hideWindow(windowId) {
     var window = document.getElementById(windowId);
     window.style.visibility = "hidden";
 }
+
 function getName() {
     var name = document.getElementById("UserName");
 }
@@ -111,14 +111,12 @@ function createRoom() {
 
     return {
         "type": "room",
-        "data": [
-            {
-                "room_name": roomName,
-                "level": level,
-                "init_fund": initFund,
-                "go_salary": salary,
-                "is_limited": isLimited
-            }
-        ]
+        "data": [{
+            "room_name": roomName,
+            "level": level,
+            "init_fund": initFund,
+            "go_salary": salary,
+            "is_limited": isLimited
+        }]
     }
 }
