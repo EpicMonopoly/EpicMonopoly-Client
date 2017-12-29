@@ -117,7 +117,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteLeft[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
                 spriteLeft[i].picture='arrow';
-                spriteLeft[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i],y,spriteLeft[i].picture);
+                spriteLeft[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i].y,spriteLeft[i].picture);
                 spriteLeft[i].inputEnabled = true;
                 spriteLeft[i].input.useHandCursor = true;
                 spriteLeft[i].events.onInputDown.add(listener, this);
