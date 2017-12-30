@@ -14,7 +14,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/global.css">
         <link rel="stylesheet" type="text/css" href="css/in_game.css">
-        <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+        <script type="text/javascript" src="js/chessboard/jquery-3.2.1.js"></script>
         <script type="text/javascript" src="js/global.js"></script>
         <script type="text/javascript" src="js/for_svg.js"></script>
         <script type="text/javascript" src="js/in_game.js"></script>
@@ -93,31 +93,31 @@
                 </div>
                 <div id="playersList"> <!--TODO make to list?-->
                     <div id="player1" class="playerInfo shadowBox">
-                        <img src="img/avatar/icon_bug.svg" id="icon_bug" class="svg svg-red" >Player1<br>$1500
+                        <img id="avatar1" class="svg" >Player1<br>$1500
                         <a class="tradeBtn" id="trade1" onclick="showWindow('tradeWindow')">
                             <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player2" class="playerInfo shadowBox">
-                        <img src="">Player2<br>$1000
+                        <img id="avatar2" class="svg" >Player2<br>$1000
                         <a class="tradeBtn" id="trade2" onclick="showWindow('tradeWindow')">
                             <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player3" class="playerInfo shadowBox">
-                        <img src="">Player3<br>$300
+                        <img id="avatar3" class="svg" >Player3<br>$300
                         <a class="tradeBtn" id="trade3" onclick="showWindow('tradeWindow')">
                             <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
                     <div id="player4" class="playerInfo shadowBox">
-                        <img src="">Player4<br>$750
+                        <img id="avatar4" class="svg" >Player4<br>$750
                         <a class="tradeBtn" id="trade4" onclick="showWindow('tradeWindow')">
                             <img title="trade" src="img/icon_ui/trade.png" style="float:right; width: 18px; height: 18px">
                         </a>
                     </div>
-                    <div id="player5" class="playerInfo shadowBox">None</div>
-                    <div id="player6" class="playerInfo shadowBox">None</div>
+                    <div id="player5" class="playerInfo playerInfo-none shadowBox"></div>
+                    <div id="player6" class="playerInfo playerInfo-none shadowBox"></div>
                 </div>
                 <!--<audio autoplay="autoplay" loop="loop" preload="auto" controls="controls"-->
                        <!--src="backsound.wav">-->
