@@ -6,16 +6,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
             game.load.image("player1", "img/avatar/icon_bug.png");
             game.load.image("background","img/chessboard_bgd.png");
-            game.load.image("go","img/icon_chessboard/go.png");
-            game.load.image("chest","img/icon_chessboard/community_chest.png");
-            game.load.image("station","img/icon_chessboard/railway_station.png");
-            game.load.image("chance","img/icon_chessboard/chance.png");
-            game.load.image("inJail","img/icon_chessboard/in_jail.png");
-            game.load.image("parking","img/icon_chessboard/parking_lot.png");
-            game.load.image("goJail","img/icon_chessboard/go_jail.png");
-
-            game.load.image("water","img/icon_chessboard/water.png");
-            game.load.image("electricity","img/icon_chessboard/electricity.png");
+            game.load.image("parking","img/icon_chessboard/parking_lot.png")
             game.load.json("");
         }
         var block = new Array(40);//to save the object of every block
@@ -41,21 +32,41 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         function initial_block_information() {
             for(i=0;i<40;i++)
             {
-                block_information[i].name=null;
-                block_information[i].owner_name=null;
-                block_information[i].original_price=null;
-                block_information[i].current_rent=null;
-                block_information[i].original_rent=null;
-                block_information[i].with_one_house=null;
-                block_information[i].with_two_house=null;
-                block_information[i].with_three_house=null;
-                block_information[i].with_four_house=null;
-                block_information[i].with_one_hotel=null;
-                block_information[i].house_cost=null;
-                block_information[i].hotel_cost=null;
-                block_information[i].mortage_value=null;
-                block_information[i].house_amount=null;
-                block_information[i].hotel_amount=null;
+
+                block_information[i]={
+                    "block_name":"None",
+                    "owner_name":"None",
+                    "original_price":0,
+                    "investment":0,
+                    "current_rent":0,
+                    "original_rent":0,
+                    "with_one_house":0,
+                    "with_two_house":0,
+                    "with_three_house":0,
+                    "with_four_house":0,
+                    "with_one_hotel":0,
+                    "house_cost":0,
+                    "hotel_cost":0,
+                    "mortgage_value":0,
+                    "house_amount":0,
+                    "hotel_amount":0
+                }
+                block_information[i].block_name="None";
+                block_information[i].owner_name="None";
+                block_information[i].original_price=0;
+                block_information[i].investment=0;
+                block_information[i].current_rent=0;
+                block_information[i].original_rent=0;
+                block_information[i].with_one_house=0;
+                block_information[i].with_two_house=0;
+                block_information[i].with_three_house=0;
+                block_information[i].with_four_house=0;
+                block_information[i].with_one_hotel=0;
+                block_information[i].house_cost=0;
+                block_information[i].hotel_cost=0;
+                block_information[i].mortgage_value=0;
+                block_information[i].house_amount=0;
+                block_information[i].hotel_amount=0;
             }
         }
         /*
@@ -64,14 +75,20 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
          */
         function show_block_infoContect(blockid)
         {
-            document.getElementById("table_name").innerHTML =block_information[blockid].name;
+            document.getElementById("block_name").innerHTML =block_information[blockid].block_name;
             document.getElementById("owner_name").innerHTML =block_information[blockid].owner_name;
             document.getElementById("original_price").innerHTML =block_information[blockid].original_price;
+            document.getElementById("investment").innerHTML =block_information[blockid].investment;
             document.getElementById("current_rent").innerHTML =block_information[blockid].current_rent;
             document.getElementById("original_rent").innerHTML =block_information[blockid].owner_name;
             document.getElementById("with_one_house").innerHTML =block_information[blockid].with_one_house;
             document.getElementById("with_two_house").innerHTML =block_information[blockid].with_two_house;
             document.getElementById("with_three_house").innerHTML =block_information[blockid].with_three_house;
+            document.getElementById("with_four_house").innerHTML =block_information[blockid].with_four_house;
+            document.getElementById("with_one_hotel").innerHTML =block_information[blockid].with_one_hotel;
+            document.getElementById("house_cost").innerHTML =block_information[blockid].house_cost;
+            document.getElementById("hotel_cost").innerHTML =block_information[blockid].hotel_cost;
+            document.getElementById("mortgage_value").innerHTML =block_information[blockid].mortgage_value;
 
 
         }
@@ -151,24 +168,36 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         var height=55;//height of the sprite
         function create() {
 
-            picture[0]='go';
-            picture[2]='chest';
-            picture[5]='station';
-            picture[7]='chance';
-            picture[10]='inJail';
-            picture[20]='parking';
-            picture[30]='goJail';
-
-            picture[3]='water';
-            picture[4]='electricity';
-            picture[8]='test';
+            for(i=0;i<40;i++)
+            {
+                picture[i]='parking';
+            }
 
 
-         createChessBoard();
+            createChessBoard();
             /*
             create players
              */
             create_player1(position_x[2],position_y[2],'bug');
+            initial_block_information();
+
+                block_information[21].block_name = "yixixi";
+                block_information[21].owner_name = "yixi";
+                block_information[21].original_price = 0;
+                block_information[21].current_rent = 233;
+                block_information[21].original_rent = 233;
+                block_information[21].with_one_house = 233;
+                block_information[21].with_two_house = 233;
+                block_information[21].with_three_house = 233;
+                block_information[21].with_four_house = 233;
+                block_information[21].with_one_hotel = 2333;
+                block_information[21].house_cost = 2333;
+                block_information[21].hotel_cost = 233;
+                block_information[21].mortgage_value = 233;
+                block_information[21].house_amount = 233;
+                block_information[21].hotel_amount = 233;
+
+            alert(block_information[21].with_four_house);
 
 
         }
@@ -184,25 +213,31 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             spriteCornerLeftTop.height = width;
             position_x[20]=0;
             position_y[20]=0;
-            block[20]=spriteCornerRightTop;
+            block[20]=spriteCornerLeftTop;
             var spriteTop = new Array(9);
+            var spriteTopSprite=new Array(9);
             for(i=1;i<10;i++)
             {
-                spriteTop[i]={};
+                spriteTop[i]={
+                    "id":"",
+                    "x":"",
+                    "y":"",
+                    "picture":""
+                };
                 spriteTop[i].id=10+i;
                 spriteTop[i].x=width+height*(i-1);
                 spriteTop[i].y=0;
                 //here should be the picture of the item
-                spriteTop[i].picture=picture[10-i+20];
-                spriteTop[i]=game.add.sprite(spriteTop[i].x,spriteTop[i].y,spriteTop[i].picture);
-                spriteTop[i].width=height;
-                spriteTop[i].height=width;
-                spriteTop[i].inputEnabled = true;
-                spriteTop[i].input.useHandCursor = true;
-                spriteTop[i].events.onInputDown.add(listener,this,spriteTop[i].id);
-                position_x[10-i+20]=width+height*(i-1);
-                position_y[10-i+20]=0;
-                block[10-i+20]=spriteTop[i];
+                spriteTop[i].picture=picture[20+i];
+                spriteTopSprite[i]=game.add.sprite(spriteTop[i].x,spriteTop[i].y,spriteTop[i].picture);
+                spriteTopSprite[i].width=height;
+                spriteTopSprite[i].height=width;
+                spriteTopSprite[i].inputEnabled = true;
+                spriteTopSprite[i].input.useHandCursor = true;
+                spriteTopSprite[i].events.onInputDown.add(listener,this);
+                position_x[20+i]=width+height*(i-1);
+                position_y[20+i]=0;
+                block[20+i]=spriteTop[i];
 
             }
             var spriteCornerRightTop = game.add.sprite(width + height * 9, 0, picture[30]);
@@ -212,18 +247,24 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             position_y[30]=0;
             block[30]=spriteCornerRightTop;
             var spriteLeft = new Array(9);
+            var spriteLeftSprite = new Array(9);
             for (i = 1; i <= 9; i++) {
-                spriteLeft[i]={};
+                spriteLeft[i]={
+                    "id":"",
+                    "x":"",
+                    "y":"",
+                    "picture":""
+                };
                 spriteLeft[i].x=0;
                 spriteLeft[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
                 spriteLeft[i].picture=picture[10+10-i];
-                spriteLeft[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i].y,spriteLeft[i].picture);
-                spriteLeft[i].width = width;
-                spriteLeft[i].height = height;
-                spriteLeft[i].inputEnabled = true;
-                spriteLeft[i].input.useHandCursor = true;
-                spriteLeft[i].events.onInputDown.add(listener, this);
+                spriteLeftSprite[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i].y,spriteLeft[i].picture);
+                spriteLeftSprite[i].width = width;
+                spriteLeftSprite[i].height = height;
+                spriteLeftSprite[i].inputEnabled = true;
+                spriteLeftSprite[i].input.useHandCursor = true;
+                spriteLeftSprite[i].events.onInputDown.add(listener,this);
                 position_x[10+10-i]=0;
                 position_y[10+10-i]=width+height*(i-1);
                 block[10+10-i]=spriteLeft[i];
@@ -235,38 +276,50 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             position_y[10]=width+height*9;
             block[10] = spriteCornerLeftBottom;
             var spriteBottom = new Array(9);
+            var spriteBottomSprite=new Array(9);
             for (i = 1; i <= 9; i++) {
-                spriteBottom[i]={};
+                spriteBottom[i]={
+                    "id":"",
+                    "x":"",
+                    "y":"",
+                    "picture":""
+                };
                 spriteBottom[i].x=width+height*(i-1);
                 spriteBottom[i].y=width+height*9;
                 //here should  be the picture of the item.
                 spriteBottom[i].picture=picture[10-i];
-                spriteBottom[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
-                spriteBottom[i].width = height;
-                spriteBottom[i].height = width;
-                spriteBottom[i].inputEnabled = true;
-                spriteBottom[i].input.useHandCursor = true;
-                spriteBottom[i].events.onInputDown.add(listener, this);
+                spriteBottomSprite[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
+                spriteBottomSprite[i].width = height;
+                spriteBottomSprite[i].height = width;
+                spriteBottomSprite[i].inputEnabled = true;
+                spriteBottomSprite[i].input.useHandCursor = true;
+                spriteBottomSprite[i].events.onInputDown.add(listener,this);
                 position_x[10-i]=width+height*(i-1);
                 position_y[10-i]=width+height*9;
                 block[10-i]=spriteBottom[i];
             }
             var spriteRight = new Array(9);
+            var spriteRightSprite = new Array(9);
             for (i = 1; i <= 9; i++) {
-                spriteRight[i]={};
+                spriteRight[i]={
+                    "id":"",
+                    "x":"",
+                    "y":"",
+                    "picture":""
+                };
                 spriteRight[i].x=width+height*9;
                 spriteRight[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
-                spriteRight[i].picture=picture[30+10-i];
-                spriteRight[i]=game.add.sprite(spriteRight[i].x,spriteRight[i].y,spriteRight[i].picture);
-                spriteRight[i].width = width;
-                spriteRight[i].height = height;
-                spriteRight[i].inputEnabled = true;
-                spriteRight[i].input.useHandCursor = true;
-                spriteRight[i].events.onInputDown.add(listener, this);
-                position_x[30+10-i]=width+height*9;
-                position_y[30+10-i]=width+height*(i-1);
-                block[30+10-i]=spriteRight[i];
+                spriteRight[i].picture=picture[30+i];
+                spriteRightSprite[i]=game.add.sprite(spriteRight[i].x,spriteRight[i].y,spriteRight[i].picture);
+                spriteRightSprite[i].width = width;
+                spriteRightSprite[i].height = height;
+                spriteRightSprite[i].inputEnabled = true;
+                spriteRightSprite[i].input.useHandCursor = true;
+                spriteRightSprite[i].events.onInputDown.add(listener,this);
+                position_x[30+i]=width+height*9;
+                position_y[30+i]=width+height*(i-1);
+                block[30+i]=spriteRight[i];
             }
             var spriteCornerRightBottom = game.add.sprite(width + height * 9, width + height * 9, picture[0]);
             block[0]=spriteCornerRightBottom;
@@ -453,6 +506,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         }
         var dat;// the data to store json
         function update() {
+
+
             //parse json file
             WebSocketTest();
 
@@ -465,17 +520,26 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
         }
-        function listener() {
-            var tableid = new Array(40)
-            for(i=0;i<40;i++)
-            {
-                tableid[i]=i;
-            }
+        /*
+        listener is a array of functions
+        these functions are aimed to show a window when click the sprite
+         */
+       function listener(pointer)
+       {
+                var infoWindow = document.getElementById("informationWindow");
+                //postintion:block id
+                var position=0;
+                for(i=0;i<40;i++)
+                {
+                    if(pointer.x==position_x[i] && pointer.y==position_y[i])
+                    {
+                        position=i;
+                    }
+                }
+                show_block_infoContect(position);
+                infoWindow.style.visibility = "visible";
+       }
 
-
-            var infoWindow = document.getElementById("informationWindow");
-            infoWindow.style.visibility = "visible";
-        }
 
         function roll_dice(dice_1, dice_2) {
             var dice = dice_1 + dice_2;
