@@ -21,6 +21,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("street_colors","img/icon_chessboard/street_colors.png");
             game.load.image("water","img/icon_chessboard/water.png");
             game.load.spritesheet("dice", "img/dice/dice.png", 140, 140);
+            game.load.spritesheet("button", "img/button.jpg", 300, 168);
         }
         var block = new Array(40);//to save the object of every block
         var i,j;
@@ -181,6 +182,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         var height=55;//height of the sprite
         var dice1; // dice 1
         var dice2; // dice 2
+        var button; // button 
         function create() {
 
             for(i=0;i<40;i++)
@@ -215,10 +217,28 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             alert(block_information[21].with_four_house);
 
             /* add dice sprite*/
-            
-       
-            setInterval(roll_dice(3, 4), 10000);
            
+            button = game.add.button(315, 350, 'button', setInterval(roll_dice(3, 4), 10000), this, 2, 1, 0);
+            button.anchor.x = 0.5;
+            button.anchor.y = 0.5;
+            button.input.useHandCursor = true;
+            
+            button.onInputOver.add(over, this);
+            button.onInputOut.add(out, this);
+            button.onInputUp.add(up, this);
+           
+        }
+
+        function up() {
+            console.log('button up', arguments);
+        }
+
+        function over() {
+            console.log('button over');
+        }
+
+        function out() {
+            console.log('button out');
         }
 
         function createChessBoard()
