@@ -4,10 +4,22 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
         function preload() {
 
-            game.load.image("player1", "img/avatar/icon_bug.png");
             game.load.image("background","img/chessboard_bgd.png");
-            game.load.image("parking","img/icon_chessboard/parking_lot.png")
-            game.load.json("");
+            game.load.image("chance","img/icon_chessboard/chance.png");
+            game.load.image("community_chest","img/icon_chessboard/community_chest.png");
+            game.load.image("dice","img/icon_chessboard/dice.png");
+            game.load.image("electricity","img/icon_chessboard/electricity.png");
+            game.load.image("go","img/icon_chessboard/go.png");
+            game.load.image("go_jail","img/icon_chessboard/go_jail.png");
+            game.load.image("hotel","img/icon_chessboard/hotel.png");
+            game.load.image("house","img/icon_chessboard/house.png");
+            game.load.image("in_jail","img/icon_chessboard/in_jail.png");
+            game.load.image("income_tax","img/icon_chessboard/income_tax.png");
+            game.load.image("luxury_tax","img/icon_chessboard/luxury_tax.png");
+            game.load.image("parking_lot","img/icon_chessboard/parking_lot.png");
+            game.load.image("railway_station","img/icon_chessboard/railway_station.png");
+            game.load.image("street_colors","img/icon_chessboard/street_colors.png");
+            game.load.image("water","img/icon_chessboard/water.png");
         }
         var block = new Array(40);//to save the object of every block
         var i,j;
@@ -205,9 +217,27 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         function createChessBoard()
         {
             /*
+            first should determine the picture of each block
+            the picture that do not change:go, in jail, parking, go to jail,community chest,luxury tax,income tax,chance
+             */
+            picture[0]="go";
+            picture[10]="in_jail";
+            picture[20]="parking_lot";
+            picture[30]="go_jail";
+            picture[2]="community_chest";
+            picture[17]="community_chest";
+            picture[33]="community_chest";
+            picture[4]="income_tax";
+            picture[38]="luxury_tax";
+            picture[7]="chance";
+            picture[22]="chance";
+            picture[36]="chance";
+
+            /*
            Draw the chessboard
             */
-            game.add.tileSprite(0,0,655,655,"background");
+
+            game.add.tileSprite(0,0,655, 655,"background");
             var spriteCornerLeftTop = game.add.sprite(0, 0, picture[20]);
             spriteCornerLeftTop.width = width;
             spriteCornerLeftTop.height = width;
@@ -229,7 +259,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteTop[i].y=0;
                 //here should be the picture of the item
                 spriteTop[i].picture=picture[20+i];
-                spriteTopSprite[i]=game.add.sprite(spriteTop[i].x,spriteTop[i].y,spriteTop[i].picture);
+                spriteTopSprite[i]=game.add.sprite(spriteTop[i].x+55,spriteTop[i].y+80,spriteTop[i].picture);
+
+                //roate the picture
+                spriteTopSprite[i].angle=parseInt((20+i)/10)*90;
                 spriteTopSprite[i].width=height;
                 spriteTopSprite[i].height=width;
                 spriteTopSprite[i].inputEnabled = true;
@@ -259,9 +292,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteLeft[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
                 spriteLeft[i].picture=picture[10+10-i];
-                spriteLeftSprite[i]=game.add.sprite(spriteLeft[i].x,spriteLeft[i].y,spriteLeft[i].picture);
-                spriteLeftSprite[i].width = width;
-                spriteLeftSprite[i].height = height;
+                spriteLeftSprite[i]=game.add.sprite(spriteLeft[i].x+80,spriteLeft[i].y,spriteLeft[i].picture);
+                spriteLeftSprite[i].angle=parseInt((20-i)/10)*90;
+                spriteLeftSprite[i].width = height;
+                spriteLeftSprite[i].height = width;
                 spriteLeftSprite[i].inputEnabled = true;
                 spriteLeftSprite[i].input.useHandCursor = true;
                 spriteLeftSprite[i].events.onInputDown.add(listener,this);
@@ -289,6 +323,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 //here should  be the picture of the item.
                 spriteBottom[i].picture=picture[10-i];
                 spriteBottomSprite[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
+
+                spriteBottomSprite[i].angle=parseInt((10-i)/10)*90;
                 spriteBottomSprite[i].width = height;
                 spriteBottomSprite[i].height = width;
                 spriteBottomSprite[i].inputEnabled = true;
@@ -311,9 +347,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 spriteRight[i].y=width+height*(i-1);
                 //here should  be the picture of the item.
                 spriteRight[i].picture=picture[30+i];
-                spriteRightSprite[i]=game.add.sprite(spriteRight[i].x,spriteRight[i].y,spriteRight[i].picture);
-                spriteRightSprite[i].width = width;
-                spriteRightSprite[i].height = height;
+                spriteRightSprite[i]=game.add.sprite(spriteRight[i].x,spriteRight[i].y+55,spriteRight[i].picture);
+                spriteRightSprite[i].angle=parseInt((30+i)/10)*90;
+                spriteRightSprite[i].width = height;
+                spriteRightSprite[i].height = width;
                 spriteRightSprite[i].inputEnabled = true;
                 spriteRightSprite[i].input.useHandCursor = true;
                 spriteRightSprite[i].events.onInputDown.add(listener,this);
