@@ -215,14 +215,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             alert(block_information[21].with_four_house);
 
             /* add dice sprite*/
-            dice1 = this.game.add.sprite(290, 315, 'dice');
-            dice1.frame = 0;
-            dice2 = this.game.add.sprite(340, 315, 'dice');
-            dice2.frame = 0;
-            dice1.width = 45;
-            dice1.height = 45;
-            dice2.width = 45;
-            dice2.height = 45;
+            
        
             setInterval(roll_dice(3, 4), 10000);
            
@@ -593,6 +586,14 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
         function roll_dice(dice_1, dice_2) {
+            dice1 = this.game.add.sprite(270, 290, 'dice');
+            dice1.frame = 0;
+            dice2 = this.game.add.sprite(360, 290, 'dice');
+            dice2.frame = 0;
+            dice1.width = 60;
+            dice1.height = 60;
+            dice2.width = 60;
+            dice2.height = 60;
             dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
             dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
             setInterval(dice1.animations.play('dice1'), 5000);
