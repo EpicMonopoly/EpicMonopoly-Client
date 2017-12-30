@@ -477,6 +477,23 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             infoWindow.style.visibility = "visible";
         }
 
+        function roll_dice(dice_1, dice_2) {
+            var dice = dice_1 + dice_2;
+            for(i = 0; i < 5; ++i) {
+                var dice_num = Math.floor(Math.random() * 6) + 1;
+                switch (dice_num) {
+                    case 1:
+                        game.load.image('img/dice/dice1.png');
+                        break;
+                
+                    default:
+                        break;
+                }
+            }
+             
+        }
+
+
 var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 var i, j;
 function WebSocketTest() {
