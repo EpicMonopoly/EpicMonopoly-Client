@@ -20,6 +20,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("railway_station","img/icon_chessboard/railway_station.png");
             game.load.image("street_colors","img/icon_chessboard/street_colors.png");
             game.load.image("water","img/icon_chessboard/water.png");
+            game.load.spritesheet("dice", "img/dice/dice.png", 140, 140);
         }
         var block = new Array(40);//to save the object of every block
         var i,j;
@@ -178,6 +179,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
         var width=80;//width of the sprite
         var height=55;//height of the sprite
+        var dice1; // dice 1
+        var dice2; // dice 2
         function create() {
 
             for(i=0;i<40;i++)
@@ -211,7 +214,18 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
             alert(block_information[21].with_four_house);
 
-
+            /* add dice sprite*/
+            dice1 = this.game.add.sprite(290, 315, 'dice');
+            dice1.frame = 0;
+            dice2 = this.game.add.sprite(340, 315, 'dice');
+            dice2.frame = 0;
+            dice1.width = 45;
+            dice1.height = 45;
+            dice2.width = 45;
+            dice2.height = 45;
+       
+            setInterval(roll_dice(3, 4), 10000);
+           
         }
 
         function createChessBoard()
@@ -543,7 +557,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         }
         var dat;// the data to store json
         function update() {
-
+          
 
             //parse json file
             WebSocketTest();
@@ -579,22 +593,17 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
         function roll_dice(dice_1, dice_2) {
-            var dice = dice_1 + dice_2;
-            for(i = 0; i < 5; ++i) {
-                var dice_num = Math.floor(Math.random() * 6) + 1;
-                switch (dice_num) {
-                    case 1:
-                        game.load.image('img/dice/dice1.png');
-                        break;
-                
-                    default:
-                        break;
-                }
-            }
-             
+            dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
+            dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
+            setInterval(dice1.animations.play('dice1'), 5000);
+            setInterval(dice2.animations.play('dice2'), 5000);
+            // setTimeout(dice1.animations.stop(), 5000);
+            // setTimeout(dice2.animations.stop(), 5000);   
+            dice1.frame = dice1 - 1;
+            dice2.frame = dice2 - 1;
         }
-
-
+        
+        
 var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 var i, j;
 function WebSocketTest() {
