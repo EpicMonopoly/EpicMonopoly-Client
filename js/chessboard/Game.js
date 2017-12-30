@@ -16,6 +16,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
             game.load.image("water","img/icon_chessboard/water.png");
             game.load.image("electricity","img/icon_chessboard/electricity.png");
+            game.load.image("tax","img/icon_chessboard/income_tax.png");
+            game.load.image("tax2","img/icon_chessboard/luxury_tax.png");
             game.load.json("");
         }
         var block = new Array(40);//to save the object of every block
@@ -161,7 +163,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
             picture[3]='water';
             picture[4]='electricity';
-            picture[8]='test';
+            picture[6]='tax';
+            picture[8]='tax2';
 
 
          createChessBoard();
