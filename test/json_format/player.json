@@ -4,32 +4,26 @@
 		{
 			"name": "player1",
 			"id": "12345678",
+			"alliance": "america",
 			"cash": 123456789,
+			"position": 1,
+			"pre_position": 39,
 			"card_num": 1,
-			"property":{
-				"id": [1, 2, 3]
-			},
-			"status": 1 // active: 1, inactive: 2, in jail: 3, broken: 4
+			"property": [1, 2, 3]
 		},
 		{
 			"name": "player2",
 			"id": "12345678",
 			"cash": 123456789,
 			"card_num": 1,
-			"property":{
-				"id": [1, 2, 3]
-			},
-			"status": 1 // active: 1, inactive: 2, in jail: 3, broken: 4
+			"property":[1, 2, 3]
 		},
 		{
 			"name": "player3",
 			"id": "12345678",
 			"cash": 123456789,
 			"card_num": 1,
-			"property":{
-				"id": [1, 2, 3]
-			},
-			"status": 1 // active: 1, inactive: 2, in jail: 3, broken: 4
+			"property": [1, 2, 3]
 		}
 	]
 }

@@ -4,11 +4,12 @@
         {
             "room_id": "56545sdfsd",
             "owner_id": "sdff61515",
+            "status": 1,
             "room_name": "room_name",
             "level": "easy/median/hard",
-            "init_fund": 1000,  //1500/2000
-            "go_salary": 0, //200/400,
-            "is_limited": true //false
+            "init_fund": 1000/1500/2000,
+            "go_salary": 0/200/400,
+            "is_limited": true/false
         }
     ]
 }
