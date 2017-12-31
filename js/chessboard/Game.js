@@ -238,7 +238,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             button.height = 50;
             button.input.useHandCursor = true;
             
-            
+            button = game.add.button(375, 390, 'button', function () {
+               alert('End turn.');
+            }, this, 2, 1, 0);
+            button.width = 50;
+            button.height = 50;
+            button.input.useHandCursor = true;
         
            
         }
