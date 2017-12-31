@@ -47,30 +47,39 @@
                 </div>
             </div>
         </div>
-        <div class="hidden shadowBox" id="informationWindow" style="text-align: center; height: auto">
+        <div class="hidden shadowBox" id="informationWindowUtility" style="text-align: center; height: auto">
             <a class="statusbar" onclick="hideWindow('informationWindow')" >
                 <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px">
             </a>
             <h4 style="margin: 2px">Information</h4><hr>
             <div style="text-align: center">
-                <table id="infoContent" cellspacing="0" cellpadding="0" style="margin: auto">
+                <table id="infoContentUtility" cellspacing="0" cellpadding="0" style="margin: auto">
+                    <tbody>
+                    <tr><td>Name</td><td><span id="utility_block_name">hello</span></td></tr>
+                    <tr><td>Owner</td><td><span id="utility_owner_name">No owner</span></td></tr>
+                    <tr><td>Estate value</td><td><span id="utility_estate_value">0</span></td></tr>
+                    <tr><td>Mortgage Value</td><td><span id="utility_mortgage_value">0</span></td></tr>
+                    <tr><td>Payment</td><td><span id="utility_payment">0</span></td></tr>
+                    </tbody>
+                </table>
+                <button class="smallBtn" onclick="">Mortgage</button>
+            </div>
+        </div>
+        <div class="hidden shadowBox" id="informationWindow" style="text-align: center; height: auto">
+            <a class="statusbar" onclick="hideWindow('informationWindowEstate')" >
+                <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px">
+            </a>
+            <h4 style="margin: 2px">Information</h4><hr>
+            <div style="text-align: center">
+                <table id="infoContentEstate" cellspacing="0" cellpadding="0" style="margin: auto">
                     <tbody>
                     <tr><td>Name</td><td><span id="block_name">hello</span></td></tr>
                     <tr><td>Owner</td><td><span id="owner_name">No owner</span></td></tr>
-                    <tr><td>Original Price</td><td><span id="original_price">null</span></td><td>arrow</td></tr>
-                    <tr><td>Investment</td><td><span id="investment">null</span></td></tr>
-                    <tr><td>Current Rent</td><td><span id="current_rent">null</span></td><td>arrow</td></tr>
-                    <tr><td></td></tr>
-                    <tr><td>Original Rent</td><td><span id="original_rent">null</span></td></tr>
-                    <tr><td>With 1 House</td><td><span id="with_one_house">null</span></td></tr>
-                    <tr><td>With 2 Houses</td><td><span id="with_two_house">null</span></td></tr>
-                    <tr><td>With 3 Houses</td><td><span id="with_three_house">null</span></td></tr>
-                    <tr><td>With 4 Houses</td><td><span id="with_four_house">null</span></td></tr>
-                    <tr><td>With 1 Hotel</td><td><span id="with_one_hotel">null</span></td></tr>
-                    <tr><td>House Cost</td><td><span id="house_cost">null</span></td><td>arrow</td></tr>
-                    <tr><td>Hotel Cost</td><td><span id="hotel_cost">null</span></td><td>arrow</td></tr>
-                    <tr><td></td></tr>
-                    <tr><td>Mortgage Value</td><td><span id="mortgage_value">null</span></td></tr>
+                    <tr><td>Estate value</td><td><span id="estate_value">0</span></td></tr>
+                    <tr><td>House value</td><td><span id="house_value">0</span></td></tr>
+                    <tr><td>House number</td><td><span id="house_number">0</span></td></tr>
+                    <tr><td>Mortgage Value</td><td><span id="mortgage_value">0</span></td></tr>
+                    <tr><td>Payment</td><td><span id="payment">0</span></td></tr>
                     </tbody>
                 </table>
                 <hr>
