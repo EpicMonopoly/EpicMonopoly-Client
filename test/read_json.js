@@ -42,6 +42,18 @@ function type_read(json_obj) {
             data_iter(json_obj.data);
             add_item("init", "end");
             break;
+        case "hint":
+            var dat = json_obj.data[0];
+            add_item("message", dat.message);
+            break;
+        case "record":
+            var dat = json_obj.data[0];
+            add_item("message", dat.message);
+            break;
+        case "choice":
+            var dat = json_obj.data[0];
+            add_item("message", dat.message);
+            break;
         case "bank":
             var dat = json_obj.data[0];
             add_item("house_number", dat.house_number);
