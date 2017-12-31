@@ -183,6 +183,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         var dice1; // dice 1
         var dice2; // dice 2
         var button; // button 
+        var dice1_num = 3;
+        var dice2_num = 4;
         function create() {
 
             for(i=0;i<40;i++)
@@ -230,8 +232,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 setTimeout(function () {
                     dice1.animations.stop();
                     dice2.animations.stop();
-                    dice1.frame = 3;
-                    dice2.frame = 4;
+                    dice1.frame = dice1_num;
+                    dice2.frame = dice2_num;
                 }, 5000);
             }, this, 2, 1, 0);
             button.width = 50;
