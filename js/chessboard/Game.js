@@ -229,17 +229,27 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             dice2.height = 60;
             button = game.add.button(275, 390, 'button', function () {
                 roll_dice();
-                setTimeout(function () {
-                    dice1.animations.stop();
-                    dice2.animations.stop();
-                    dice1.frame = dice1_num;
-                    dice2.frame = dice2_num;
-                }, 5000);
+                // setTimeout(function () {
+                //     dice1.animations.stop();
+                //     dice2.animations.stop();
+                //     dice1.frame = dice1_num;
+                //     dice2.frame = dice2_num;
+                // }, 5000);
             }, this, 2, 1, 0);
             button.width = 50;
             button.height = 50;
             button.input.useHandCursor = true;
             
+            button = game.add.button(275, 430, 'button', function () {
+                alert('dice stop');
+                dice1.animations.stop();
+                dice2.animations.stop();
+            }, this, 2, 1, 0);
+            button.width = 50;
+            button.height = 50;
+            button.input.useHandCursor = true;
+
+
             button = game.add.button(375, 390, 'button', function () {
                alert('End turn.');
             }, this, 2, 1, 0);
