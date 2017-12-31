@@ -7,7 +7,6 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("background","img/chessboard_bgd.png");
             game.load.image("chance","img/icon_chessboard/chance.png");
             game.load.image("community_chest","img/icon_chessboard/community_chest.png");
-            game.load.image("dice","img/icon_chessboard/dice.png");
             game.load.image("electricity","img/icon_chessboard/electricity.png");
             game.load.image("go","img/icon_chessboard/go.png");
             game.load.image("go_jail","img/icon_chessboard/go_jail.png");
@@ -20,7 +19,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("railway_station","img/icon_chessboard/railway_station.png");
             game.load.image("street_colors","img/icon_chessboard/street_colors.png");
             game.load.image("water","img/icon_chessboard/water.png");
-            game.load.spritesheet("dice", "img/dice/dice.png", 140, 140);
+            game.load.spritesheet("dice", "img/icon_chessboard/dice.png", 140, 140);
             game.load.spritesheet("button", "img/button.png", 512, 512);
         }
         var block = new Array(40);//to save the object of every block
@@ -216,7 +215,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 block_information[21].house_amount = 233;
                 block_information[21].hotel_amount = 233;
 
-            alert(block_information[21].with_four_house);
+            // alert(block_information[21].with_four_house);
+
 
             /* add dice sprite*/
             dice1 = this.game.add.sprite(270, 290, 'dice');
@@ -257,7 +257,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             button.height = 50;
             button.input.useHandCursor = true;
         
-           
+            move_player(player1, 3, 5);
+
         }
 
         function createChessBoard()
@@ -410,7 +411,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             spriteCornerRightBottom.height = width;
             position_x[0]=width+height*9;
             position_y[0]=width+height*9;
-
+            
         }
         /*
         funtion that can move the object
@@ -418,7 +419,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         x1:the player's previous location
         x2:the player's destination
         */
-        /*
+    
         var x_path;
         var y_path;
         function path(x1_input,x2_input)
@@ -430,7 +431,6 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 turn=4;
             x_path=new Array(turn+1);
             y_path=new Array(turn+1);
-            /*
             if (turn==0)//the player do not turn a corner
             {
                 x_path[0]=position_x[x2];
@@ -558,8 +558,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 }
             }
             if(turn == 4)//the player turn four corners
-            {*/
-        /*
+            {
+        
                 var t=x1/10+1;
                 if(t==4) t==0;
                 for(var i=0;i<turn;i++)
@@ -570,10 +570,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 }
                 x_path[turn]=position_x[x2];
                 y_path[turn]=position_y[x2];
-            //}
+            }
 
 
-        }*/
+        }
 
         function move_player(player,x1_input,x2_input) {
                 player.visible=false;
@@ -581,10 +581,6 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 new_player.width=player.width;
                 new_player.height=player.height;
                 player=new_player;
-
-
-
-
 
         }
         var dat;// the data to store json
@@ -629,6 +625,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
             setInterval(dice1.animations.play('dice1'), 5000);
             setInterval(dice2.animations.play('dice2'), 5000);
+        }
+
+        function buy() {
+            
         }
         
         
