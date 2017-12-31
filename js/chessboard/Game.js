@@ -21,7 +21,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("street_colors","img/icon_chessboard/street_colors.png");
             game.load.image("water","img/icon_chessboard/water.png");
             game.load.spritesheet("dice", "img/dice/dice.png", 140, 140);
-            game.load.spritesheet("button", "img/button.jpg", 300, 168);
+            game.load.spritesheet("button", "img/button.png", 512, 512);
         }
         var block = new Array(40);//to save the object of every block
         var i,j;
@@ -217,28 +217,27 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             alert(block_information[21].with_four_house);
 
             /* add dice sprite*/
-           
-            button = game.add.button(315, 350, 'button', setInterval(roll_dice(3, 4), 10000), this, 2, 1, 0);
-            button.anchor.x = 0.5;
-            button.anchor.y = 0.5;
+            dice1 = this.game.add.sprite(270, 290, 'dice');
+            dice1.frame = 0;
+            dice2 = this.game.add.sprite(360, 290, 'dice');
+            dice2.frame = 0;
+            dice1.width = 60;
+            dice1.height = 60;
+            dice2.width = 60;
+            dice2.height = 60;
+            button = game.add.button(275, 390, 'button', function () {roll_dice();}, this, 2, 1, 0);
+            button.width = 50;
+            button.height = 50;
             button.input.useHandCursor = true;
+            setTimeout(function () {
+                dice1.animations.stop();
+                dice2.animations.stop();
+                dice1.frame = 3;
+                dice2.frame = 4;
+            }, 5000);
             
-            button.onInputOver.add(over, this);
-            button.onInputOut.add(out, this);
-            button.onInputUp.add(up, this);
+        
            
-        }
-
-        function up() {
-            console.log('button up', arguments);
-        }
-
-        function over() {
-            console.log('button over');
-        }
-
-        function out() {
-            console.log('button out');
         }
 
         function createChessBoard()
@@ -606,22 +605,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
         function roll_dice(dice_1, dice_2) {
-            dice1 = this.game.add.sprite(270, 290, 'dice');
-            dice1.frame = 0;
-            dice2 = this.game.add.sprite(360, 290, 'dice');
-            dice2.frame = 0;
-            dice1.width = 60;
-            dice1.height = 60;
-            dice2.width = 60;
-            dice2.height = 60;
             dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
             dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
             setInterval(dice1.animations.play('dice1'), 5000);
             setInterval(dice2.animations.play('dice2'), 5000);
-            // setTimeout(dice1.animations.stop(), 5000);
-            // setTimeout(dice2.animations.stop(), 5000);   
-            dice1.frame = dice1 - 1;
-            dice2.frame = dice2 - 1;
         }
         
         
