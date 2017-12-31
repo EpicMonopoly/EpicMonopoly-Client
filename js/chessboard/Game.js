@@ -44,41 +44,39 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         function initial_block_information() {
             for(i=0;i<40;i++)
             {
-
-                block_information[i]={
-                    "block_name":"None",
-                    "owner_name":"None",
-                    "original_price":0,
-                    "investment":0,
-                    "current_rent":0,
-                    "original_rent":0,
-                    "with_one_house":0,
-                    "with_two_house":0,
-                    "with_three_house":0,
-                    "with_four_house":0,
-                    "with_one_hotel":0,
-                    "house_cost":0,
-                    "hotel_cost":0,
-                    "mortgage_value":0,
-                    "house_amount":0,
-                    "hotel_amount":0
+                if(i==5||i==12||i==15||i==25||i==28||i==35)
+                {
+                    block_information[i]={
+                        "name":"",
+                        "block_id":"",
+                        "position":0,
+                        "owner_id":"",
+                        "owner_name":"",
+                        "estate_value":0,
+                        "status":0,
+                        "mortgage_value":0,
+                        "payment":0
+                    }
                 }
-                block_information[i].block_name="None";
-                block_information[i].owner_name="None";
-                block_information[i].original_price=0;
-                block_information[i].investment=0;
-                block_information[i].current_rent=0;
-                block_information[i].original_rent=0;
-                block_information[i].with_one_house=0;
-                block_information[i].with_two_house=0;
-                block_information[i].with_three_house=0;
-                block_information[i].with_four_house=0;
-                block_information[i].with_one_hotel=0;
-                block_information[i].house_cost=0;
-                block_information[i].hotel_cost=0;
-                block_information[i].mortgage_value=0;
-                block_information[i].house_amount=0;
-                block_information[i].hotel_amount=0;
+                else
+                {
+                    block_information[i]={
+                        "name":"",
+                        "owner_name":"",
+                        "block_id":0,
+                        "position":0,
+                        "owner_id":"",
+                        "estate_value":0,
+                        "status":"",
+                        "street_id":"",
+                        "house_value":0,
+                        "house_number":0,
+                        "mortgage_value":0,
+                        "payment":0
+                    }
+                }
+
+
             }
         }
         /*
@@ -87,129 +85,110 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
          */
         function show_block_infoContect(blockid)
         {
-            document.getElementById("block_name").innerHTML =block_information[blockid].block_name;
-            document.getElementById("owner_name").innerHTML =block_information[blockid].owner_name;
-            document.getElementById("original_price").innerHTML =block_information[blockid].original_price;
-            document.getElementById("investment").innerHTML =block_information[blockid].investment;
-            document.getElementById("current_rent").innerHTML =block_information[blockid].current_rent;
-            document.getElementById("original_rent").innerHTML =block_information[blockid].owner_name;
-            document.getElementById("with_one_house").innerHTML =block_information[blockid].with_one_house;
-            document.getElementById("with_two_house").innerHTML =block_information[blockid].with_two_house;
-            document.getElementById("with_three_house").innerHTML =block_information[blockid].with_three_house;
-            document.getElementById("with_four_house").innerHTML =block_information[blockid].with_four_house;
-            document.getElementById("with_one_hotel").innerHTML =block_information[blockid].with_one_hotel;
-            document.getElementById("house_cost").innerHTML =block_information[blockid].house_cost;
-            document.getElementById("hotel_cost").innerHTML =block_information[blockid].hotel_cost;
-            document.getElementById("mortgage_value").innerHTML =block_information[blockid].mortgage_value;
-
-
-        }
-        var picture = new Array(40);//to save the picture of every block
-        var icon = new Array();
-        var player1;
-        var player1_x;
-        var player1_y;
-        var player2;
-        var player2_x;
-        var player2_y;
-        var player3;
-        var player3_x;
-        var player3_y;
-        var player4;
-        var player4_x;
-        var player4_y;
-        var player5;
-        var player5_x;
-        var player5_y;
-        var player6;
-        var player6_x;
-        var player6_y;
-        var position_x=new Array(40);
-        var position_y=new Array(40);
-        function create_player1(x,y,avatar_player) {
-            player1 = game.add.sprite(x,y, avatar_player);
-            player1.width=20;
-            player1.height=20;
-            player1.idleFrame=0;
-            game.physics.enable(player1,Phaser.Physics.ARCADE);
-        }
-        function create_player2(x,y,avatar_player) {
-            player2 = game.add.sprite(x,y,avatar_player);
-            player2.width=20;
-            player2.height=20;
-            player2.idleFrame = 1;
-            game.physics.enable(player1,Phaser.Physics.ARCADE);
-        }
-        function create_player3(x,y,avatar_player) {
-            player3 = game.add.sprite(x,y,avatar_player);
-            player3.width=20;
-            player3.height=20;
-            player3.idleFrame = 2;
-            game.physics.enable(player1,Phaser.Physics.ARCADE);
-        }
-        function create_player4(x,y,avatar_player) {
-            player4 = game.add.sprite(x,y,avatar_player);
-            player4.width=20;
-            player4.height=20;
-            player4.idleFrame = 3;
-            game.physics.enable(player1,Phaser.Physics.ARCADE);
-        }
-        function create_player5(x,y,avatar_player) {
-            player5 = game.add.sprite(x, y,avatar_player);
-            player5.width=20;
-            player5.height=20;
-            player5.idleFrame = 4;
-            game.physics.enable(player1,Phaser.Physics.ARCADE);
-        }
-        function create_player6(x,y,avatar_player) {
-            player6 = game.add.sprite(x,y,avatar_player);
-            player6.width=20;
-            player6.height=20;
-            player6.idleFrame = 5;
-            game.physics.enable(player1,Phaser.Physics.ARCADE);
-        }
-
-        function update_block(id) {
-
-
-
-        }
-
-
-        var width=80;//width of the sprite
-        var height=55;//height of the sprite
-        function create() {
-
-            for(i=0;i<40;i++)
+            //show utility information
+            if(blockid==5||blockid==12||blockid==15||blockid==25||blockid==28||blockid==35)
             {
-                picture[i]='parking';
+
+                document.getElementById("utility_block_name").innerHTML =block_information[blockid].name;
+                document.getElementById("utility_owner_name").innerHTML =block_information[blockid].owner_name;
+                document.getElementById("utility_estate_value").innerHTML =block_information[blockid].estate_value.toString();
+                document.getElementById("utility_mortgage_value").innerHTML =block_information[blockid].mortgage_value.toString();
+                document.getElementById("utility_payment").innerHTML =block_information[blockid].payment.toString();
+
+            }
+            else
+            {
+                document.getElementById("block_name").innerHTML =block_information[blockid].name;
+                document.getElementById("owner_name").innerHTML =block_information[blockid].owner_name;
+                document.getElementById("estate_value").innerHTML =block_information[blockid].estate_value.toString();
+                document.getElementById("house_value").innerHTML =block_information[blockid].house_value.toString();
+                document.getElementById("house_number").innerHTML =block_information[blockid].house_number.toString();
+                document.getElementById("mortgage_value").innerHTML =block_information[blockid].mortgage_value.toString();
+                document.getElementById("payment").innerHTML =block_information[blockid].payment.toString();
+
             }
 
 
+
+        }
+        /*
+        picture array stores the pictures of every block
+         */
+        var picture = new Array(40);//to save the picture of every block
+        /*
+        position_x:x coordinate of every block position
+        position_y:y coordinate of every block position
+        */
+        var position_x=new Array(40);
+        var position_y=new Array(40);
+
+
+
+        /*
+        initial_player:
+        player:array:store every player's information
+        name:array:player's name
+        id array:id
+        alliance array
+        pre_position
+        card_num
+        proterty
+        avatar: the avatar of every player
+
+        these attributes store the information of players
+
+        player_sprite:
+        this array aimed to store the sprite of each player
+        sprites are showed on the canvas
+         */
+        var player=new Array(6);
+        var player_sprite=new Array(6);
+        function initial_player() {
+            for(i=0;i<6;i++)
+            {
+                player[i]={
+                    "name": "player1",
+                    "id": "12345678",
+                    "alliance": "america",
+                    "cash": 123456789,
+                    "position": 1,
+                    "pre_position": 39,
+                    "card_num": 1,
+                    "property": [1, 2, 3],
+                    "avatar":""
+                }
+
+            }
+
+        }
+
+        function create_player(playerid) {
+            var current_create_player;
+            var id=0;
+            for(i=0;i<6;i++) {
+                if (player[i].id == playerid) {
+                    current_create_player = player[i];
+                    id = i;
+                }
+            }
+            player_sprite[i]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position()]+25*(id%3)+5,current_create_player.avatar);
+            player_sprite[i].width=20;
+            player_sprite[i].height=20;
+            player_sprite[i].idleFrame=0;
+            game.physics.enable(player_sprite[i],Phaser.Physics.ARCADE);
+        }
+
+
+
+        /*
+        this function aims to create the canvas
+         */
+        function create() {
+
+
             createChessBoard();
-            /*
-            create players
-             */
-            create_player1(position_x[2],position_y[2],'bug');
             initial_block_information();
-
-                block_information[21].block_name = "yixixi";
-                block_information[21].owner_name = "yixi";
-                block_information[21].original_price = 0;
-                block_information[21].current_rent = 233;
-                block_information[21].original_rent = 233;
-                block_information[21].with_one_house = 233;
-                block_information[21].with_two_house = 233;
-                block_information[21].with_three_house = 233;
-                block_information[21].with_four_house = 233;
-                block_information[21].with_one_hotel = 2333;
-                block_information[21].house_cost = 2333;
-                block_information[21].hotel_cost = 233;
-                block_information[21].mortgage_value = 233;
-                block_information[21].house_amount = 233;
-                block_information[21].hotel_amount = 233;
-
-            alert(block_information[21].with_four_house);
+            initial_player()
 
 
         }
@@ -529,19 +508,17 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
         }*/
 
+        /*
+        this
+         */
         function move_player(player,x1_input,x2_input) {
                 player.visible=false;
-                var new_player=game.add.sprite(position_x[x2_input],position_y[x2_input],"player1");
+                var new_player=game.add.sprite(position_x[x2_input],position_y[x2_input],player.avatar);
                 new_player.width=player.width;
                 new_player.height=player.height;
                 player=new_player;
-
-
-
-
-
         }
-        var dat;// the data to store json
+
         function update() {
 
 
@@ -563,16 +540,48 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
          */
        function listener(pointer)
        {
-                var infoWindow = document.getElementById("informationWindow");
+
+
                 //postintion:block id
                 var position=0;
-                for(i=0;i<40;i++)
+                for(i=0;i<10;i++)
                 {
                     if(pointer.x==position_x[i] && pointer.y==position_y[i])
                     {
                         position=i;
                     }
                 }
+                for(i=10;i<20;i++)
+                {
+                    if(pointer.x-80==position_x[i] && pointer.y==position_y[i])
+                    {
+                        position=i;
+                    }
+                }
+                for(i=20;i<30;i++)
+                {
+                    if(pointer.x-55==position_x[i] && pointer.y-80==position_y[i])
+                    {
+                        position=i;
+                    }
+                }
+                for(i=30;i<40;i++)
+                {
+                    if(pointer.x==position_x[i] && pointer.y-55==position_y[i])
+                    {
+                        position=i;
+                    }
+                }
+           var infoWindow;
+           if(position==5||blockid==12||blockid==15||blockid==25||blockid==28||blockid==35)
+           {
+               infoWindow = document.getElementById("informationWindowUtility");
+           }
+           else
+           {
+               infoWindow = document.getElementById("informationWindowEstate");
+           }
+
                 show_block_infoContect(position);
                 infoWindow.style.visibility = "visible";
        }
@@ -655,6 +664,236 @@ function S4() {
 function guid() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
+
+
+function type_read(json_obj) {
+    var type = json_obj.type;
+    switch (type) {
+        case "init":
+            add_item("init", "start");
+            data_iter(json_obj.data);
+            add_item("init", "end");
+            break;
+        case "bank":
+            var dat = json_obj.data[0];
+            add_item("house_number", dat.house_number);
+            add_item("hotel_number", dat.hotel_number);
+            break;
+        case "block":
+            var dat = json_obj.data[0];
+            add_item("name", dat.name);
+            add_item("block_id", dat.block_id);
+            add_item("block_id", dat.block_id);
+            add_item("position", dat.position);
+            add_item("description", dat.description);
+            break;
+        case "board":
+            var dat = json_obj.data[0];
+            add_item("block_list", dat.block_list);
+            break;
+        case "built":
+            var dat = json_obj.data[0];
+            add_item("player_id", dat.player_id);
+            add_item("estate_id", dat.estate_id);
+            add_item("built_number", dat.built_number);
+            break;
+        case "card":
+            var dat = json_obj.data[0];
+            add_item("description", dat.description);
+            break;
+        case "ef":
+            var dat = json_obj.data[0];
+            add_item("variation", dat.variation);
+            add_item("cur_rate", dat.cur_rate);
+            break;
+        case "input":
+            var dat = json_obj.data[0];
+            add_item("from_player_id", dat.from_player_id);
+            add_item("request", dat.request);
+            break;
+        case "mortgage":
+            var dat = json_obj.data[0];
+            add_item("player_id", dat.player_id);
+            add_item("asset_id", dat.asset_id);
+            break;
+        case "output":
+            data_iter(json_obj.data);
+            break;
+        case "dice_result":
+            var dat = json_obj.data[0];
+            add_item("player_id", dat.player_id);
+            add_item("dice_result", dat.dice_result);
+            break;
+        case "room":
+            var dat = json_obj.data[0];
+            add_item("room_id", dat.room_id);
+            add_item("room_name", dat.room_name);
+            add_item("owner_id", dat.owner_id);
+            add_item("status", dat.status);
+            add_item("level", dat.level);
+            add_item("init_fund", dat.init_fund);
+            add_item("go_salary", dat.go_salary);
+            add_item("is_limited", dat.is_limited);
+            add_item("room_info", "end");
+            break;
+        case "estate":
+            estate_iter(json_obj.data);
+            break;
+        case "player":
+            player_iter(json_obj.data);
+            break;
+        case "station":
+            station_iter(json_obj.data);
+            break;
+        case "trade":
+            trade_iter(json_obj.data);
+            break;
+        case "utility":
+            utility_iter(json_obj.data);
+            break;
+    }
+}
+
+function data_iter(data) {
+    var i;
+    for (i = 0; i < data.length; i++) {
+        type_read(data[i]);
+    }
+}
+
+function add_item(name, value) {
+    document.getElementById("demo").innerHTML += name + ": " + value + "<br/>";
+}
+
+
+/*
+add player information to player list from back end
+ */
+function player_iter(data) {
+    var i;
+    for (i = 0; i < data.length; i++) {
+        var dat = json_obj.data[i];
+        // add_item("name", dat.name);
+        // add_item("id", dat.id);
+        // add_item("alliance", dat.alliance);
+        // add_item("cash", dat.cash);
+        // add_item("position", dat.position);
+        // add_item("pre_position", dat.pre_position);
+        // add_item("card_num", dat.card_num);
+        // add_item("property", dat.property);
+        player[i].name=dat.name;
+        player[i].id=dat.id;
+        player[i].alliance=dat.alliance;
+        player[i].cash=Number(dat.cash);
+        player[i].position =Number(dat.position);
+        player[i].pre_position=Number(dat.pre_position);
+        player[i].card_num=Number(dat.card_num);
+        player[i].property=dat.property;
+    }
+}
+
+function estate_iter(data) {
+    var i;
+    for (i = 0; i < data.length; i++) {
+        var dat = json_obj.data[i];
+        var blockid=dat.position;
+        block_information[blockid].name=dat.name;
+        block_information[blockid].position=dat.position;
+        block_information[blockid].block_id=dat.block_id;
+        for (j=0;j<6;j++)
+        {
+            if(player[i].player_id==dat.owner_id)
+            {
+                block_information[blockid].owner_id=player[i].player_id;
+                block_information[blockid].owner_name=player[i].name;
+            }
+        }
+        block_information[blockid].estate_value=dat.estate_value;
+        block_information[blockid].status=dat.status;
+        block_information[blockid].street_id=dat.street_id;
+        block_information[blockid].house_value=dat.house_value;
+        block_information[blockid].house_number=dat.house_number;
+        block_information[blockid].mortgage_value=dat.mortgage_value;
+        block_information[blockid].payment=dat.payment;
+
+    }
+}
+
+function utility_iter(data) {
+    var i;
+    for (i = 0; i < data.length; i++) {
+        var dat = json_obj.data[i];
+        var blockid=dat.position;
+        block_information[blockid].name=dat.name;
+        block_information[blockid].block_id=dat.block_id;
+        block_information[blockid].position=dat.position;
+        for (j=0;j<6;j++)
+        {
+            if(player[i].player_id==dat.owner_id)
+            {
+                block_information[blockid].owner_id=player[i].player_id;
+                block_information[blockid].owner_name=player[i].name;
+            }
+        }
+        block_information[blockid].estate_value=dat.estate_value;
+        block_information[blockid].status=dat.status;
+        block_information[blockid].mortgage_value=dat.mortgage_value;
+        block_information[blockid].payment=dat.payment;
+    }
+}
+
+function station_iter(data) {
+    var i;
+    for (i = 0; i < data.length; i++) {
+        var dat = json_obj.data[i];
+        add_item("name", dat.name);
+        add_item("block_id", dat.block_id);
+        add_item("position", dat.position);
+        add_item("owner_id", dat.owner_id);
+        add_item("estate_value", dat.estate_value);
+        add_item("status", dat.status);
+        add_item("mortgage_value", dat.mortgage_value);
+        add_item("payment", dat.payment);
+    }
+}
+
+function trade_iter(data) {
+    var i;
+    for (i = 0; i < data.length; i++) {
+        var dat = json_obj.data[i];
+        add_item("player_id", dat.player_id);
+        add_item("money_give", dat.money_give);
+        add_item("asset_give", dat.asset_give);
+        add_item("card_give", dat.card_give);
+    }
+}
+
+type_read(json_demo);
+
+
+// read json
+function loadJSON(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'json_format/bank.json', true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+        }
+    };
+    xobj.send(null);
+}
+
+function init() {
+    loadJSON(function (response) {
+        // Parse JSON string into object
+        var actual_JSON = JSON.parse(response);
+        console.log(actual_JSON);
+    });
+
+}
+
 
 
 
