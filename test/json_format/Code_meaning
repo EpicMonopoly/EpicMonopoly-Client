@@ -50,6 +50,7 @@ data_dict:
     11: tax_list
     12: ef
     13: living_list
+    14: msg
 
 player_status:
     -1: broken/dead/out of game
