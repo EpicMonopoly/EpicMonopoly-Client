@@ -47,7 +47,7 @@ body {
 
 }
 
-.playerInfo{ /*TODO semitransparent when no player and add invite button*/
+.playerInfo{ /*TODO semitransparent when no player and add invite button1*/
     width: 82.5%;
     height: 60px;
     margin: 25px 10px;
@@ -141,3 +141,5 @@ td{
 #informationWindow{
     width: 300px;
 }
+
+

@@ -158,3 +158,12 @@ input[type="checkbox"]:checked + label span {
     background:url('../img/icon_ui/switch_on.png') no-repeat;
     background-size: 36px 18px;
 }
+
+#roomList{
+    text-indent: 10px;
+    text-align: center;
+}
+
+#roomList button{
+    margin: 1px;
+}

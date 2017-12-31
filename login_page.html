@@ -59,11 +59,29 @@
         <input type="button" class="smallBtn" value="Cancel" onclick="hideWindow('cfgSetWindow')">
     </form>
 </div>
-<div class="hidden shadowBox" id="roomListWindow">
-    <a class="statusbar" onclick="hideWindow('roomListWindow')">
-        <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px">
-    </a>
-    Room List
+<div class="hidden shadowBox" id="roomListWindow" style="left: 800px;">
+    <table id="roomList">
+        <thead style="font-weight: bold;"><tr>
+            <td>Room id</td>
+            <td>Room name</td>
+            <td>Players</td>
+            <td>Level</td>
+            <td>Init fund</td>
+            <td>Go salary </td>
+            <td>Limited</td>
+            <td><a class="statusbar" onclick="hideWindow('roomListWindow')">
+                <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px"></a>
+            </td>
+        </tr></thead>
+        <tbody>
+        <tr><td>123</td><td>ahh</td><td>4</td><td>easy</td><td>1500</td><td>0</td><td>on</td>
+            <td><button class="smallBtn">join</button></td>
+        </tr>
+        <tr><td>321</td><td>ahh</td><td>3</td><td>hard</td><td>1000</td><td>400</td><td>off</td>
+            <td><button class="smallBtn">join</button></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <div id="wrapper"></div>
 <audio autoplay="autoplay" loop="loop" preload="auto"
