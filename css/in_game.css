@@ -142,4 +142,23 @@ td{
     width: 300px;
 }
 
+input[type="checkbox"] {
+    display:none;
+}
+
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:15px;
+    height:15px;
+    margin: 0 2px;
+    vertical-align:middle;
+    background:url('../img/icon_ui/checkbox_unchecked.png') no-repeat;
+    background-size: 12px 12px;
+    cursor:pointer;
+}
+
+input[type="checkbox"]:checked + label span {
+    background:url('../img/icon_ui/checkbox_checked.png') no-repeat;
+    background-size: 12px 12px;
+}
 
