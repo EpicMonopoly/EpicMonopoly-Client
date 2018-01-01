@@ -25,36 +25,37 @@
         <div class="hidden shadowBox" id="tradeWindow">
             <h4 style="margin: 2px">Trading</h4>
             <div class="tradeField">
-                <div><img src="img/avatar/icon_bug.png"></div>
-                <div style="display: block; height: 100%; float: left">
+                <div style="display: inline"><img src="img/avatar/icon_bug.png"></div>
+                <div style="display: block; height: 100%; width: calc(100% - 60px); float: left">
                     <div>$ <input type="text" title="" style="width: 65px; margin: 5px"></div>
-                    <div id="" style="border: 1px solid; width: 100%; height: 65%; margin: 5px">
+                    <div id="" style="border: 1px solid; width: 100%; height: 75%; margin: 5px; overflow-y: scroll">
                         <input type="checkbox" id="city11" name="own">
                         <label for="city11"><span></span>Guang Dong</label><br>
                         <input type="checkbox" id="city12" name="own">
                         <label for="city12"><span></span>Bei Jing</label><br>
+                        <input type="checkbox" id="city14" name="own">
+                        <label for="city14"><span></span>Xiang Gang</label><br>
                         <input type="checkbox" id="city13" name="own">
                         <label for="city13"><span></span>Shang Hai</label><br>
-                    </div>
-                    <div>
-                        <button class="smallBtn" onclick="hideWindow('tradeWindow')">Cancel</button>
-                        <button class="smallBtn">Undo</button>
-                        <button class="smallBtn">Confirm</button>
                     </div>
                 </div>
             </div>
             <hr>
-            <div class="tradeField" style="height: 40%">
-                <div><img src=""></div>
-                <div style="display: block; height: 100%; width: 78%; float: left">
-                    <div>$ <input type="text" readonly title="" style="width: 65px; margin: 5px"></div>
-                    <div style="border: 1px solid; width: 100%; height: 75%; margin: 5px">
+            <div class="tradeField" >
+                <div style="display: inline"><img ></div>
+                <div style="display: block; height: 100%; width: calc(100% - 60px); float: left">
+                    <div>$ <input type="text" title="" style="width: 65px; margin: 5px"></div>
+                    <div style="border: 1px solid; width: 100%; height: 75%; margin: 5px; overflow-y: scroll">
                         <input type="checkbox" id="city21" name="other">
                         <label for="city21"><span></span>New York</label><br>
                         <input type="checkbox" id="city22" name="own">
                         <label for="city22"><span></span>Los Angeles</label><br>
                     </div>
                 </div>
+            </div>
+            <div>
+                <button class="smallBtn">Confirm</button>
+                <button class="smallBtn" onclick="hideWindow('tradeWindow')">Cancel</button>
             </div>
         </div>
         <div class="hidden shadowBox" id="informationWindowUtility" style="text-align: center; height: auto">
