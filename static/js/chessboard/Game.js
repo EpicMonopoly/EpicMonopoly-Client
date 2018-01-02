@@ -788,10 +788,13 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 infoWindow.style.visibility = "visible";
        }
 
-
+dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
+dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
+setInterval(dice1.animations.play('dice1'), 5000);
+setInterval(dice2.animations.play('dice2'), 5000);
         function roll_dice(dice_1, dice_2) {
             var dice = dice_1 + dice_2;
-            for(var i = 0; i < 5; ++i) {
+            for (var i = 0; i < 5; ++i) {
                 var dice_num = Math.floor(Math.random() * 6) + 1;
                 switch (dice_num) {
                     case 1:
@@ -808,11 +811,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 /*
 just a test
  */
-            dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
-            dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
-            setInterval(dice1.animations.play('dice1'), 5000);
-            setInterval(dice2.animations.play('dice2'), 5000);
-        }
+
 
         function buy() {
 
