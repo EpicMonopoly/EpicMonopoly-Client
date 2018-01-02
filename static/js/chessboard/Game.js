@@ -1,5 +1,5 @@
 
-var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, create: create,update:update});
+var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, create: WebSocketTest});
 
 
         function preload() {
@@ -17,11 +17,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("luxury_tax","static/img/icon_chessboard/luxury_tax.png");
             game.load.image("parking_lot","static/img/icon_chessboard/parking_lot.png");
             game.load.image("railway_station","static/img/icon_chessboard/railway_station.png");
-            game.load.image("street_colors","static/img/icon_chessboard/street_colors.png");
+            game.load.spritesheet("street_colors","static/img/icon_chessboard/street_colors.png",165,240);
             game.load.image("water","static/img/icon_chessboard/water.png");
             game.load.spritesheet("dice", "static/img/icon_chessboard/dice.png", 140, 140);
             game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
             game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
+            game.load.json('json','json/init_result.json');
         }
         var block = new Array(40);//to save the object of every block
         var i,j;
@@ -183,26 +184,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
             /* add dice sprite*/
-            dice1 = this.game.add.sprite(270, 270, 'dice');
-            dice1.frame = 0;
-            dice2 = this.game.add.sprite(340, 270, 'dice');
-            dice2.frame = 0;
-            dice1.width = 45;
-            dice1.height = 45;
-            dice2.width = 45;
-            dice2.height = 45;
-            button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
-                roll_dice();
-                setTimeout(function () {
-                    dice1.animations.stop();
-                    dice2.animations.stop();
-                    dice1.frame = dice1_num;
-                    dice2.frame = dice2_num;
-                }, 5000);
-            }, this, 2, 1, 0);
-            button1.width = 90;
-            button1.height = 30;
-            button1.input.useHandCursor = true;
+
 
             // button1 = game.add.button1(275, 430, 'button1', function () {
             //     alert('dice stop');
@@ -217,23 +199,11 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         create_chess_board:this function will create the blocks which will not change during the game
          */
         var chess_sprite=new Array(40);
-        function create_ChessBoard() {
+
+        function create_ChessBoard()
+        {
             var width=80;
             var height=55;
-
-            button2 = game.add.button(282, 370, 'end_turn_btn', function () {
-               alert('End turn.');
-            }, this, 2, 1, 0);
-            button2.width = 90;
-            button2.height = 30;
-            button2.input.useHandCursor = true;
-
-            move_player(player1, 3, 5);
-
-        }
-
-        function createChessBoard()
-        {
             /*
             first should determine the picture of each block
             the picture that do not change:go, in jail, parking, go to jail,community chest,luxury tax,income tax,chance
@@ -439,289 +409,6 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
 
-        //     var spriteTop = new Array(9);
-        //     for(var i=1;i<10;i++)
-        //     {
-        //         spriteTop[i]={
-        //             "id":"",
-        //             "x":"",
-        //             "y":"",
-        //             "picture":""
-        //         };
-        //         spriteTop[i].id=10+i;
-        //         spriteTop[i].x=width+height*(i-1);
-        //         spriteTop[i].y=0;
-        //         //here should be the picture of the item
-        //         spriteTop[i].picture=picture[20+i];
-        //         spriteTopSprite[i]=game.add.sprite(spriteTop[i].x+55,spriteTop[i].y+80,spriteTop[i].picture);
-        //
-        //         //roate the picture
-        //         spriteTopSprite[i].angle=parseInt((20+i)/10)*90;
-        //         spriteTopSprite[i].width=height;
-        //         spriteTopSprite[i].height=width;
-        //         spriteTopSprite[i].inputEnabled = true;
-        //         spriteTopSprite[i].input.useHandCursor = true;
-        //         spriteTopSprite[i].events.onInputDown.add(listener,this);
-        //         position_x[20+i]=width+height*(i-1);
-        //         position_y[20+i]=0;
-        //         block[20+i]=spriteTop[i];
-        //
-        //     }
-        //
-        //     var spriteLeft = new Array(9);
-        //     var spriteLeftSprite = new Array(9);
-        //     for(var i = 1; i <= 9; i++) {
-        //         spriteLeft[i]={
-        //             "id":"",
-        //             "x":"",
-        //             "y":"",
-        //             "picture":""
-        //         };
-        //         spriteLeft[i].x=0;
-        //         spriteLeft[i].y=width+height*(i-1);
-        //         //here should  be the picture of the item.
-        //         spriteLeft[i].picture=picture[10+10-i];
-        //         spriteLeftSprite[i]=game.add.sprite(spriteLeft[i].x+80,spriteLeft[i].y,spriteLeft[i].picture);
-        //         spriteLeftSprite[i].angle=parseInt((20-i)/10)*90;
-        //         spriteLeftSprite[i].width = height;
-        //         spriteLeftSprite[i].height = width;
-        //         spriteLeftSprite[i].inputEnabled = true;
-        //         spriteLeftSprite[i].input.useHandCursor = true;
-        //         spriteLeftSprite[i].events.onInputDown.add(listener,this);
-        //         position_x[10+10-i]=0;
-        //         position_y[10+10-i]=width+height*(i-1);
-        //         block[10+10-i]=spriteLeft[i];
-        //     }
-        //
-        //     var spriteBottom = new Array(9);
-        //     var spriteBottomSprite=new Array(9);
-        //     for(var i = 1; i <= 9; i++) {
-        //         spriteBottom[i]={
-        //             "id":"",
-        //             "x":"",
-        //             "y":"",
-        //             "picture":""
-        //         };
-        //         spriteBottom[i].x=width+height*(i-1);
-        //         spriteBottom[i].y=width+height*9;
-        //         //here should  be the picture of the item.
-        //         spriteBottom[i].picture=picture[10-i];
-        //         spriteBottomSprite[i]=game.add.sprite(spriteBottom[i].x,spriteBottom[i].y,spriteBottom[i].picture);
-        //
-        //         spriteBottomSprite[i].angle=parseInt((10-i)/10)*90;
-        //         spriteBottomSprite[i].width = height;
-        //         spriteBottomSprite[i].height = width;
-        //         spriteBottomSprite[i].inputEnabled = true;
-        //         spriteBottomSprite[i].input.useHandCursor = true;
-        //         spriteBottomSprite[i].events.onInputDown.add(listener,this);
-        //         position_x[10-i]=width+height*(i-1);
-        //         position_y[10-i]=width+height*9;
-        //         block[10-i]=spriteBottom[i];
-        //     }
-        //     var spriteRight = new Array(9);
-        //     var spriteRightSprite = new Array(9);
-        //     for(var i = 1; i <= 9; i++) {
-        //         spriteRight[i]={
-        //             "id":"",
-        //             "x":"",
-        //             "y":"",
-        //             "picture":""
-        //         };
-        //         spriteRight[i].x=width+height*9;
-        //         spriteRight[i].y=width+height*(i-1);
-        //         //here should  be the picture of the item.
-        //         spriteRight[i].picture=picture[30+i];
-        //         spriteRightSprite[i]=game.add.sprite(spriteRight[i].x,spriteRight[i].y+55,spriteRight[i].picture);
-        //         spriteRightSprite[i].angle=parseInt((30+i)/10)*90;
-        //         spriteRightSprite[i].width = height;
-        //         spriteRightSprite[i].height = width;
-        //         spriteRightSprite[i].inputEnabled = true;
-        //         spriteRightSprite[i].input.useHandCursor = true;
-        //         spriteRightSprite[i].events.onInputDown.add(listener,this);
-        //         position_x[30+i]=width+height*9;
-        //         position_y[30+i]=width+height*(i-1);
-        //         block[30+i]=spriteRight[i];
-        //     }
-        //
-        //
-        // }
-        /*
-        funtion that can move the object
-        player:the current moving player
-        x1:the player's previous location
-        x2:the player's destination
-        */
-        /*
-        var x_path;
-        var y_path;
-        function path(x1_input,x2_input)
-        {
-            var x1=parseInt(x1_input);
-            var x2=parseInt(x2_input);
-            var turn=Math.floor(x2/10)-Math.floor(x1/10);
-            if(turn <0)
-                turn=4;
-            x_path=new Array(turn+1);
-            y_path=new Array(turn+1);
-            /*
-            if (turn==0)//the player do not turn a corner
-            {
-                x_path[0]=position_x[x2];
-                y_path[0]=position_y[x2];
-
-            }
-            if(turn == 1)//the player turn a corner
-            {
-                if(0<=x1<10 && 10<x2<=20)
-                {
-                    x_path[0]=position_x[10];
-                    y_path[0]=position_y[10];
-                    x_path[1]=position_x[x2];
-                    y_path[1]=position_y[x2];
-
-                }
-                if(10<=x1<20 && 20<x2<=30)
-                {
-                    x_path[0]=position_x[20];
-                    y_path[0]=position_y[20];
-                    x_path[1]=position_x[x2];
-                    y_path[1]=position_y[x2];
-                }
-                if((20<=x1<30 && 30<x2<=39)||(20<=x1<30 && x2==0))
-                {
-                    x_path[0]=position_x[30];
-                    y_path[0]=position_y[30];
-                    x_path[1]=position_x[x2];
-                    y_path[1]=position_y[x2];
-                }
-                if(30<=x1<=39 && 0<x2<=10)
-                {
-                    x_path[0]=position_x[0];
-                    y_path[0]=position_y[0];
-                    x_path[1]=position_x[x2];
-                    y_path[1]=position_y[x2];
-                }
-            }
-            if(turn == 2)//the player turn two corner
-            {
-                if(0<=x1<10 && 20<x2<=30)
-                {
-                    x_path[0]=position_x[10];
-                    y_path[0]=position_y[10];
-                    x_path[1]=position_x[20];
-                    y_path[1]=position_y[20];
-                    x_path[2]=position_x[x2];
-                    y_path[2]=position_y[x2];
-
-                }
-                if((10<=x1<20 && 30<x2<=39)||(10<=x1<=20 && x2==0))
-                {
-                    x_path[0]=position_x[20];
-                    y_path[0]=position_y[20];
-                    x_path[1]=position_x[30];
-                    y_path[1]=position_y[30];
-                    x_path[2]=position_x[x2];
-                    y_path[2]=position_y[x2];
-                }
-                if(20<=x1<30 && 0<x2<=10)
-                {
-                    x_path[0]=position_x[30];
-                    y_path[0]=position_y[30];
-                    x_path[1]=position_x[40];
-                    y_path[1]=position_y[40];
-                    x_path[2]=position_x[x2];
-                    y_path[2]=position_y[x2];
-                }
-                if(30<=x1<=39 && 10<x2<=20)
-                {
-                    x_path[0]=position_x[0];
-                    y_path[0]=position_y[0];
-                    x_path[1]=position_x[10];
-                    y_path[1]=position_y[10];
-                    x_path[2]=position_x[x2];
-                    y_path[2]=position_y[x2];
-                }
-            }
-            if(turn == 3)//the player turn three corner
-            {
-                if((0<=x1<10 && 30<x2<=39)||(0<=x1<10 && x2==0))
-                {
-                    x_path[0]=position_x[10];
-                    y_path[0]=position_y[10];
-                    x_path[1]=position_x[20];
-                    y_path[1]=position_y[20];
-                    x_path[2]=position_x[30];
-                    y_path[2]=position_y[30];
-                    x_path[3]=position_x[x2];
-                    y_path[3]=position_y[x2];
-
-                }
-                if(10<=x1<=20 && 0<x2<10)
-                {
-                    x_path[0]=position_x[20];
-                    y_path[0]=position_y[20];
-                    x_path[1]=position_x[30];
-                    y_path[1]=position_y[30];
-                    x_path[2]=position_x[0];
-                    y_path[2]=position_y[0];
-                    x_path[3]=position_x[x2];
-                    y_path[3]=position_y[x2];
-                }
-                if(20<=x1<30 && 10<x2<20)
-                {
-                    x_path[0]=position_x[30];
-                    y_path[0]=position_y[30];
-                    x_path[1]=position_x[0];
-                    y_path[1]=position_y[0];
-                    x_path[2]=position_x[10];
-                    y_path[2]=position_y[10];
-                    x_path[3]=position_x[x2];
-                    y_path[3]=position_y[x2];
-                }
-                if(30<=x1<=39 && 20<x2<=30)
-                {
-                    x_path[0]=position_x[0];
-                    y_path[0]=position_y[0];
-                    x_path[1]=position_x[10];
-                    y_path[1]=position_y[10];
-                    x_path[2]=position_x[20];
-                    y_path[2]=position_y[20];
-                    x_path[3]=position_x[x2];
-                    y_path[3]=position_y[x2];
-                }
-            }
-            if(turn == 4)//the player turn four corners
-            {
-        
-                var t=x1/10+1;
-                if(t==4) t==0;
-                for(var i=0;i<turn;i++)
-                {
-                    x_path[i]=position_x[t*10];
-                    t=t+1;
-                    if(t==4) t==0;
-                }
-                x_path[turn]=position_x[x2];
-                y_path[turn]=position_y[x2];
-            //}
-
-
-        }*/
-
-        function move_player(player,x1_input,x2_input) {
-                player.visible=false;
-                var new_player=game.add.sprite(position_x[x2_input],position_y[x2_input],player.avatar);
-                new_player.width=player.width;
-                new_player.height=player.height;
-                player=new_player;
-
-        }
-
-        function update() {
-
-
-            //parse json file
-            WebSocketTest();
 
 
 
@@ -731,7 +418,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
 
 
-        }
+
         /*
         listener is a array of functions
         these functions are aimed to show a window when click the sprite
@@ -788,11 +475,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 infoWindow.style.visibility = "visible";
        }
 
-dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
-dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
-setInterval(dice1.animations.play('dice1'), 5000);
-setInterval(dice2.animations.play('dice2'), 5000);
+
         function roll_dice(dice_1, dice_2) {
+            setInterval(dice1.animations.play('dice1'), 5000);
+            setInterval(dice2.animations.play('dice2'), 5000);
             var dice = dice_1 + dice_2;
             for (var i = 0; i < 5; ++i) {
                 var dice_num = Math.floor(Math.random() * 6) + 1;
@@ -818,8 +504,8 @@ just a test
         }
 
 
-var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
-var i, j;
+// var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
+// var i, j;
 function WebSocketTest() {
     var dat = game.cache.getJSON('json');
     if (dat.type=="init")
@@ -828,10 +514,43 @@ function WebSocketTest() {
         Firstly, initialize the chessboard
           Create the part that never change:four corners, tax, community chest
          */
+
         initial_position();
         initial_block_information();
         initial_player();
         create_ChessBoard();
+        dice1 = this.game.add.sprite(270, 270, 'dice');
+        dice1.frame = 0;
+        dice2 = this.game.add.sprite(340, 270, 'dice');
+        dice2.frame = 0;
+        dice1.width = 45;
+        dice1.height = 45;
+        dice2.width = 45;
+        dice2.height = 45;
+        dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
+        dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
+
+        button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
+            roll_dice();
+            setTimeout(function () {
+                dice1.animations.stop();
+                dice2.animations.stop();
+                dice1.frame = dice1_num;
+                dice2.frame = dice2_num;
+            }, 5000);
+        }, this, 2, 1, 0);
+        button1.width = 90;
+        button1.height = 30;
+        button1.input.useHandCursor = true;
+        button2 = game.add.button(282, 370, 'end_turn_btn', function () {
+            alert('End turn.');
+        }, this, 2, 1, 0);
+        button2.width = 90;
+        button2.height = 30;
+        button2.input.useHandCursor = true;
+
+
+
         var information=dat.data;
         for(var j=0;j<information.length;j++)
         {
@@ -926,108 +645,7 @@ function guid() {
 
 
 
-// function type_read(json_obj) {
-//     var type = json_obj.type;
-//     switch (type) {
-//         case "init":
-//             status="init";
-//             // when we read the information "init" we can create chessboard first
-//             create_ChessBoard();
-//
-//             break;
-//         case "bank":
-//             var dat = json_obj.data[0];
-//             add_item("house_number", dat.house_number);
-//             add_item("hotel_number", dat.hotel_number);
-//             break;
-//         case "block":
-//             var dat = json_obj.data[0];
-//             add_item("name", dat.name);
-//             add_item("block_id", dat.block_id);
-//             add_item("position", dat.position);
-//             add_item("description", dat.description);
-//             break;
-//         case "board":
-//             var dat = json_obj.data[0];
-//             add_item("block_list", dat.block_list);
-//             break;
-//         case "built":
-//             var dat = json_obj.data[0];
-//             add_item("player_id", dat.player_id);
-//             add_item("estate_id", dat.estate_id);
-//             add_item("built_number", dat.built_number);
-//             break;
-//         case "card":
-//             var dat = json_obj.data[0];
-//             add_item("description", dat.description);
-//             break;
-//         case "ef":
-//             var dat = json_obj.data[0];
-//             add_item("variation", dat.variation);
-//             add_item("cur_rate", dat.cur_rate);
-//             break;
-//         case "input":
-//             var dat = json_obj.data[0];
-//             add_item("from_player_id", dat.from_player_id);
-//             add_item("request", dat.request);
-//             break;
-//         case "mortgage":
-//             var dat = json_obj.data[0];
-//             add_item("player_id", dat.player_id);
-//             add_item("asset_id", dat.asset_id);
-//             break;
-//         case "output":
-//             status="output";
-//             data_iter(json_obj.data);
-//             break;
-//         case "dice_result":
-//             var dat = json_obj.data[0];
-//             add_item("player_id", dat.player_id);
-//             add_item("dice_result", dat.dice_result);
-//             break;
-//         case "room":
-//             var dat = json_obj.data[0];
-//             add_item("room_id", dat.room_id);
-//             add_item("room_name", dat.room_name);
-//             add_item("owner_id", dat.owner_id);
-//             add_item("status", dat.status);
-//             add_item("level", dat.level);
-//             add_item("init_fund", dat.init_fund);
-//             add_item("go_salary", dat.go_salary);
-//             add_item("is_limited", dat.is_limited);
-//             add_item("room_info", "end");
-//             break;
-//         case "estate":
-//             all_construct=all_construct+1;
-//             estate_iter(json_obj.data);
-//
-//             break;
-//         case "player":
-//             player_iter(json_obj.data);
-//
-//             break;
-//         case "station":
-//             station_iter(json_obj.data);
-//             break;
-//         case "trade":
-//             trade_iter(json_obj.data);
-//             break;
-//         case "utility":
-//             utility_iter(json_obj.data);
-//             break;
-//     }
-// }
-//
-// function data_iter(data) {
-//     var i;
-//     for(var i = 0; i < data.length; i++) {
-//         type_read(data[i]);
-//     }
-// }
-//
-// function add_item(name, value) {
-//     document.getElementById("demo").innerHTML += name + ": " + value + "<br/>";
-// }
+
 
 
 /*
