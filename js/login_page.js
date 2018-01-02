@@ -1,6 +1,4 @@
 window.onload = window.onresize = function () {
-
-
     var theCanvas = document.getElementById("canvasPanel");
     var context = theCanvas.getContext("2d");
     var userName = document.getElementById("UserName");
@@ -15,7 +13,6 @@ window.onload = window.onresize = function () {
         theCanvas.height = window.innerHeight;
         drawRoundedRect(340, 40, 800, 600, 10, true, "rgba(255,255,255,0.8)");
 
-
         //内容
         context.font = 'bold 24px Arial';
         context.fillStyle = 'black';
@@ -26,15 +23,12 @@ window.onload = window.onresize = function () {
         context.fillText('Choose your avatar', 650, 170);
 
         //TEST
-
-
     }
 
     function textBoxChanged(e) {
         var target = e.target;
         message = target.value;
         drawScreen();
-
     }
 
     // 绘制圆角矩形
@@ -63,14 +57,11 @@ window.onload = window.onresize = function () {
         }
         context.restore();
     }
-
-
 };
 
 function showWindow(windowId) {
     var tradeWindow = document.getElementById(windowId);
     tradeWindow.style.visibility = "visible";
-
 }
 
 function hideWindow(windowId) {
@@ -78,11 +69,22 @@ function hideWindow(windowId) {
     window.style.visibility = "hidden";
 }
 
-function getName() {
-    var name = document.getElementById("UserName");
+function getPlayerJson() {
+    var name = document.getElementById("UserName").value;
+    var avatar = document.getElementById("selectAvatar").value;
+
+    var player = {};
+    player.type = "player";
+    player.data = [
+        {
+            "name": name,
+            "avatar": avatar
+        }
+    ];
+    return player;
 }
 
-function createRoom() {
+function getRoomJson() {
     var level, initFund, salary;
     var roomName = document.getElementById("roomNameField").value;
     var isLimited = Boolean(document.getElementById("limit").checked);
@@ -109,14 +111,44 @@ function createRoom() {
         }
     }
 
-    return {
-        "type": "room",
-        "data": [{
+    var room = {};
+    room.type = "room";
+    room.data = [
+        {
             "room_name": roomName,
             "level": level,
             "init_fund": initFund,
             "go_salary": salary,
             "is_limited": isLimited
-        }]
-    }
+        }
+    ];
+    return room;
+}
+
+function createRoom() {
+    var playerJson = getPlayerJson();
+    var roomJson = getRoomJson();
+    var createJson = {};
+    createJson.type = "create_room";
+    createJson.data = [
+        {
+            "player": playerJson,
+            "room": roomJson
+        }
+    ];
+    jQuery.post("/joingame", JSON.stringify(createJson), alert('create'), "json");
+}
+
+function joinRoom(event) {
+    var playerJson = getPlayerJson();
+    var roomID = event.target.id;
+    var joinJson = {};
+    joinJson.type = "join_room";
+    joinJson.data = [
+        {
+            "player": playerJson,
+            "room_id": roomID
+        }
+    ];
+    jQuery.post("/joingame", JSON.stringify(joinJson), alert('join'), "json");
 }

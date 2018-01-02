@@ -60,7 +60,7 @@
     </form>
 </div>
 <div class="hidden shadowBox" id="roomListWindow" style="left: 850px;">
-    <table id="roomList">
+    <table id="roomList" onclick="joinRoom(event)">
         <thead style="font-weight: bold;"><tr>
             <td>Room id</td>
             <td>Room name</td>
@@ -73,12 +73,12 @@
                 <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px"></a>
             </td>
         </tr></thead>
-        <tbody>
+        <tbody>  <!--TODO use js to display room list, button's id must equal to room id-->
         <tr><td>123</td><td>ahh</td><td>4</td><td>easy</td><td>1500</td><td>0</td><td>on</td>
-            <td><button class="smallBtn">join</button></td>
+            <td><button class="smallBtn" id="123" >join</button></td>
         </tr>
         <tr><td>321</td><td>ahh</td><td>3</td><td>hard</td><td>1000</td><td>400</td><td>off</td>
-            <td><button class="smallBtn">join</button></td>
+            <td><button class="smallBtn" id="321" >join</button></td>
         </tr>
         </tbody>
     </table>
