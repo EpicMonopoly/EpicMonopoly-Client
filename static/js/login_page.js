@@ -131,12 +131,11 @@ function createRoom() {
     var createJson = {};
     createJson.type = "create_room";
     createJson.data = [
-        {
-            "player": playerJson,
-            "room": roomJson
-        }
+        playerJson,
+        roomJson
+
     ];
-    jQuery.post("/joingame", JSON.stringify(createJson), alert('create'), "json");
+    jQuery.post("/joingame", JSON.stringify(createJson), window.location.href='', "json");
 }
 
 function joinRoom(event) {
@@ -145,8 +144,8 @@ function joinRoom(event) {
     var joinJson = {};
     joinJson.type = "join_room";
     joinJson.data = [
+        playerJson,
         {
-            "player": playerJson,
             "room_id": roomID
         }
     ];

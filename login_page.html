@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/global.css">
-    <link href="css/login_page.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/global.css">
+    <link href="static/css/login_page.css" rel="stylesheet" type="text/css"/>
     <title>Welcome</title>
 </head>
 <body>
@@ -70,7 +70,7 @@
             <td>Go salary </td>
             <td>Limited</td>
             <td><a class="statusbar" onclick="hideWindow('roomListWindow')">
-                <img title="close" src="img/icon_ui/close.png" style="width: 12px; height: 12px"></a>
+                <img title="close" src="static/img/icon_ui/close.png" style="width: 12px; height: 12px"></a>
             </td>
         </tr></thead>
         <tbody>  <!--TODO use js to display room list, button's id must equal to room id-->
@@ -85,7 +85,7 @@
 </div>
 <div id="wrapper"></div>
 <audio autoplay="autoplay" loop="loop" preload="auto"
-       src="sound/backsound.wav">
+       src="static/sound/backsound.wav">
     Your browser does not support "audio" tag
 </audio>
 <div class="container">
@@ -95,7 +95,7 @@
     <form>
         <input type="text" id="UserName" placeholder="Please Enter Your Name"
                style="font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;">
-        <img src="img/icon_ui/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;">
+        <img src="static/img/icon_ui/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;">
         <select id="selectAvatar" name="selectAvatar"
                 onchange="document.images['showAvatar'].src=options[selectedIndex].value;" title="">
             <option id="avatar1" value="img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
@@ -107,7 +107,7 @@
         </select>
     </form>
     <div id="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"
-                                                                              src="img/avatar/icon_bug.png"></div>
+                                                                              src="static/img/avatar/icon_bug.png"></div>
     <h3 style="font-size:20px;position:absolute;left:660px;top:450px;">Start your game!</h3>
     <div id="selectRoomPanel" style="position:absolute;left:660px;top:510px;">
         <button id="createRoom" class="shadowBox" onclick="showWindow('cfgSetWindow')">Create Room</button>
@@ -118,6 +118,6 @@
 </div>
 <!-- 脚本引用最好放在这里，否则js 在HTML之前load会报错-->
 <!--<script type="text/javascript" src="js/global.js"></script>-->
-<script type="text/javascript" src="js/login_page.js"></script>
+<script type="text/javascript" src="static/js/login_page.js"></script>
 </body>
 </html>
