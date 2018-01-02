@@ -16,5 +16,5 @@ function updateInterest(newInterest) {
 function setAvatar() {
     var avatar1 = document.getElementById("avatar1");
     avatar1.addClass("svg-red");
-    avatar1.src = "img/avatar/icon_bug.svg";
+    avatar1.src = "static/img/avatar/icon_bug.svg";
 }

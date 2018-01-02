@@ -1,3 +1,5 @@
+
+
 window.onload = window.onresize = function () {
     var theCanvas = document.getElementById("canvasPanel");
     var context = theCanvas.getContext("2d");
@@ -135,7 +137,7 @@ function createRoom() {
         roomJson
 
     ];
-    jQuery.post("/joingame", JSON.stringify(createJson), window.location.href='', "json");
+    jQuery.post("/joingame", JSON.stringify(createJson), window.location.href='test.sustech.pub:8888/ingame', "json");
 }
 
 function joinRoom(event) {
@@ -149,5 +151,5 @@ function joinRoom(event) {
             "room_id": roomID
         }
     ];
-    jQuery.post("/joingame", JSON.stringify(joinJson), alert('join'), "json");
+    jQuery.post("/joingame", JSON.stringify(joinJson), window.location.href='test.sustech.pub:8888/ingame', "json");
 }

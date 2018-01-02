@@ -4,24 +4,24 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
         function preload() {
 
-            game.load.image("background","img/chessboard_bgd.png");
-            game.load.image("chance","img/icon_chessboard/chance.png");
-            game.load.image("community_chest","img/icon_chessboard/community_chest.png");
-            game.load.image("electricity","img/icon_chessboard/electricity.png");
-            game.load.image("go","img/icon_chessboard/go.png");
-            game.load.image("go_jail","img/icon_chessboard/go_jail.png");
-            game.load.image("hotel","img/icon_chessboard/hotel.png");
-            game.load.image("house","img/icon_chessboard/house.png");
-            game.load.image("in_jail","img/icon_chessboard/in_jail.png");
-            game.load.image("income_tax","img/icon_chessboard/income_tax.png");
-            game.load.image("luxury_tax","img/icon_chessboard/luxury_tax.png");
-            game.load.image("parking_lot","img/icon_chessboard/parking_lot.png");
-            game.load.image("railway_station","img/icon_chessboard/railway_station.png");
-            game.load.image("street_colors","img/icon_chessboard/street_colors.png");
-            game.load.image("water","img/icon_chessboard/water.png");
-            game.load.spritesheet("dice", "img/icon_chessboard/dice.png", 140, 140);
-            game.load.spritesheet("roll_dice_btn", "img/icon_chessboard/roll_dice_btn.png");
-            game.load.spritesheet("end_turn_btn", "img/icon_chessboard/end_turn_btn.png");
+            game.load.image("background","static/img/chessboard_bgd.png");
+            game.load.image("chance","static/img/icon_chessboard/chance.png");
+            game.load.image("community_chest","static/img/icon_chessboard/community_chest.png");
+            game.load.image("electricity","static/img/icon_chessboard/electricity.png");
+            game.load.image("go","static/img/icon_chessboard/go.png");
+            game.load.image("go_jail","static/img/icon_chessboard/go_jail.png");
+            game.load.image("hotel","static/img/icon_chessboard/hotel.png");
+            game.load.image("house","static/img/icon_chessboard/house.png");
+            game.load.image("in_jail","static/img/icon_chessboard/in_jail.png");
+            game.load.image("income_tax","static/img/icon_chessboard/income_tax.png");
+            game.load.image("luxury_tax","static/img/icon_chessboard/luxury_tax.png");
+            game.load.image("parking_lot","static/img/icon_chessboard/parking_lot.png");
+            game.load.image("railway_station","static/img/icon_chessboard/railway_station.png");
+            game.load.image("street_colors","static/img/icon_chessboard/street_colors.png");
+            game.load.image("water","static/img/icon_chessboard/water.png");
+            game.load.spritesheet("dice", "static/img/icon_chessboard/dice.png", 140, 140);
+            game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
+            game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
         }
         var block = new Array(40);//to save the object of every block
         var i,j;
@@ -241,7 +241,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             button1.width = 90;
             button1.height = 30;
             button1.input.useHandCursor = true;
-            
+
             // button1 = game.add.button1(275, 430, 'button1', function () {
             //     alert('dice stop');
             //     dice1.animations.stop();
@@ -258,7 +258,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             button2.width = 90;
             button2.height = 30;
             button2.input.useHandCursor = true;
-        
+
             move_player(player1, 3, 5);
 
         }
@@ -413,7 +413,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             spriteCornerRightBottom.height = width;
             position_x[0]=width+height*9;
             position_y[0]=width+height*9;
-            
+
         }
         /*
         funtion that can move the object
@@ -421,7 +421,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         x1:the player's previous location
         x2:the player's destination
         */
-    
+
         var x_path;
         var y_path;
         function path(x1_input,x2_input)
@@ -561,7 +561,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             }
             if(turn == 4)//the player turn four corners
             {
-        
+
                 var t=x1/10+1;
                 if(t==4) t==0;
                 for(var i=0;i<turn;i++)
@@ -587,7 +587,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         }
         var dat;// the data to store json
         function update() {
-          
+
 
             //parse json file
             WebSocketTest();
@@ -630,10 +630,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         }
 
         function buy() {
-            
+
         }
-        
-        
+
+
 var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 var i, j;
 function WebSocketTest() {
