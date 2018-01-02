@@ -1,0 +1,1243 @@
+{
+    "data": [
+        {
+            "data": [
+                {
+                    "position": 0,
+                    "block_id": 0,
+                    "name": "Go"
+                },
+                {
+                    "position": 1,
+                    "block_id": 18,
+                    "name": "Nanan"
+                },
+                {
+                    "position": 2,
+                    "block_id": 1,
+                    "name": "Community Chest"
+                },
+                {
+                    "position": 3,
+                    "block_id": 19,
+                    "name": "Yuzhong"
+                },
+                {
+                    "position": 4,
+                    "block_id": 2,
+                    "name": "Income Tax"
+                },
+                {
+                    "position": 5,
+                    "block_id": 17,
+                    "name": "Chongqing"
+                },
+                {
+                    "position": 6,
+                    "block_id": 20,
+                    "name": "Xinqu"
+                },
+                {
+                    "position": 7,
+                    "block_id": 3,
+                    "name": "Chance"
+                },
+                {
+                    "position": 8,
+                    "block_id": 21,
+                    "name": "Yuanqu"
+                },
+                {
+                    "position": 9,
+                    "block_id": 22,
+                    "name": "Jinlu"
+                },
+                {
+                    "position": 10,
+                    "block_id": 4,
+                    "name": "In Jail"
+                },
+                {
+                    "position": 11,
+                    "block_id": 23,
+                    "name": "Hanyang"
+                },
+                {
+                    "position": 12,
+                    "block_id": 13,
+                    "name": "Power Station"
+                },
+                {
+                    "position": 13,
+                    "block_id": 24,
+                    "name": "Wuchang"
+                },
+                {
+                    "position": 14,
+                    "block_id": 25,
+                    "name": "Hankou"
+                },
+                {
+                    "position": 15,
+                    "block_id": 16,
+                    "name": "Shanghai"
+                },
+                {
+                    "position": 16,
+                    "block_id": 26,
+                    "name": "Nankai"
+                },
+                {
+                    "position": 17,
+                    "block_id": 5,
+                    "name": "Community Chest"
+                },
+                {
+                    "position": 18,
+                    "block_id": 27,
+                    "name": "Hexi"
+                },
+                {
+                    "position": 19,
+                    "block_id": 28,
+                    "name": "Heping"
+                },
+                {
+                    "position": 20,
+                    "block_id": 6,
+                    "name": "Free Parking"
+                },
+                {
+                    "position": 21,
+                    "block_id": 29,
+                    "name": "Pudong"
+                },
+                {
+                    "position": 22,
+                    "block_id": 7,
+                    "name": "Chance"
+                },
+                {
+                    "position": 23,
+                    "block_id": 30,
+                    "name": "Xuhui"
+                },
+                {
+                    "position": 24,
+                    "block_id": 31,
+                    "name": "Jingan"
+                },
+                {
+                    "position": 25,
+                    "block_id": 15,
+                    "name": "Beijing"
+                },
+                {
+                    "position": 26,
+                    "block_id": 32,
+                    "name": "Haidian"
+                },
+                {
+                    "position": 27,
+                    "block_id": 33,
+                    "name": "Chaoyang"
+                },
+                {
+                    "position": 28,
+                    "block_id": 12,
+                    "name": "Water Work"
+                },
+                {
+                    "position": 29,
+                    "block_id": 34,
+                    "name": "Dongcheng"
+                },
+                {
+                    "position": 30,
+                    "block_id": 8,
+                    "name": "Go to Jail"
+                },
+                {
+                    "position": 31,
+                    "block_id": 35,
+                    "name": "Nanshan"
+                },
+                {
+                    "position": 32,
+                    "block_id": 36,
+                    "name": "Futian"
+                },
+                {
+                    "position": 33,
+                    "block_id": 9,
+                    "name": "Community Chest"
+                },
+                {
+                    "position": 34,
+                    "block_id": 37,
+                    "name": "Luohu"
+                },
+                {
+                    "position": 35,
+                    "block_id": 14,
+                    "name": "Guangzhou"
+                },
+                {
+                    "position": 36,
+                    "block_id": 10,
+                    "name": "Chance"
+                },
+                {
+                    "position": 37,
+                    "block_id": 38,
+                    "name": "Liwan"
+                },
+                {
+                    "position": 38,
+                    "block_id": 11,
+                    "name": "Super Tax"
+                },
+                {
+                    "position": 39,
+                    "block_id": 39,
+                    "name": "Dongshan"
+                }
+            ],
+            "type": "block"
+        },
+        {
+            "data": [
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 9
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 12
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 15
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 18
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 24
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 30
+                        }
+                    ],
+                    "estate_value": 60,
+                    "block_id": 18,
+                    "house_value": 50,
+                    "street_id": 1,
+                    "mortgage_value": 30.0,
+                    "position": 1,
+                    "uid": "99",
+                    "name": "Nanan",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 9
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 12
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 15
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 18
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 24
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 30
+                        }
+                    ],
+                    "estate_value": 60,
+                    "block_id": 19,
+                    "house_value": 50,
+                    "street_id": 1,
+                    "mortgage_value": 30.0,
+                    "position": 3,
+                    "uid": "99",
+                    "name": "Yuzhong",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 15
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 20
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 25
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 30
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 40
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 50
+                        }
+                    ],
+                    "estate_value": 100,
+                    "block_id": 20,
+                    "house_value": 50,
+                    "street_id": 2,
+                    "mortgage_value": 50.0,
+                    "position": 6,
+                    "uid": "99",
+                    "name": "Xinqu",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 15
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 20
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 25
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 30
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 40
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 50
+                        }
+                    ],
+                    "estate_value": 100,
+                    "block_id": 21,
+                    "house_value": 50,
+                    "street_id": 2,
+                    "mortgage_value": 50.0,
+                    "position": 8,
+                    "uid": "99",
+                    "name": "Yuanqu",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 18
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 24
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 30
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 36
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 48
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 60
+                        }
+                    ],
+                    "estate_value": 120,
+                    "block_id": 22,
+                    "house_value": 50,
+                    "street_id": 2,
+                    "mortgage_value": 60.0,
+                    "position": 9,
+                    "uid": "99",
+                    "name": "Jinlu",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 21
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 28
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 35
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 42
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 56
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 70
+                        }
+                    ],
+                    "estate_value": 140,
+                    "block_id": 23,
+                    "house_value": 100,
+                    "street_id": 3,
+                    "mortgage_value": 70.0,
+                    "position": 11,
+                    "uid": "99",
+                    "name": "Hanyang",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 21
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 28
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 35
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 42
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 56
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 70
+                        }
+                    ],
+                    "estate_value": 140,
+                    "block_id": 24,
+                    "house_value": 100,
+                    "street_id": 3,
+                    "mortgage_value": 70.0,
+                    "position": 13,
+                    "uid": "99",
+                    "name": "Wuchang",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 24
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 32
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 40
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 48
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 64
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 80
+                        }
+                    ],
+                    "estate_value": 160,
+                    "block_id": 25,
+                    "house_value": 100,
+                    "street_id": 3,
+                    "mortgage_value": 80.0,
+                    "position": 14,
+                    "uid": "99",
+                    "name": "Hankou",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 27
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 36
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 45
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 54
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 72
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 90
+                        }
+                    ],
+                    "estate_value": 180,
+                    "block_id": 26,
+                    "house_value": 100,
+                    "street_id": 4,
+                    "mortgage_value": 90.0,
+                    "position": 16,
+                    "uid": "99",
+                    "name": "Nankai",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 27
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 36
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 45
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 54
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 72
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 90
+                        }
+                    ],
+                    "estate_value": 180,
+                    "block_id": 27,
+                    "house_value": 100,
+                    "street_id": 4,
+                    "mortgage_value": 90.0,
+                    "position": 18,
+                    "uid": "99",
+                    "name": "Hexi",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 30
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 40
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 50
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 60
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 80
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 100
+                        }
+                    ],
+                    "estate_value": 200,
+                    "block_id": 28,
+                    "house_value": 100,
+                    "street_id": 4,
+                    "mortgage_value": 100.0,
+                    "position": 19,
+                    "uid": "99",
+                    "name": "Heping",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 33
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 44
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 55
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 66
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 88
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 110
+                        }
+                    ],
+                    "estate_value": 220,
+                    "block_id": 29,
+                    "house_value": 150,
+                    "street_id": 5,
+                    "mortgage_value": 110.0,
+                    "position": 21,
+                    "uid": "99",
+                    "name": "Pudong",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 33
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 44
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 55
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 66
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 88
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 110
+                        }
+                    ],
+                    "estate_value": 220,
+                    "block_id": 30,
+                    "house_value": 150,
+                    "street_id": 5,
+                    "mortgage_value": 110.0,
+                    "position": 23,
+                    "uid": "99",
+                    "name": "Xuhui",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 36
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 48
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 60
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 72
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 96
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 120
+                        }
+                    ],
+                    "estate_value": 240,
+                    "block_id": 31,
+                    "house_value": 150,
+                    "street_id": 5,
+                    "mortgage_value": 120.0,
+                    "position": 24,
+                    "uid": "99",
+                    "name": "Jingan",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 39
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 52
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 65
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 78
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 104
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 130
+                        }
+                    ],
+                    "estate_value": 260,
+                    "block_id": 32,
+                    "house_value": 150,
+                    "street_id": 6,
+                    "mortgage_value": 130.0,
+                    "position": 26,
+                    "uid": "99",
+                    "name": "Haidian",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 39
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 52
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 65
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 78
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 104
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 130
+                        }
+                    ],
+                    "estate_value": 260,
+                    "block_id": 33,
+                    "house_value": 150,
+                    "street_id": 6,
+                    "mortgage_value": 130.0,
+                    "position": 27,
+                    "uid": "99",
+                    "name": "Chaoyang",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 39
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 52
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 65
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 78
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 104
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 130
+                        }
+                    ],
+                    "estate_value": 260,
+                    "block_id": 34,
+                    "house_value": 150,
+                    "street_id": 6,
+                    "mortgage_value": 130.0,
+                    "position": 29,
+                    "uid": "99",
+                    "name": "Dongcheng",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 45
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 60
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 75
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 90
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 120
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 150
+                        }
+                    ],
+                    "estate_value": 300,
+                    "block_id": 35,
+                    "house_value": 200,
+                    "street_id": 7,
+                    "mortgage_value": 150.0,
+                    "position": 31,
+                    "uid": "99",
+                    "name": "Nanshan",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 45
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 60
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 75
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 90
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 120
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 150
+                        }
+                    ],
+                    "estate_value": 300,
+                    "block_id": 36,
+                    "house_value": 200,
+                    "street_id": 7,
+                    "mortgage_value": 150.0,
+                    "position": 32,
+                    "uid": "99",
+                    "name": "Futian",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 48
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 64
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 80
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 96
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 128
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 160
+                        }
+                    ],
+                    "estate_value": 320,
+                    "block_id": 37,
+                    "house_value": 200,
+                    "street_id": 7,
+                    "mortgage_value": 160.0,
+                    "position": 34,
+                    "uid": "99",
+                    "name": "Luohu",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 52
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 70
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 87
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 105
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 140
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 175
+                        }
+                    ],
+                    "estate_value": 350,
+                    "block_id": 38,
+                    "house_value": 200,
+                    "street_id": 8,
+                    "mortgage_value": 175.0,
+                    "position": 37,
+                    "uid": "99",
+                    "name": "Liwan",
+                    "status": -1
+                },
+                {
+                    "house_num": 0,
+                    "payment": [
+                        {
+                            "house_number": 1,
+                            "payment": 60
+                        },
+                        {
+                            "house_number": 2,
+                            "payment": 80
+                        },
+                        {
+                            "house_number": 3,
+                            "payment": 100
+                        },
+                        {
+                            "house_number": 4,
+                            "payment": 120
+                        },
+                        {
+                            "house_number": 5,
+                            "payment": 160
+                        },
+                        {
+                            "house_number": 6,
+                            "payment": 200
+                        }
+                    ],
+                    "estate_value": 400,
+                    "block_id": 39,
+                    "house_value": 200,
+                    "street_id": 8,
+                    "mortgage_value": 200.0,
+                    "position": 39,
+                    "uid": "99",
+                    "name": "Dongshan",
+                    "status": -1
+                }
+            ],
+            "type": "estate"
+        },
+        {
+            "data": [
+                {
+                    "estate_value": 200,
+                    "block_id": 17,
+                    "payment": [
+                        {
+                            "station_number": 1,
+                            "payment": 25.0
+                        },
+                        {
+                            "station_number": 2,
+                            "payment": 50.0
+                        },
+                        {
+                            "station_number": 3,
+                            "payment": 100.0
+                        },
+                        {
+                            "station_number": 4,
+                            "payment": 200
+                        }
+                    ],
+                    "mortgage_value": 100.0,
+                    "position": 5,
+                    "uid": "99",
+                    "name": "Chongqing",
+                    "status": -1
+                },
+                {
+                    "estate_value": 200,
+                    "block_id": 16,
+                    "payment": [
+                        {
+                            "station_number": 1,
+                            "payment": 25.0
+                        },
+                        {
+                            "station_number": 2,
+                            "payment": 50.0
+                        },
+                        {
+                            "station_number": 3,
+                            "payment": 100.0
+                        },
+                        {
+                            "station_number": 4,
+                            "payment": 200
+                        }
+                    ],
+                    "mortgage_value": 100.0,
+                    "position": 15,
+                    "uid": "99",
+                    "name": "Shanghai",
+                    "status": -1
+                },
+                {
+                    "estate_value": 200,
+                    "block_id": 15,
+                    "payment": [
+                        {
+                            "station_number": 1,
+                            "payment": 25.0
+                        },
+                        {
+                            "station_number": 2,
+                            "payment": 50.0
+                        },
+                        {
+                            "station_number": 3,
+                            "payment": 100.0
+                        },
+                        {
+                            "station_number": 4,
+                            "payment": 200
+                        }
+                    ],
+                    "mortgage_value": 100.0,
+                    "position": 25,
+                    "uid": "99",
+                    "name": "Beijing",
+                    "status": -1
+                },
+                {
+                    "estate_value": 200,
+                    "block_id": 14,
+                    "payment": [
+                        {
+                            "station_number": 1,
+                            "payment": 25.0
+                        },
+                        {
+                            "station_number": 2,
+                            "payment": 50.0
+                        },
+                        {
+                            "station_number": 3,
+                            "payment": 100.0
+                        },
+                        {
+                            "station_number": 4,
+                            "payment": 200
+                        }
+                    ],
+                    "mortgage_value": 100.0,
+                    "position": 35,
+                    "uid": "99",
+                    "name": "Guangzhou",
+                    "status": -1
+                }
+            ],
+            "type": "station"
+        },
+        {
+            "data": [
+                {
+                    "estate_value": 150,
+                    "block_id": 13,
+                    "payment": [
+                        {
+                            "rate": 2,
+                            "utility_number": 1
+                        },
+                        {
+                            "rate": 4,
+                            "utility_number": 2
+                        }
+                    ],
+                    "mortgage_value": 75.0,
+                    "position": 12,
+                    "uid": "99",
+                    "name": "Power Station",
+                    "status": -1
+                },
+                {
+                    "estate_value": 150,
+                    "block_id": 12,
+                    "payment": [
+                        {
+                            "rate": 2,
+                            "utility_number": 1
+                        },
+                        {
+                            "rate": 4,
+                            "utility_number": 2
+                        }
+                    ],
+                    "mortgage_value": 75.0,
+                    "position": 28,
+                    "uid": "99",
+                    "name": "Water Work",
+                    "status": -1
+                }
+            ],
+            "type": "utility"
+        },
+        {
+            "data": [
+                {
+                    "bail_card_num": 0,
+                    "cash": 1000,
+                    "cur_status": 1,
+                    "alliance": "Asia",
+                    "position": 0,
+                    "property": [],
+                    "id": "100",
+                    "name": "Player1",
+                    "pre_position": 0
+                },
+                {
+                    "bail_card_num": 0,
+                    "cash": 1000,
+                    "cur_status": 1,
+                    "alliance": "Europe",
+                    "position": 0,
+                    "property": [],
+                    "id": "101",
+                    "name": "Player2",
+                    "pre_position": 0
+                }
+            ],
+            "type": "player"
+        },
+        {
+            "data": [
+                {
+                    "cur_rate": 0,
+                    "variation": 0.05
+                }
+            ],
+            "type": "ef"
+        }
+    ],
+    "type": "init"
+}
