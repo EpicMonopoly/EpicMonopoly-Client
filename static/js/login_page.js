@@ -72,19 +72,20 @@ function hideWindow(windowId) {
 function getRoomList() {
     $.get("/roomlist", function (data) {
         var roomList = document.getElementById("roomList");
-        for (var room in data){
-            var roomInfo = room["room"];
-            var playerList = room["player_list"];
+        for (var roomID in data) {
+            var roomInfo = data[roomID];
+            var roomCfg = roomInfo["room"];
+            var playerList = roomInfo["player_list"];
             var rowCount = roomList.rows.length;
-            // var cellCount = roomList.rows[0].cells.length;
-            var newRow = roomList.insertRow(++rowCount);
-            newRow.insertCell(0).innerHTML = roomInfo["room_id"];
-            newRow.insertCell(1).innerHTML = roomInfo["room_name"];
+            var newRow = roomList.insertRow();
+            newRow.insertCell(0).innerHTML = roomCfg["room_id"];
+            newRow.insertCell(1).innerHTML = roomCfg["room_name"];
             newRow.insertCell(2).innerHTML = playerList.length;
-            newRow.insertCell(3).innerHTML = roomInfo["level"];
-            newRow.insertCell(4).innerHTML = roomInfo["init_fund"];
-            newRow.insertCell(5).innerHTML = roomInfo["go_salary"];
-            newRow.insertCell(6).innerHTML = roomInfo["is_limited"];
+            newRow.insertCell(3).innerHTML = roomCfg["level"];
+            newRow.insertCell(4).innerHTML = roomCfg["init_fund"];
+            newRow.insertCell(5).innerHTML = roomCfg["go_salary"];
+            newRow.insertCell(6).innerHTML = roomCfg["is_limited"];
+            newRow.insertCell(7).innerHTML = "<button class=\"smallBtn\" id="+roomID+">join</button>";
         }
         showWindow('roomListWindow');
     });
@@ -175,7 +176,7 @@ function joinRoom(event) {
             "room_id": roomID
         }
     ];
-
+    
     $.post("/joingame", JSON.stringify(joinJson), function (data) {
         alert(data);
         // window.location.href='test.sustech.pub:8888/ingame';
