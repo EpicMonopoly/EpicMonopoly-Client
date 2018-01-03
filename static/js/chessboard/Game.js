@@ -575,7 +575,7 @@ function WebSocketTest() {
                 //this part is to initial block
                 console.log(dat);
                 if (dat.type == "init") {
-                    console.log("init");
+
                     /*
                     Firstly, initialize the chessboard
                       Create the part that never change:four corners, tax, community chest
@@ -593,109 +593,108 @@ function WebSocketTest() {
                     initial_button();
                     initial_block_sprite();
 
-            var information = dat1.data;
-            for (var j = 0; j < information.length; j++) {
-                if (information[j].type == 'block') {
-                    block_iter(information[j].data);
-                }
-                if (information[j].type == 'estate') {
-                    estate_iter(information[j].data);
-                }
-                if (information[j].type == 'utility') {
-                    utility_iter(information[j].data);
-                }
-                if (information[j].type == 'station') {
-                    station_iter(information[j].data);
+                    var information = dat.data;
+                    for (var j = 0; j < information.length; j++) {
+                        if (information[j].type == 'block') {
+                            block_iter(information[j].data);
+                        }
+                        if (information[j].type == 'estate') {
+                            estate_iter(information[j].data);
+                        }
+                        if (information[j].type == 'utility') {
+                            utility_iter(information[j].data);
+                        }
+                        if (information[j].type == 'station') {
+                            station_iter(information[j].data);
+                        }
+
+                        if (information[j].type == 'player') {
+                            player_iter(information[j].data);
+                        }
+                        if (information[j].type == 'ef') {
+                            document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
+                        }
+                    }
+
                 }
 
-                if (information[j].type == 'player') {
-                    player_iter(information[j].data);
+
+                if (dat.type == "update") {
+                    var information = dat.data;
+                    for (var j = 0; j < information.length; j++) {
+                        if (information[j].type == 'estate') {
+                            estate_update(information[j].data);
+                        }
+                        else if (information[j].type == 'utility') {
+                            utility_update(information[j].data);
+                        }
+                        else if (information[j].type == 'station') {
+                            station_update(information[j].data);
+                        }
+                        else if (information[j].type == 'player') {
+                            player_update(information[j].data);
+                        }
+                        else if (information[j].type == 'ef') {
+                            document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
+                        }
+                        else if (information[j].type == 'bank') {
+                            document.getElementById("house_in_bank").innerHTML = information[j].data[0].house_number;
+                            document.getElementById("hotel_in_bank").innerHTML = information[j].data[0].hotel_number;
+                        }
+                    }
                 }
-                if (information[j].type == 'ef') {
-                    document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
+
+                if (dat.type == 'choice') {
+                    var choice = document.getElementById("choiceWindow");
+                    choice.style.visibility = "visible";
+                    var string
+                    if (click_choose == 1) {
+                        string = {
+                            "type": "input",
+                            "data":
+                                [
+                                    {
+                                        "from_player_id": sessionStorage.uid,
+                                        "request": 1
+                                    }
+                                ]
+                        }
+
+                    }
+                    else {
+                        string = {
+                            "type": "input",
+                            "data":
+                                [
+                                    {
+                                        "from_player_id": sessionStorage.uid,
+                                        "request": 0
+                                    }
+                                ]
+                        }
+                    }
+                    ws.send(JSON.stringify(string));
                 }
+
+                if (dat.type == 'hint') {
+
+                    var myText = dat4.data[0].message;
+                    this.instructions = this.add.text(game.world.centerX, game.world.centerY,
+                        myText,
+                        {font: '50px lato', fill: '#f5f5f5', align: 'center'}
+                    );
+                    this.instructions.stroke = "#7f34de";
+                    this.instructions.strokeThickness = 16;
+                    //  Apply the shadow to the Stroke only
+                    this.instructions.setShadow(1, 1, "#333333", 1, true, false);
+                    this.instructions.anchor.setTo(0.5, 0.5);
+                    this.time.events.add(1000, this.instructions.destroy, this.instructions);
+                }
+
+
             }
-
         }
-
-        var dat2=game.cache.getJSON('update');
-        if (dat2.type == "update") {
-            var information = dat2.data;
-            for (var j = 0; j < information.length; j++) {
-                if (information[j].type == 'estate') {
-                    estate_update(information[j].data);
-                }
-                else if (information[j].type == 'utility') {
-                    utility_update(information[j].data);
-                }
-                else if (information[j].type == 'station') {
-                    station_update(information[j].data);
-                }
-                else if (information[j].type == 'player') {
-                    player_update(information[j].data);
-                }
-                else if (information[j].type == 'ef') {
-                    document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
-                }
-                else if (information[j].type == 'bank') {
-                    document.getElementById("house_in_bank").innerHTML = information[j].data[0].house_number;
-                    document.getElementById("hotel_in_bank").innerHTML = information[j].data[0].hotel_number;
-                }
-            }
-        }
-        var dat3=game.cache.getJSON('choice');
-        if(dat3.type=='choice')
-        {
-            var choice=document.getElementById("choiceWindow");
-            choice.style.visibility="visible";
-            var string
-            if(click_choose==1)
-            {
-               string= {
-                              "type": "input",
-                              "data":
-                                  [
-                                      {
-                                          "from_player_id": sessionStorage.uid,
-                                            "request": 1
-                                      }
-                ]
-                }
-
-            }
-            else
-            {
-              string= {
-                  "type": "input",
-                  "data":
-                      [
-                          {
-                              "from_player_id": sessionStorage.uid,
-                              "request": 0
-                          }
-                      ]
-              }
-            }
-            ws.send(JSON.stringify(string));
-        }
-        var dat4=game.cache.getJSON('hint');
-        if(dat4.type=='hint')
-        {
-
-            var myText=dat4.data[0].message;
-            this.instructions = this.add.text( game.world.centerX, game.world.centerY,
-                myText,
-                {font: '50px lato', fill: '#f5f5f5', align: 'center'}
-            );
-            this.instructions.stroke = "#7f34de";
-            this.instructions.strokeThickness = 16;
-            //  Apply the shadow to the Stroke only
-            this.instructions.setShadow(1, 1, "#333333", 1, true, false);
-            this.instructions.anchor.setTo(0.5, 0.5);
-            this.time.events.add(1000, this.instructions.destroy, this.instructions);
-        }
-
-
+    }
 }
 function mortgage() {
     if(block_information[current_choose_block].owner_id==sessionStorage.uid && block_information[current_choose_block].status==1)
@@ -714,6 +713,7 @@ function mortgage() {
     ws.send(JSON.stringify(string));
 
 }
+
 /*
 solve the choice json
  */
@@ -1100,7 +1100,7 @@ function trade_iter(data) {
     }
 }
 
-type_read(json_demo);
+
 
 
 // read json
