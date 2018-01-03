@@ -1,5 +1,5 @@
-var ws ;
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "midPart", {preload: preload, create: WebSocketTest});
+var ws;
+var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", {preload: preload, create: WebSocketTest});
 
 
 function preload() {
@@ -25,7 +25,8 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
-    ws = new WebSocket(sessionStorage.website);
+    game.load.json('record', 'static/json/record.json');
+    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id="+sessionStorage.uid+"&roomid="+sessionStorage.room_id);
 }
 
 var block = new Array(40);//to save the object of every block
@@ -580,18 +581,23 @@ function WebSocketTest() {
         };
         ws.onmessage = function (evt) {
             var received_msg = evt.data;
-
+            console.log(received_msg);
             try {
                 //parse json file
                 var dat = JSON.parse(received_msg);
                 //this part is to initial block
+                console.log(dat);
                 if (dat.type == "init") {
+                    console.log("init");
                     /*
                     Firstly, initialize the chessboard
                       Create the part that never change:four corners, tax, community chest
                      */
                     var canvas = document.getElementById("game");
                     canvas.style.visibility = "visible";
+                    var startBtn = document.getElementById("startBtn");
+                    startBtn.style.visibility = "hidden";
+                    console.log("visible");
                     initial_position();
                     initial_block_information();
                     initial_player();
@@ -651,6 +657,10 @@ function WebSocketTest() {
                     }
                 }
 
+                if(dat.type == 'record'){
+                    addToRecords(dat.data[0].message);
+                }
+
             } catch (e) {
                 // 不符合json格式的字符串打印出来
 
@@ -660,6 +670,7 @@ function WebSocketTest() {
         ws.onclose = function () {
 
         };
+                
     } else {
 
     }
@@ -1014,10 +1025,9 @@ function get_hint() {
 }
 
 
-
 function addToRecords(newEvent) {
     var recordContent = document.getElementById("recordContent");
-    recordContent.textContent += newEvent +'\r\n';
+    recordContent.textContent += newEvent + '\r\n';
     recordContent.scrollTop = recordContent.scrollHeight;
 }
 
@@ -1035,6 +1045,3 @@ function setAvatar() {
 function startGame() {
     ws.send("start");
 }
-
-
-
