@@ -73,7 +73,17 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                  */
                 else if(i==12 || i==28)
                 {
-
+                    block_information[i]= {
+                        "estate_value": 0,
+                        "block_id": 0,
+                        "mortgage_value": 75.0,
+                        "position": 12,
+                        "uid": "99",
+                        "name": "Power Station",
+                        "status": -1,
+                        "rate_with_one_utility":0,
+                        "rate_with_two_utility":0
+                    }
                 }
                 else if(i==0||i==10||i==20||i==30||i==2||i==4||i==7||i==17||i==22||i==33||i==36||i==38)
                 {
@@ -82,14 +92,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                         "owner_name":"",
                         "block_id":0,
                         "position":0,
-                        "owner_id":"",
-                        "estate_value":0,
-                        "status":"",
-                        "street_id":"",
-                        "house_value":0,
-                        "house_number":0,
-                        "mortgage_value":0,
-                        "payment":""
+
                     }
 
                 }
@@ -107,7 +110,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                         "house_value":0,
                         "house_number":0,
                         "mortgage_value":0,
-                        "payment":""
+                        "with_one_house":0,
+                        "with_two_house":0,
+                        "with_three_house":0,
+                        "with_four_house":0,
+                        "with_five_house":0,
+                        "with_six_house":0
                     }
                 }
 
@@ -121,19 +129,19 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         function show_block_infoContect(blockid)
         {
             //show utility information
-            if(blockid==5||blockid==12||blockid==15||blockid==25||blockid==28||blockid==35)
+            if(blockid==12||blockid==28)
             {
 
                 document.getElementById("utility_block_name").innerHTML =block_information[blockid].name;
                 document.getElementById("utility_owner_name").innerHTML =block_information[blockid].owner_name;
                 document.getElementById("utility_estate_value").innerHTML =block_information[blockid].estate_value.toString();
                 document.getElementById("utility_mortgage_value").innerHTML =block_information[blockid].mortgage_value.toString();
-                document.getElementById("utility_payment").innerHTML =block_information[blockid].payment.toString();
+                document.getElementById("with_one_utility").innerHTML =block_information[blockid].rate_with_one_utility.toString();
+                document.getElementById("with_two_utility").innerHTML =block_information[blockid].rate_with_two_utility.toString();
 
             }
-            if(blockid==5||blockid==15||blockid==25||blockid==35)
+            else if(blockid==5||blockid==15||blockid==25||blockid==35)
             {
-                alert(block_information[blockid].house_value);
                 document.getElementById("station_block_name").innerHTML =block_information[blockid].name;
                 document.getElementById("station_owner_name").innerHTML =block_information[blockid].owner_name;
                 document.getElementById("station_estate_value").innerHTML =block_information[blockid].estate_value.toString();
@@ -143,6 +151,21 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 document.getElementById("with_three_station").innerHTML=block_information[blockid].with_three_station.toString();
                 document.getElementById("with_four_station").innerHTML=block_information[blockid].with_four_station.toString();
 
+            }
+            else
+            {
+                document.getElementById("block_name").innerHTML =block_information[blockid].name;
+                document.getElementById("owner_name").innerHTML =block_information[blockid].owner_name;
+                document.getElementById("estate_value").innerHTML =block_information[blockid].estate_value.toString();
+                document.getElementById("mortgage_value").innerHTML =block_information[blockid].mortgage_value.toString();
+                document.getElementById("with_one_house").innerHTML=block_information[blockid].with_one_house.toString();
+                document.getElementById("with_two_house").innerHTML=block_information[blockid].with_two_house.toString();
+                document.getElementById("with_three_house").innerHTML=block_information[blockid].with_three_house.toString();
+                document.getElementById("with_four_house").innerHTML=block_information[blockid].with_four_house.toString();
+                document.getElementById("with_five_house").innerHTML=block_information[blockid].with_five_house.toString();
+                document.getElementById("with_six_house").innerHTML=block_information[blockid].with_six_house.toString();
+                document.getElementById("house_value").innerHTML=block_information[blockid].house_value.toString();
+                document.getElementById("house_number").innerHTML=block_information[blockid].house_number.toString();
             }
 
 
@@ -494,9 +517,13 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     }
                 }
            var infoWindow;
-           if(5==position||12==position||15==position||25==position||28==position||35==position)
+           if(12==position||28==position)
            {
                infoWindow = document.getElementById("informationWindowUtility");
+           }
+           else if(5==position||15==position||25==position||35==position)
+           {
+               infoWindow=document.getElementById("informationWindowStation");
            }
            else if(position!= 2 &&  position !=17 && position!=33 && position != 4  && position!= 38  && position!= 7  && position!= 22 && position!=  36)
            {
@@ -659,22 +686,17 @@ add player information to player list from back end
 function player_iter(data) {
     for(var i = 0; i < data.length; i++) {
         var dat = data[i];
-            for(var j=0;j<6;j++)
-            {
-                if(player[j].id==dat.id)
-                {
-                    player_sprite[j].kill();
-                    player[j].name=dat.name;
-                    player[j].id=dat.id;
-                    player[j].alliance=dat.alliance;
-                    player[j].cash=Number(dat.cash);
-                    player[j].position =Number(dat.position);
-                    player[j].pre_position=Number(dat.pre_position);
-                    player[j].card_num=Number(dat.card_num);
-                    player[j].property=dat.property;
 
-                }
-            }
+
+                    player[i].name=dat.name;
+                    player[i].id=dat.id;
+                    player[i].alliance=dat.alliance;
+                    player[i].cash=Number(dat.cash);
+                    player[i].position =Number(dat.position);
+                    player[i].pre_position=Number(dat.pre_position);
+                    player[i].card_num=Number(dat.card_num);
+                    player[i].property=dat.property;
+
         create_player(player[i].id);
     }
 }
@@ -754,7 +776,13 @@ function estate_iter(data) {
             block_information[blockid].house_value = dat.house_value;
             // block_information[blockid].house_number = dat.house_number;
             block_information[blockid].mortgage_value = dat.mortgage_value;
-            block_information[blockid].payment = dat.payment;
+            block_information[blockid].with_one_house=Number(dat.payment[0].payment);
+            block_information[blockid].with_two_house=Number(dat.payment[1].payment);
+            block_information[blockid].with_three_house=Number(dat.payment[2].payment);
+            block_information[blockid].with_four_house=Number(dat.payment[3].payment);
+            block_information[blockid].with_five_house=Number(dat.payment[4].payment);
+            block_information[blockid].with_six_house=Number(dat.payment[5].payment);
+            alert(dat.payment[1].payment);
             picture[blockid] = Number(dat.street_id) - 1;
             create_block(blockid);
 
@@ -783,7 +811,8 @@ function utility_iter(data) {
         block_information[blockid].estate_value=dat.estate_value;
         block_information[blockid].status=dat.status;
         block_information[blockid].mortgage_value=dat.mortgage_value;
-        block_information[blockid].payment=dat.payment;
+        block_information[blockid].rate_with_one_utility=dat.payment[0].rate;
+        block_information[blockid].rate_with_two_utility=dat.payment[1].rate;
         if(dat.name=="Power Station")
         {
             picture[blockid]='electricity';
@@ -808,10 +837,10 @@ function station_iter(data) {
         block_information[blockid].estate_value=dat.estate_value;
         block_information[blockid].status=dat.status;
         block_information[blockid].mortgage_value=dat.mortgage_value;
-        block_information[blockid].with_one_stationt=dat.payment[0].payment;
-        block_information[blockid].with_two_stationt=dat.payment[1].payment;
-        block_information[blockid].with_three_stationt=dat.payment[2].payment;
-        block_information[blockid].with_four_stationt=dat.payment[3].payment;
+        block_information[blockid].with_one_station=dat.payment[0].payment;
+        block_information[blockid].with_two_station=dat.payment[1].payment;
+        block_information[blockid].with_three_station=dat.payment[2].payment;
+        block_information[blockid].with_four_station=dat.payment[3].payment;
         picture[blockid]='railway_station';
         create_block(blockid);
 
