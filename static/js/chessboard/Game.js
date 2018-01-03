@@ -1,5 +1,5 @@
 var ws;
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", {preload: preload, create: WebSocketTest});
+var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", { preload: preload, create: WebSocketTest });
 
 
 function preload() {
@@ -25,8 +25,8 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
+    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
     game.load.json('record', 'static/json/record.json');
-    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id="+sessionStorage.uid+"&roomid="+sessionStorage.room_id);
 }
 
 var block = new Array(40);//to save the object of every block
@@ -229,7 +229,7 @@ function create_player(playerid) {
             id = i;
         }
     }
-    player_sprite[id] = game.add.sprite(position_x[current_create_player.position] + parseInt(id / 3) * 25 + 5, position_y[current_create_player.position] + 25 * (id % 3) + 5, 'avatar');
+    player_sprite[id] = game.add.sprite(position_x[current_create_player.position] + parseInt(id / 3) * 10 + 5, position_y[current_create_player.position] + 10 * (id % 3) + 5, 'avatar');
     player_sprite[id].frame = current_create_player.avatar_id * 6 + current_create_player.avatar_color;
     player_sprite[id].width = 20;
     player_sprite[id].height = 20;
@@ -438,15 +438,7 @@ var block_house_number = new Array(40);
 function initial_block_sprite() {
     for (var i = 0; i < 40; i++) {
         block_house_number[i] = 0;
-        block_house[i] = {
-            "house_one": "",
-            "house_two": "",
-            "house_three": "",
-            "house_four": "",
-            "hotel_one": "",
-            "hotel_two": ""
-
-        }
+        block_house[i] = new Array(6);
     }
 
 }
@@ -460,47 +452,36 @@ function create_house(blockid) {
             color = player[i].avatar_color;
         }
     }
-    var amount = block_information[blockid].has_house;
-    if (amount == 1) {
-        block_house[blockid].house_one = game.add.sprite(position_x[blockid], position_x[blockid], 'house');
-        block_house[blockid].house_one.width = 20;
-        block_house[blockid].house_one.height = 20;
-        block_house[blockid].house_one.frame = color;
-    }
-    else if (amount == 2) {
-        block_house[blockid].house_two = game.add.sprite(position_x[blockid], position_x[blockid], 'house');
-        block_house[blockid].house_two.frame = color;
-        block_house[blockid].house_two.width = 20;
-        block_house[blockid].house_two.height = 20;
-    }
-    else if (amount == 3) {
-        block_house[blockid].house_three = game.add.sprite(position_x[blockid], position_x[blockid], 'house');
-        block_house[blockid].house_three.frame = color;
-        block_house[blockid].house_three.width = 20;
-        block_house[blockid].house_three.width = 20;
-    }
-    else if (amount == 4) {
-        block_house[blockid].house_four = game.add.sprite(position_x[blockid], position_x[blockid], 'house');
-        block_house[blockid].house_four.frame = color;
-        block_house[blockid].house_four.width = 20;
-        block_house[blockid].house_four.height = 20;
-    }
-    else if (amount == 5) {
-        block_house[blockid].house_one.kill();
-        block_house[blockid].house_two.kill();
-        block_house[blockid].house_three.kill();
-        block_house[blockid].house_four.kill();
-        block_house[blockid].hotel_one = game.add.sprite(position_x[blockid] + (amount / 2) * 30 + 5, position_x[blockid] + (amount % 2) * 30 + 5, 'house');
-        block_house[blockid].hotel_one.frame = color;
-        block_house[blockid].hotel_one.width = 20;
-        block_house[blockid].hotel_one.height = 20;
-    }
-    else if (amount == 6) {
 
-        block_house[blockid].hotel_two = game.add.sprite(position_x[blockid] + (amount / 2) * 30 + 5, position_x[blockid] + (amount % 2) * 30 + 5, 'house');
-        block_house[blockid].hotel_two.frame = color;
-        block_house[blockid].hotel_two.width = 20;
-        block_house[blockid].hotel_two.height = 20;
+    for (var i = block_house_number[blockid];i<block_information[blockid].has_house;i++)
+    {
+        if(i<4)
+        {
+            block_house[blockid][i]=game.add.sprite(position_x[blockid]+5+25*parseInt(i/2),position_y[blockid]+5+25*(1-i%2),'house');
+            block_house[blockid][i].frame=color;
+            block_house[blockid][i].width=20;
+            block_house[blockid][i].height=20;
+        }
+        else if(i==4)
+        {
+            block_house[blockid][0].kill();
+            block_house[blockid][1].kill();
+            block_house[blockid][2].kill();
+            block_house[blockid][3].kill();
+            block_house[blockid][4]=game.add.sprite(position_x[blockid]+5,position_y[blockid]+5,'hotel');
+            block_house[blockid][4].frame=color;
+            block_house[blockid][i].width=20;
+            block_house[blockid][i].height=20;
+        }
+        else if(i==5)
+        {
+
+            block_house[blockid][5]=game.add.sprite(position_x[blockid]+5,position_y[blockid]+30,'hotel');
+            block_house[blockid][5].frame=color;
+            block_house[blockid][i].width=20;
+            block_house[blockid][i].height=20;
+        }
+        block_house_number[blockid]=block_information[blockid].has_house;
     }
 
 
@@ -511,6 +492,7 @@ function create_house(blockid) {
 listener is a array of functions
 these functions are aimed to show a window when click the sprite
  */
+var current_choose_block;
 function listener(sprite, pointer) {
 
 
@@ -549,8 +531,13 @@ function listener(sprite, pointer) {
         infoWindow = document.getElementById("informationWindowEstate");
 
     }
+    else
+    {
+        return;
+    }
 
     show_block_infoContect(position);
+    current_choose_block=position;
     infoWindow.style.visibility = "visible";
 }
 
@@ -566,7 +553,7 @@ function buy() {
 
 }
 
-//
+
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 // function WebSocketTest() {
 //     var dat1 = game.cache.getJSON('json');
@@ -588,7 +575,7 @@ function WebSocketTest() {
                 //this part is to initial block
                 console.log(dat);
                 if (dat.type == "init") {
-                    console.log("init");
+
                     /*
                     Firstly, initialize the chessboard
                       Create the part that never change:four corners, tax, community chest
@@ -657,24 +644,182 @@ function WebSocketTest() {
                     }
                 }
 
-                if(dat.type == 'record'){
-                    addToRecords(dat.data[0].message);
+                if (dat.type == 'choice') {
+                    var choice = document.getElementById("choiceWindow");
+                    choice.style.visibility = "visible";
+                    var string
+                    if (click_choose == 1) {
+                        string = {
+                            "type": "input",
+                            "data":
+                                [
+                                    {
+                                        "from_player_id": sessionStorage.uid,
+                                        "request": 1
+                                    }
+                                ]
+                        }
+
+                    }
+                    else {
+                        string = {
+                            "type": "input",
+                            "data":
+                                [
+                                    {
+                                        "from_player_id": sessionStorage.uid,
+                                        "request": 0
+                                    }
+                                ]
+                        }
+                    }
+                    ws.send(JSON.stringify(string));
                 }
 
-            } catch (e) {
-                // 不符合json格式的字符串打印出来
+                if (dat.type == 'hint') {
+
+                    var myText = dat4.data[0].message;
+                    this.instructions = this.add.text(game.world.centerX, game.world.centerY,
+                        myText,
+                        {font: '50px lato', fill: '#f5f5f5', align: 'center'}
+                    );
+                    this.instructions.stroke = "#7f34de";
+                    this.instructions.strokeThickness = 16;
+                    //  Apply the shadow to the Stroke only
+                    this.instructions.setShadow(1, 1, "#333333", 1, true, false);
+                    this.instructions.anchor.setTo(0.5, 0.5);
+                    this.time.events.add(1000, this.instructions.destroy, this.instructions);
+                }
 
 
             }
-        };
-        ws.onclose = function () {
-
-        };
-                
-    } else {
-
+        }
     }
 }
+function mortgage() {
+    if(block_information[current_choose_block].owner_id==sessionStorage.uid && block_information[current_choose_block].status==1)
+    {
+        string= {
+            "type": "input",
+            "data":
+                [
+                    {
+                        "from_player_id": sessionStorage.uid,
+                        "request": 5,
+                    }
+                ]
+        }
+    }
+    ws.send(JSON.stringify(string));
+
+}
+
+/*
+solve the choice json
+ */
+var choose;
+var click_choose=0;
+function choose_yes() {
+    choose=1;
+    click_choose=1;
+
+}
+function choose_no() {
+    choose=0;
+    click_choose=1;
+}
+
+// function WebSocketTest() {
+//     if ("WebSocket" in window) {
+//         ws.onopen = function () {
+//             ws.send("Message to send");
+//         };
+//         ws.onmessage = function (evt) {
+//             var received_msg = evt.data;
+//
+//             try {
+//                 //parse json file
+//                 var dat = JSON.parse(received_msg);
+//                 //this part is to initial block
+//                 if (dat.type == "init") {
+//                     /*
+//                     Firstly, initialize the chessboard
+//                       Create the part that never change:four corners, tax, community chest
+//                      */
+//                     var canvas = document.getElementById("game");
+//                     canvas.style.visibility = "visible";
+//                     initial_position();
+//                     initial_block_information();
+//                     initial_player();
+//                     create_ChessBoard();
+//                     initial_dice();
+//                     initial_button();
+//                     initial_block_sprite();
+//
+//                     var information = dat.data;
+//                     for (var j = 0; j < information.length; j++) {
+//                         if (information[j].type == 'block') {
+//                             block_iter(information[j].data);
+//                         }
+//                         if (information[j].type == 'estate') {
+//                             estate_iter(information[j].data);
+//                         }
+//                         if (information[j].type == 'utility') {
+//                             utility_iter(information[j].data);
+//                         }
+//                         if (information[j].type == 'station') {
+//                             station_iter(information[j].data);
+//                         }
+//
+//                         if (information[j].type == 'player') {
+//                             player_iter(information[j].data);
+//                         }
+//                         if (information[j].type == 'ef') {
+//                             document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
+//                         }
+//                     }
+//
+//                 }
+//
+//
+//                 if (dat.type == "update") {
+//                     var information = dat.data;
+//                     for (var j = 0; j < information.length; j++) {
+//                         if (information[j].type == 'estate') {
+//                             estate_update(information[j].data);
+//                         }
+//                         else if (information[j].type == 'utility') {
+//                             utility_update(information[j].data);
+//                         }
+//                         else if (information[j].type == 'station') {
+//                             station_update(information[j].data);
+//                         }
+//                         else if (information[j].type == 'player') {
+//                             player_update(information[j].data);
+//                         }
+//                         else if (information[j].type == 'ef') {
+//                             document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
+//                         }
+//                         else if (information[j].type == 'bank') {
+//                             document.getElementById("house_in_bank").innerHTML = information[j].data[0].house_number;
+//                             document.getElementById("hotel_in_bank").innerHTML = information[j].data[0].hotel_number;
+//                         }
+//                     }
+//                 }
+//
+//             } catch (e) {
+//                 // 不符合json格式的字符串打印出来
+//
+//
+//             }
+//         };
+//         ws.onclose = function () {
+//
+//         };
+//     } else {
+//
+//     }
+// }
 
 
 
@@ -955,7 +1100,7 @@ function trade_iter(data) {
     }
 }
 
-type_read(json_demo);
+
 
 
 // read json
@@ -997,15 +1142,20 @@ function initial_dice() {
 var dice1_num = 3;
 var dice2_num = 4;
 
+function set_dice(num1, num2) {
+    dice1.frame = num1;
+    dice2.frame = num2;
+}
+
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
-        setTimeout(function () {
-            dice1.animations.stop();
-            dice2.animations.stop();
-            dice1.frame = dice1_num;
-            dice2.frame = dice2_num;
-        }, 3000);
+        // setTimeout(function () {
+        //     dice1.animations.stop();
+        //     dice2.animations.stop();
+        //     dice1.frame = dice1_num;
+        //     dice2.frame = dice2_num;
+        // }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
     button1.height = 30;
@@ -1023,6 +1173,7 @@ function get_hint() {
     var message = game.cache.getJSON('hint');
     alert(message.data[0].message);
 }
+
 
 
 function addToRecords(newEvent) {
