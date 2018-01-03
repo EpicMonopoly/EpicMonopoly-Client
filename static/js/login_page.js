@@ -71,7 +71,9 @@ function hideWindow(windowId) {
 
 function getRoomList() {
     $.get("/roomlist", function (data) {
+        data = JSON.parse(data);
         var roomList = document.getElementById("roomList");
+        $("#roomList").find("tr").remove();
         for (var roomID in data) {
             var roomInfo = data[roomID];
             var roomCfg = roomInfo["room"];
