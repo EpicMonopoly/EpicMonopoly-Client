@@ -924,7 +924,7 @@ function estate_update(data) {
         block_information[blockid].status = dat.status;
         block_information[blockid].street_id = dat.street_id;
         block_information[blockid].house_value = dat.house_value;
-        block_information[blockid].house_num = dat.house_number;
+        block_information[blockid].has_house = dat.house_number;
         block_information[blockid].mortgage_value = dat.mortgage_value;
         block_information[blockid].with_one_house=Number(dat.payment[0].payment);
         block_information[blockid].with_two_house=Number(dat.payment[1].payment);
