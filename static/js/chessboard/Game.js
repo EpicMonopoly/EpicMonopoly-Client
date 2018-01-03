@@ -657,7 +657,10 @@ function WebSocketTest() {
                     }
                 }
 
-                addToRecords(record);
+                if(dat.type == 'record'){
+                    addToRecords(dat.data[0].message);
+                }
+
             } catch (e) {
                 // 不符合json格式的字符串打印出来
 
@@ -1022,10 +1025,9 @@ function get_hint() {
 }
 
 
-var record = game.cache.getJSON('record');
-function addToRecords(record) {
+function addToRecords(newEvent) {
     var recordContent = document.getElementById("recordContent");
-    recordContent.textContent += record.data[0].message + '\r\n';
+    recordContent.textContent += newEvent + '\r\n';
     recordContent.scrollTop = recordContent.scrollHeight;
 }
 
