@@ -646,6 +646,7 @@ function WebSocketTest() {
                     this.instructions.setShadow(1, 1, "#333333", 1, true, false);
                     this.instructions.anchor.setTo(0.5, 0.5);
                     this.time.events.add(1000, this.instructions.destroy, this.instructions);
+                    alert("here");
 
                 }
 
