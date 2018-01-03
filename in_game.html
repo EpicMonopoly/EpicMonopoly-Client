@@ -12,7 +12,7 @@
         <title>In Game</title>
     </head>
     <body>
-        <div class="hidden shadowBox" id="choiceWindow" style="text-align:center; left: 600px; top: 300px; visibility: visible">
+        <div class="hidden shadowBox" id="choiceWindow" style="text-align:center; left: 600px; top: 300px; ">
             <h4 style="margin: 10px">Buy it?</h4>
             <button class="smallBtn">Yes</button>
             <button class="smallBtn">No</button>
@@ -189,8 +189,9 @@
                 <!--</audio>-->
             </div>
             <div id="midPart" >
-                <div id="game" ></div>
+                <div id="game" style="visibility: hidden"></div>
                 <script type="text/javascript" src="static/js/chessboard/Game.js"></script>
+                <button class="shadowBox" id="startBtn" title="at least 2 players" onclick="startGame()">Start Game!</button>
             </div>
             <div id="rightPart">
                 <div id="record" class="shadowBox">
