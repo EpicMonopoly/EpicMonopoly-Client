@@ -29,7 +29,7 @@ function preload() {
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
     game.load.json("dice_result", 'static/json/dice_result.json');
-    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
+    ws = new WebSocket("ws://10.20.2.35:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
     game.load.json('record', 'static/json/record.json');
 }
 
@@ -520,6 +520,14 @@ function listener(sprite, pointer) {
 function roll_dice() {
     setInterval(dice1.animations.play('dice1'), 3000);
     setInterval(dice2.animations.play('dice2'), 3000);
+    string = {
+        "type": "input",
+        "data": [{
+            "from_player_id": sessionStorage.uid,
+            "request": 2
+        }]
+    }
+    ws.send(JSON.stringify(string));
     // var dice = dice_1 + dice_2;
 }
 
@@ -658,16 +666,26 @@ function WebSocketTest() {
                 }
 
                 // var dat5 = game.cache.getJSON('dice_result');
-                if(dat.type == 'dice_result') {
-                    
+                if (dat.type == 'dice_result') {
+
                     dice1_num = dat.data[0].dice_result[0];
                     dice2_num = dat.data[0].dice_result[1];
                     console.log(dice1_num);
                     console.log(dice2_num);
                 }
-                
-                if(dat.type == 'newturn') {
+
+                if (dat.type == 'newturn') {
                     cur_player = dat.data[0].id;
+                    console.log(sessionStorage.uid);
+                    console.log(cur_player);
+                    if (sessionStorage.uid == cur_player) {
+                        button1.visible = true;
+                        button2.visible = true;
+                    }
+                    else {
+                        button1.visible = false;
+                        button2.visible = false;
+                    }
                 }
             } catch (e) {
                 //not json format
@@ -1124,6 +1142,7 @@ function set_dice(num1, num2) {
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
+
         setTimeout(function () {
             dice1.animations.stop();
             dice2.animations.stop();
@@ -1140,12 +1159,13 @@ function initial_button() {
     button2.width = 90;
     button2.height = 30;
     button2.input.useHandCursor = true;
-
-    if (sessionStorage.id == cur_player) {
+    console.log(sessionStorage.uid);
+    console.log(cur_player);
+    if (sessionStorage.uid == cur_player) {
         button1.visible = true;
         button2.visible = true;
     }
-    else{
+    else {
         button1.visible = false;
         button2.visible = false;
     }
