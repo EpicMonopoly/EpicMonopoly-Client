@@ -10,8 +10,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("electricity","static/img/icon_chessboard/electricity.png");
             game.load.image("go","static/img/icon_chessboard/go.png");
             game.load.image("go_jail","static/img/icon_chessboard/go_jail.png");
-            game.load.image("hotel","static/img/icon_chessboard/hotel.png");
-            game.load.image("house","static/img/icon_chessboard/house.png");
+            game.load.spritesheet("hotel","static/img/icon_chessboard/hotel.png",200,200);
+            game.load.spritesheet("house","static/img/icon_chessboard/house.png",200,200);
             game.load.image("in_jail","static/img/icon_chessboard/in_jail.png");
             game.load.image("income_tax","static/img/icon_chessboard/income_tax.png");
             game.load.image("luxury_tax","static/img/icon_chessboard/luxury_tax.png");
@@ -24,9 +24,10 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
             game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
             game.load.json('json','json/init_result.json');
+            game.load.json('update','json/update.json');
         }
         var block = new Array(40);//to save the object of every block
-        
+
         /*This array is to store the information:
         name:The block name
         owner: owner
@@ -79,11 +80,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                         "block_id": 0,
                         "mortgage_value": 75.0,
                         "position": 12,
-                        "uid": "99",
+                        "owner_id": "99",
                         "name": "Power Station",
                         "status": -1,
                         "rate_with_one_utility":0,
-                        "rate_with_two_utility":0
+                        "rate_with_two_utility":0,
+                        "owner_name":""
                     }
                 }
                 else if(i==0||i==10||i==20||i==30||i==2||i==4||i==7||i==17||i==22||i==33||i==36||i==38)
@@ -92,7 +94,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                         "name":"",
                         "owner_name":"",
                         "block_id":0,
-                        "position":0,
+                        "position":0
 
                     }
 
@@ -109,7 +111,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                         "status":"",
                         "street_id":"",
                         "house_value":0,
-                        "house_number":0,
+                        "has_house":0,
                         "mortgage_value":0,
                         "with_one_house":0,
                         "with_two_house":0,
@@ -153,7 +155,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 document.getElementById("with_four_station").innerHTML=block_information[blockid].with_four_station.toString();
 
             }
-            else
+            else if(blockid!= 2 &&  blockid !=17 && blockid!=33 && blockid != 4  && blockid!= 38  && blockid!= 7  && blockid!= 22 && blockid!=  36)
             {
                 document.getElementById("block_name").innerHTML =block_information[blockid].name;
                 document.getElementById("owner_name").innerHTML =block_information[blockid].owner_name;
@@ -166,7 +168,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                 document.getElementById("with_five_house").innerHTML=block_information[blockid].with_five_house.toString();
                 document.getElementById("with_six_house").innerHTML=block_information[blockid].with_six_house.toString();
                 document.getElementById("house_value").innerHTML=block_information[blockid].house_value.toString();
-                document.getElementById("house_number").innerHTML=block_information[blockid].house_number.toString();
+                document.getElementById("house_number").innerHTML=block_information[blockid].has_house.toString();
+
             }
 
 
@@ -233,12 +236,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     id = i;
                 }
             }
-            player_sprite[i]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
-            player_sprite[i].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
-            player_sprite[i].width=20;
-            player_sprite[i].height=20;
-            player_sprite[i].idleFrame=0;
-            game.physics.enable(player_sprite[i],Phaser.Physics.ARCADE);
+            player_sprite[id]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
+            player_sprite[id].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
+            player_sprite[id].width=20;
+            player_sprite[id].height=20;
+            player_sprite[id].idleFrame=0;
+            game.physics.enable(player_sprite[id],Phaser.Physics.ARCADE);
         }
 
 
@@ -462,15 +465,18 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     color=player[i].color;
                 }
             }
-            if(block_information.house_number<=4){
-                block_house[blockid][block_information.house_number-1]=game.add.sprite(position_x[blockid]+(house_number/2)*30+5,position_x[blockid]+(house_number%2)*30+5);
+            var amount=block_information[blockid].has_house;
+            if(amount<=4){
+                block_house[blockid][amount-1]=game.add.sprite(position_x[blockid]+(amount/2)*30+5,position_x[blockid]+(amount%2)*30+5,'house');
+                block_house[blockid][amount-1].frame=color;
             }
             else{
                 //firstly, kill the house sprite, then build hotel
                 for(var i=0;i<4;i++)
                 {
                     block_house[blockid][i].kill();
-                    block_house[blockid][block_information.house_number-1]=game.add.sprite(position_x[blockid]+(house_number/2)*30+5,position_x[blockid]+(house_number%2)*30+5);
+                    block_house[blockid][amount-1]=game.add.sprite(position_x[blockid]+(amount/2)*30+5,position_x[blockid]+(amount%2)*30+5,'hotel');
+                    block_house[blockid][amount-1].frame=color;
                 }
 
 
@@ -571,8 +577,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 // // var i, j;
 function WebSocketTest() {
-    var dat = game.cache.getJSON('json');
-    if (dat.type == "init") {
+    var dat1 = game.cache.getJSON('json');
+    if (dat1.type == "init") {
         /*
         Firstly, initialize the chessboard
           Create the part that never change:four corners, tax, community chest
@@ -586,7 +592,7 @@ function WebSocketTest() {
         initial_button();
 
 
-        var information = dat.data;
+        var information = dat1.data;
         for (var j = 0; j < information.length; j++) {
             if (information[j].type == 'block') {
                 block_iter(information[j].data);
@@ -609,6 +615,31 @@ function WebSocketTest() {
             }
         }
 
+    }
+    var dat2 = game.cache.getJSON('update');
+    if (dat2.type == "update") {
+        var information = dat2.data;
+        for (var j = 0; j < information.length; j++) {
+            if (information[j].type == 'estate') {
+                estate_update(information[j].data);
+            }
+            else if (information[j].type == 'utility') {
+                utility_update(information[j].data);
+            }
+            else if (information[j].type == 'station') {
+                station_update(information[j].data);
+            }
+            else if (information[j].type == 'player') {
+                player_update(information[j].data);
+            }
+            else if (information[j].type == 'ef') {
+                document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
+            }
+            else if (information[j].type == 'bank') {
+                document.getElementById("house_in_bank").innerHTML = information[j].data[0].house_number;
+                document.getElementById("hotel_in_bank").innerHTML = information[j].data[0].hotel_number;
+            }
+        }
     }
 }
 
@@ -722,6 +753,7 @@ function player_iter(data) {
         player[i].avatar_id=dat.avatar[0];
         player[i].avatar_color=dat.avatar[1];
         create_player(player[i].id);
+
     }
 }
 
@@ -798,7 +830,7 @@ function estate_iter(data) {
             block_information[blockid].status = dat.status;
             block_information[blockid].street_id = dat.street_id;
             block_information[blockid].house_value = dat.house_value;
-            // block_information[blockid].house_number = dat.house_number;
+            block_information[blockid].has_house = dat.house_number;
             block_information[blockid].mortgage_value = dat.mortgage_value;
             block_information[blockid].with_one_house=Number(dat.payment[0].payment);
             block_information[blockid].with_two_house=Number(dat.payment[1].payment);
@@ -836,6 +868,14 @@ function utility_iter(data) {
         block_information[blockid].mortgage_value=dat.mortgage_value;
         block_information[blockid].rate_with_one_utility=dat.payment[0].rate;
         block_information[blockid].rate_with_two_utility=dat.payment[1].rate;
+        for(var j=0;j<6;j++)
+        {
+            if(player[j].id==dat.owner_id)
+            {
+                block_information[blockid].owner_name=player[i].name;
+                block_information[blockid].owner_id=dat.owner_id;
+            }
+        }
         if(dat.name=="Power Station")
         {
             picture[blockid]='electricity';
@@ -884,7 +924,7 @@ function estate_update(data) {
         block_information[blockid].status = dat.status;
         block_information[blockid].street_id = dat.street_id;
         block_information[blockid].house_value = dat.house_value;
-        block_information[blockid].house_number = dat.house_number;
+        block_information[blockid].house_num = dat.house_number;
         block_information[blockid].mortgage_value = dat.mortgage_value;
         block_information[blockid].with_one_house=Number(dat.payment[0].payment);
         block_information[blockid].with_two_house=Number(dat.payment[1].payment);
@@ -892,7 +932,7 @@ function estate_update(data) {
         block_information[blockid].with_four_house=Number(dat.payment[3].payment);
         block_information[blockid].with_five_house=Number(dat.payment[4].payment);
         block_information[blockid].with_six_house=Number(dat.payment[5].payment);
-        if(house_number>0)
+        if(block_information[blockid].house_number>0)
         {
             create_house(blockid);
         }
@@ -932,6 +972,28 @@ function  station_update(data) {
     }
 }
 
+function player_update(data) {
+    for(var i = 0; i < data.length; i++) {
+        var dat=data[i];
+        for(var j=0;j<6;j++)
+        {
+            if(dat.id==player[j].id)
+            {
+
+                if(dat.position != player[j].position)
+                    player_sprite[j].kill();
+                player[i].cash = Number(dat.cash);
+                player[i].position = Number(dat.position);
+                player[i].pre_position = Number(dat.pre_position);
+                player[i].card_num = Number(dat.card_num);
+                player[i].property = dat.property;
+                create_player(dat.id);
+            }
+        }
+
+    }
+
+}
 function trade_iter(data) {
 
     for(var i = 0; i < data.length; i++) {
