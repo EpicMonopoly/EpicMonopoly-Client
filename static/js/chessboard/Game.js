@@ -632,7 +632,7 @@ function WebSocketTest() {
                 if (dat.type == 'hint') {
 
                     var myText = dat.data[0].message;
-                   
+                    alert(myText);
                     this.instructions = this.add.text(game.world.centerX, game.world.centerY,
                         myText, {
                             font: '50px lato',
@@ -646,7 +646,7 @@ function WebSocketTest() {
                     this.instructions.setShadow(1, 1, "#333333", 1, true, false);
                     this.instructions.anchor.setTo(0.5, 0.5);
                     this.time.events.add(1000, this.instructions.destroy, this.instructions);
-                    alert(myText);
+
                 }
 
                 // var dat5 = game.cache.getJSON('dice_result');
@@ -675,7 +675,7 @@ function WebSocketTest() {
                 if (dat.type == 'record') {
                     addToRecords(dat.data[0].message);
                 }
-                
+
             } catch (e) {
                 //not json format
             }
@@ -709,6 +709,7 @@ function choose_yes() {
         }]
     }
     ws.send(JSON.stringify(string));
+    choice_window.style.visibility = "hidden";
 }
 
 function choose_no() {
@@ -721,6 +722,7 @@ function choose_no() {
         }]
     }
     ws.send(JSON.stringify(string));
+    choice_window.style.visibility = "hidden";
 }
 
 // function WebSocketTest() {
@@ -1149,7 +1151,15 @@ function initial_button() {
     button1.height = 30;
     button1.input.useHandCursor = true;
     button2 = game.add.button(282, 370, 'end_turn_btn', function () {
-        alert('End turn.'); //TODO: need to implement
+        var string;
+        string = {
+            "type": "input",
+            "data": [{
+                "from_player_id": sessionStorage.uid,
+                "request": 6
+            }]
+        }
+        ws.send(JSON.stringify(string));
     }, this, 2, 1, 0);
     button2.width = 90;
     button2.height = 30;
