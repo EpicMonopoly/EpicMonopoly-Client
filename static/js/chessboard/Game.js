@@ -443,41 +443,77 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         //抵押后地皮消失
         //盖房子
         var block_house=new Array(40)
+        var block_house_number=new Array(40);
         function initial_block_sprite() {
             for(var i=0;i<40;i++)
             {
-                for(var j=0;j<6;j++)
-                {
-                    block_house[i][j]="";
+                block_house_number[i]=0;
+                block_house[i]={
+                    "house_one":"",
+                    "house_two":"",
+                    "house_three":"",
+                    "house_four":"",
+                    "hotel_one":"",
+                    "hotel_two":""
+
                 }
             }
 
         }
         function create_house(blockid) {
             var color;
+
             for(var i=0;i<6;i++)
             {
                 if(player[i].id==block_information[blockid].owner_id)
                 {
-                    color=player[i].color;
+
+                    color=player[i].avatar_color;
                 }
             }
             var amount=block_information[blockid].has_house;
-            if(amount<=4){
-                block_house[blockid][amount-1]=game.add.sprite(position_x[blockid]+(amount/2)*30+5,position_x[blockid]+(amount%2)*30+5,'house');
-                block_house[blockid][amount-1].frame=color;
+            if(amount == 1){
+                block_house[blockid].house_one=game.add.sprite(position_x[blockid],position_x[blockid],'house');
+                block_house[blockid].house_one.width=20;
+                block_house[blockid].house_one.height=20;
+                block_house[blockid].house_one.frame=color;
             }
-            else{
-                //firstly, kill the house sprite, then build hotel
-                for(var i=0;i<4;i++)
-                {
-                    block_house[blockid][i].kill();
-                    block_house[blockid][amount-1]=game.add.sprite(position_x[blockid]+(amount/2)*30+5,position_x[blockid]+(amount%2)*30+5,'hotel');
-                    block_house[blockid][amount-1].frame=color;
-                }
-
-
+            else if(amount == 2){
+                block_house[blockid].house_two=game.add.sprite(position_x[blockid],position_x[blockid],'house');
+                block_house[blockid].house_two.frame=color;
+                block_house[blockid].house_two.width=20;
+                block_house[blockid].house_two.height=20;
             }
+            else if(amount == 3){
+                block_house[blockid].house_three=game.add.sprite(position_x[blockid],position_x[blockid],'house');
+                block_house[blockid].house_three.frame=color;
+                block_house[blockid].house_three.width=20;
+                block_house[blockid].house_three.width=20;
+            }
+            else if(amount == 4){
+                block_house[blockid].house_four=game.add.sprite(position_x[blockid],position_x[blockid],'house');
+                block_house[blockid].house_four.frame=color;
+                block_house[blockid].house_four.width=20;
+                block_house[blockid].house_four.height=20;
+            }
+            else if(amount == 5){
+                block_house[blockid].house_one.kill();
+                block_house[blockid].house_two.kill();
+                block_house[blockid].house_three.kill();
+                block_house[blockid].house_four.kill();
+                block_house[blockid].hotel_one=game.add.sprite(position_x[blockid]+(amount/2)*30+5,position_x[blockid]+(amount%2)*30+5,'house');
+                block_house[blockid].hotel_one.frame=color;
+                block_house[blockid].hotel_one.width=20;
+                block_house[blockid].hotel_one.height=20;
+            }
+            else if(amount == 6){
+
+                block_house[blockid].hotel_two=game.add.sprite(position_x[blockid]+(amount/2)*30+5,position_x[blockid]+(amount%2)*30+5,'house');
+                block_house[blockid].hotel_two.frame=color;
+                block_house[blockid].hotel_two.width=20;
+                block_house[blockid].hotel_two.height=20;
+            }
+
 
 
         }
@@ -587,7 +623,7 @@ function WebSocketTest() {
         create_ChessBoard();
         initial_dice();
         initial_button();
-
+        initial_block_sprite();
 
         var information = dat1.data;
         for (var j = 0; j < information.length; j++) {
@@ -916,9 +952,12 @@ function estate_update(data) {
     {
         var dat=data[i];
         var blockid=dat.position;
-        block_information[blockid].name = dat.name;
-        block_information[blockid].position = dat.position;
-        block_information[blockid].block_id = dat.block_id;
+        block_information[blockid].owner_id=dat.owner_id;
+        for(var j=0;j<6;j++)
+            if(player[j].id==dat.owner_id)
+            {
+                block_information[blockid].owner_name=player[j].name;
+            }
         block_information[blockid].estate_value = dat.estate_value;
         block_information[blockid].status = dat.status;
         block_information[blockid].street_id = dat.street_id;
@@ -931,7 +970,7 @@ function estate_update(data) {
         block_information[blockid].with_four_house=Number(dat.payment[3].payment);
         block_information[blockid].with_five_house=Number(dat.payment[4].payment);
         block_information[blockid].with_six_house=Number(dat.payment[5].payment);
-        if(block_information[blockid].house_number>0)
+        if(block_information[blockid].has_house>block_house_number[blockid])
         {
             create_house(blockid);
         }
@@ -942,8 +981,13 @@ function utility_update(data) {
     for(var i = 0; i < data.length; i++) {
         var dat = data[i];
         var blockid=Number(dat.position);
-        block_information[blockid].name=dat.name;
-        block_information[blockid].block_id=dat.block_id;
+        block_information[blockid].owner_id=dat.owner_id;
+        for(var j=0;j<6;j++)
+            if(player[j].id==dat.owner_id)
+            {
+                block_information[blockid].owner_name=player[j].name;
+            }
+
         block_information[blockid].position=dat.position;
         block_information[blockid].estate_value=dat.estate_value;
         block_information[blockid].status=dat.status;
@@ -957,8 +1001,12 @@ function  station_update(data) {
     for(var i = 0; i < data.length; i++) {
         var dat = data[i];
         var blockid=dat.position;
-        block_information[blockid].name=dat.name;
-        block_information[blockid].block_id=dat.block_id;
+        block_information[blockid].owner_id=dat.owner_id;
+        for(var j=0;j<6;j++)
+            if(player[j].id==dat.owner_id)
+            {
+                block_information[blockid].owner_name=player[j].name;
+            }
         block_information[blockid].position=dat.position;
         block_information[blockid].estate_value=dat.estate_value;
         block_information[blockid].status=dat.status;
