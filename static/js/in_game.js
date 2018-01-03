@@ -10,7 +10,7 @@ function setCfg() {
     cfgContent.rows.item(3).cells.item(1).innerHTML = sessionStorage.init_fund;
     cfgContent.rows.item(4).cells.item(1).innerHTML = sessionStorage.go_salary;
     cfgContent.rows.item(5).cells.item(1).innerHTML = sessionStorage.is_limited;
-    setAvatar('avatar1', sessionStorage.avatar_id, sessionStorage.color_id);
+    // setAvatar('avatar1', sessionStorage.avatar[0], sessionStorage.avatar[1]);
 }
 
 function setAvatar(objID, avatarID, colorID) {

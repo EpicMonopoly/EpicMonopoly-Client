@@ -710,6 +710,7 @@ function choose_yes() {
         }]
     }
     ws.send(JSON.stringify(string));
+    var choice_window = document.getElementById("choiceWindow");
     choice_window.style.visibility = "hidden";
 }
 
@@ -723,6 +724,7 @@ function choose_no() {
         }]
     }
     ws.send(JSON.stringify(string));
+    var choice_window = document.getElementById("choiceWindow");
     choice_window.style.visibility = "hidden";
 }
 
