@@ -1,4 +1,4 @@
-var ws ;
+var ws;
 var game = new Phaser.Game(655, 655, Phaser.CANVAS, "midPart", {preload: preload, create: WebSocketTest});
 
 
@@ -25,7 +25,7 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
-    ws = new WebSocket(sessionStorage.website);
+    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id="+sessionStorage.uid+"&roomid="+sessionStorage.room_id);
 }
 
 var block = new Array(40);//to save the object of every block
