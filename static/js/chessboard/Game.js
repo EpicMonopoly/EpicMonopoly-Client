@@ -552,38 +552,10 @@ function WebSocketTest() {
         initial_block_information();
         initial_player();
         create_ChessBoard();
-        dice1 = this.game.add.sprite(270, 270, 'dice');
-        dice1.frame = 0;
-        dice2 = this.game.add.sprite(340, 270, 'dice');
-        dice2.frame = 0;
-        dice1.width = 45;
-        dice1.height = 45;
-        dice2.width = 45;
-        dice2.height = 45;
-        dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
-        dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
+        initial_dice();
+        initial_button();
 
-        button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
-            roll_dice();
-            setTimeout(function () {
-                dice1.animations.stop();
-                dice2.animations.stop();
-                dice1.frame = dice1_num;
-                dice2.frame = dice2_num;
-            }, 5000);
-        }, this, 2, 1, 0);
-        button1.width = 90;
-        button1.height = 30;
-        button1.input.useHandCursor = true;
-        button2 = game.add.button(282, 370, 'end_turn_btn', function () {
-            alert('End turn.');
-        }, this, 2, 1, 0);
-        button2.width = 90;
-        button2.height = 30;
-        button2.input.useHandCursor = true;
-
-
-
+       
         var information=dat.data;
         for(var j=0;j<information.length;j++)
         {
@@ -883,9 +855,39 @@ function init() {
 
 }
 
+function initial_dice() {
+    dice1 = this.game.add.sprite(270, 270, 'dice');
+    dice1.frame = 0;
+    dice2 = this.game.add.sprite(340, 270, 'dice');
+    dice2.frame = 0;
+    dice1.width = 45;
+    dice1.height = 45;
+    dice2.width = 45;
+    dice2.height = 45;
+    dice1.animations.add('dice1', [2, 0, 3, 5, 4, 1, 0, 5, 3, 0, 1, 2, 4], 15, true);
+    dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
+}
 
-
-
+function initial_button() {
+    button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
+        roll_dice();
+        setTimeout(function () {
+            dice1.animations.stop();
+            dice2.animations.stop();
+            dice1.frame = dice1_num;
+            dice2.frame = dice2_num;
+        }, 5000);
+    }, this, 2, 1, 0);
+    button1.width = 90;
+    button1.height = 30;
+    button1.input.useHandCursor = true;
+    button2 = game.add.button(282, 370, 'end_turn_btn', function () {
+        alert('End turn.'); //TODO: need to implement
+    }, this, 2, 1, 0);
+    button2.width = 90;
+    button2.height = 30;
+    button2.input.useHandCursor = true;
+}
 
 
 
