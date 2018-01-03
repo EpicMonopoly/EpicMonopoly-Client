@@ -1,5 +1,5 @@
 var ws;
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "midPart", {preload: preload, create: WebSocketTest});
+var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", {preload: preload, create: WebSocketTest});
 
 
 function preload() {
@@ -581,18 +581,23 @@ function WebSocketTest() {
         };
         ws.onmessage = function (evt) {
             var received_msg = evt.data;
-
+            console.log(received_msg);
             try {
                 //parse json file
                 var dat = JSON.parse(received_msg);
                 //this part is to initial block
+                console.log(dat);
                 if (dat.type == "init") {
+                    console.log("init");
                     /*
                     Firstly, initialize the chessboard
                       Create the part that never change:four corners, tax, community chest
                      */
                     var canvas = document.getElementById("game");
                     canvas.style.visibility = "visible";
+                    var startBtn = document.getElementById("startBtn");
+                    startBtn.style.visibility = "hidden";
+                    console.log("visible");
                     initial_position();
                     initial_block_information();
                     initial_player();
