@@ -473,9 +473,6 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             }
             var amount=block_information[blockid].has_house;
             if(amount == 1){
-                alert(color);
-                alert(position_x[blockid]);
-                alert(position_x[blockid]);
                 block_house[blockid].house_one=game.add.sprite(position_x[blockid],position_x[blockid],'house');
                 block_house[blockid].house_one.width=20;
                 block_house[blockid].house_one.height=20;
