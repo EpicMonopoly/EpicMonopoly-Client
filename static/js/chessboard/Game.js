@@ -627,27 +627,6 @@ function WebSocketTest() {
                 if (dat.type == 'choice') {
                     var choice_window = document.getElementById("choiceWindow");
                     choice_window.style.visibility = "visible";
-                    var string;
-                    if (click_choose == 1) {
-                        string = {
-                            "type": "input",
-                            "data": [{
-                                "from_player_id": sessionStorage.uid,
-                                "request": 1
-                            }]
-                        }
-
-                    } else {
-                        string = {
-                            "type": "input",
-                            "data": [{
-                                "from_player_id": sessionStorage.uid,
-                                "request": 0
-                            }]
-                        }
-                    }
-                    click_choose = 0;
-                    ws.send(JSON.stringify(string));
                 }
                 // var dat4 = game.cache.getJSON('hint');
                 if (dat.type == 'hint') {
@@ -712,17 +691,29 @@ function mortgage() {
 /*
 solve the choice json
  */
-var choose;
-var click_choose = 0;
 
 function choose_yes() {
-    choose = 1;
-    click_choose = 1;
+    var string;
+    string = {
+        "type": "input",
+        "data": [{
+            "from_player_id": sessionStorage.uid,
+            "request": 1
+        }]
+    }
+    ws.send(JSON.stringify(string));
 }
 
 function choose_no() {
-    choose = 0;
-    click_choose = 1;
+    var string;
+    string = {
+        "type": "input",
+        "data": [{
+            "from_player_id": sessionStorage.uid,
+            "request": 2
+        }]
+    }
+    ws.send(JSON.stringify(string));
 }
 
 // function WebSocketTest() {
