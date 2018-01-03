@@ -1036,11 +1036,6 @@ function updateInterest(newInterest) {
     statesContent.rows[0].cells[0].innerHTML += i;
 }
 
-function setAvatar() {
-    var avatar1 = document.getElementById("avatar1");
-    avatar1.addClass("svg-red");
-    avatar1.src = "static/img/avatar/icon_bug.svg";
-}
 
 function startGame() {
     ws.send("start");

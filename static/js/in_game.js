@@ -10,4 +10,25 @@ function setCfg() {
     cfgContent.rows.item(3).cells.item(1).innerHTML = sessionStorage.init_fund;
     cfgContent.rows.item(4).cells.item(1).innerHTML = sessionStorage.go_salary;
     cfgContent.rows.item(5).cells.item(1).innerHTML = sessionStorage.is_limited;
+    setAvatar('avatar1', sessionStorage.avatar_id, sessionStorage.color_id);
+}
+
+function setAvatar(objID, avatarID, colorID) {
+    img = document.getElementById(objID);
+    switch (avatarID){
+        case 0:img.src = "static/img/avatar/icon_bug.svg";break;
+        case 1:img.src = "static/img/avatar/icon_apple.svg";break;
+        case 2:img.src = "static/img/avatar/icon_aircraft.svg";break;
+        case 3:img.src = "static/img/avatar/icon_github.svg";break;
+        case 4:img.src = "static/img/avatar/icon_google.svg";break;
+        case 5:img.src = "static/img/avatar/icon_wifi.svg";break;
+    }
+    switch (colorID){
+        case 0:img.addClass("player-0");break;
+        case 1:img.addClass("player-1");break;
+        case 2:img.addClass("player-2");break;
+        case 3:img.addClass("player-3");break;
+        case 4:img.addClass("player-4");break;
+        case 5:img.addClass("player-5");break;
+    }
 }

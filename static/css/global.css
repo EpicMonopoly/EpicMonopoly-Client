@@ -85,58 +85,58 @@ hr{
     margin: 2px;
 }
 
-.player-red path{
+.player-0 path{
     fill: #ff0000;
 }
 
-.player-green path{
+.player-1 path{
     fill: #00ff00;
 }
 
-.player-blue path{
+.player-2 path{
     fill: #0000ff;
 }
 
-.player-yellow path{
+.player-3 path{
     fill: #ffff00;
 }
 
-.player-pink path{
+.player-4 path{
     fill: #ff00ff;
 }
 
-.player-cyan path{
+.player-5 path{
     fill: #00ffff;
 }
 
-.street-1 path{
+.street-0 path{
     fill: #ff8080;
 }
 
-.street-2 path{
+.street-1 path{
     fill: #ffdf80;
 }
 
-.street-3 path{
+.street-2 path{
     fill: #bfff7f;
 }
 
-.street-4 path{
+.street-3 path{
     fill: #82ffa1;
 }
 
-.street-5 path{
+.street-4 path{
     fill: #80ffff;
 }
 
-.street-6 path{
+.street-5 path{
     fill: #82a1ff;
 }
 
-.street-7 path{
+.street-6 path{
     fill: #c182ff;
 }
 
-.street-8 path{
+.street-7 path{
     fill: #ff80df;
 }
