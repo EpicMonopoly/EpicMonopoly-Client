@@ -66,7 +66,7 @@
                 <button class="smallBtn" onclick="">Mortgage</button>
             </div>
         </div>
-        <div class="hidden shadowBox" id="informationWindow" style="text-align: center; height: auto">
+        <div class="hidden shadowBox" id="informationWindowEstate" style="text-align: center; height: auto">
             <a class="statusbar" onclick="hideWindow('informationWindowEstate')" >
                 <img title="close" src="static/img/icon_ui/close.png" style="width: 12px; height: 12px">
             </a>
@@ -78,9 +78,34 @@
                     <tr><td>Owner</td><td><span id="owner_name">No owner</span></td></tr>
                     <tr><td>Estate value</td><td><span id="estate_value">0</span></td></tr>
                     <tr><td>House value</td><td><span id="house_value">0</span></td></tr>
-                    <tr><td>House number</td><td><span id="house_number">0</span></td></tr>
+                    <tr><td>House numbers</td><td><span id="houses">0</span></td></tr>
                     <tr><td>Mortgage Value</td><td><span id="mortgage_value">0</span></td></tr>
                     <tr><td>Payment</td><td><span id="payment">0</span></td></tr>
+                    </tbody>
+                </table>
+                <hr>
+                <button class="smallBtn" onclick="">Build</button>
+                <button class="smallBtn" onclick="">Sell</button>
+                <button class="smallBtn" onclick="">Mortgage</button>
+            </div>
+        </div>
+        <div class="hidden shadowBox" id="informationWindowStation" style="text-align: center; height: auto">
+            <a class="statusbar" onclick="hideWindow('informationWindowStation')" >
+                <img title="close" src="static/img/icon_ui/close.png" style="width: 12px; height: 12px">
+            </a>
+            <h4 style="margin: 2px">Information</h4><hr>
+            <div style="text-align: center">
+                <table id="infoContentStation" cellspacing="0" cellpadding="0" style="margin: auto">
+                    <tbody>
+                    <tr><td>Name</td><td><span id="station_block_name">hello</span></td></tr>
+                    <tr><td>Owner</td><td><span id="station_owner_name">No owner</span></td></tr>
+                    <tr><td>Estate value</td><td><span id="station_estate_value">0</span></td></tr>
+                    <tr><td>Mortgage Value</td><td><span id="station_mortgage_value">0</span></td></tr>
+                    <tr><td>Payment</td><td></td></tr>
+                    <tr><td></td><td>With one station</td><td><span id="with_one_station">0</span></td></tr>
+                    <tr><td></td><td>With two station</td><td><span id="with_two_station">0</span></td></tr>
+                    <tr><td></td><td>With three station</td><td><span id="with_three_station">0</span></td></tr>
+                    <tr><td></td><td>With four station</td><td><span id="with_four_station">0</span></td></tr>
                     </tbody>
                 </table>
                 <hr>
