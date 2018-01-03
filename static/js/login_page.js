@@ -69,6 +69,28 @@ function hideWindow(windowId) {
     window.style.visibility = "hidden";
 }
 
+function getRoomList() {
+    $.get("/roomlist", function (data) {
+        var roomList = document.getElementById("roomList");
+        for (var roomID in data) {
+            var roomInfo = data[roomID];
+            var roomCfg = roomInfo["room"];
+            var playerList = roomInfo["player_list"];
+            var rowCount = roomList.rows.length;
+            var newRow = roomList.insertRow();
+            newRow.insertCell(0).innerHTML = roomCfg["room_id"];
+            newRow.insertCell(1).innerHTML = roomCfg["room_name"];
+            newRow.insertCell(2).innerHTML = playerList.length;
+            newRow.insertCell(3).innerHTML = roomCfg["level"];
+            newRow.insertCell(4).innerHTML = roomCfg["init_fund"];
+            newRow.insertCell(5).innerHTML = roomCfg["go_salary"];
+            newRow.insertCell(6).innerHTML = roomCfg["is_limited"];
+            newRow.insertCell(7).innerHTML = "<button class=\"smallBtn\" id="+roomID+">join</button>";
+        }
+        showWindow('roomListWindow');
+    });
+}
+
 function getPlayerJson() {
     var name = document.getElementById("UserName").value;
     var avatarID = document.getElementById("selectAvatar").selectedIndex;
@@ -137,6 +159,7 @@ function createRoom() {
     ];
     $.post("/joingame", JSON.stringify(createJson), function (data) {
         alert(data);
+        // window.location.href='test.sustech.pub:8888/ingame';
     });
 }
 
@@ -153,8 +176,9 @@ function joinRoom(event) {
             "room_id": roomID
         }
     ];
-
+    
     $.post("/joingame", JSON.stringify(joinJson), function (data) {
         alert(data);
+        // window.location.href='test.sustech.pub:8888/ingame';
     });
 }

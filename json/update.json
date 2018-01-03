@@ -3,211 +3,6 @@
         {
             "data": [
                 {
-                    "position": 0,
-                    "block_id": 0,
-                    "name": "Go"
-                },
-                {
-                    "position": 1,
-                    "block_id": 18,
-                    "name": "Nanan"
-                },
-                {
-                    "position": 2,
-                    "block_id": 1,
-                    "name": "Community Chest"
-                },
-                {
-                    "position": 3,
-                    "block_id": 19,
-                    "name": "Yuzhong"
-                },
-                {
-                    "position": 4,
-                    "block_id": 2,
-                    "name": "Income Tax"
-                },
-                {
-                    "position": 5,
-                    "block_id": 17,
-                    "name": "Chongqing"
-                },
-                {
-                    "position": 6,
-                    "block_id": 20,
-                    "name": "Xinqu"
-                },
-                {
-                    "position": 7,
-                    "block_id": 3,
-                    "name": "Chance"
-                },
-                {
-                    "position": 8,
-                    "block_id": 21,
-                    "name": "Yuanqu"
-                },
-                {
-                    "position": 9,
-                    "block_id": 22,
-                    "name": "Jinlu"
-                },
-                {
-                    "position": 10,
-                    "block_id": 4,
-                    "name": "In Jail"
-                },
-                {
-                    "position": 11,
-                    "block_id": 23,
-                    "name": "Hanyang"
-                },
-                {
-                    "position": 12,
-                    "block_id": 13,
-                    "name": "Power Station"
-                },
-                {
-                    "position": 13,
-                    "block_id": 24,
-                    "name": "Wuchang"
-                },
-                {
-                    "position": 14,
-                    "block_id": 25,
-                    "name": "Hankou"
-                },
-                {
-                    "position": 15,
-                    "block_id": 16,
-                    "name": "Shanghai"
-                },
-                {
-                    "position": 16,
-                    "block_id": 26,
-                    "name": "Nankai"
-                },
-                {
-                    "position": 17,
-                    "block_id": 5,
-                    "name": "Community Chest"
-                },
-                {
-                    "position": 18,
-                    "block_id": 27,
-                    "name": "Hexi"
-                },
-                {
-                    "position": 19,
-                    "block_id": 28,
-                    "name": "Heping"
-                },
-                {
-                    "position": 20,
-                    "block_id": 6,
-                    "name": "Free Parking"
-                },
-                {
-                    "position": 21,
-                    "block_id": 29,
-                    "name": "Pudong"
-                },
-                {
-                    "position": 22,
-                    "block_id": 7,
-                    "name": "Chance"
-                },
-                {
-                    "position": 23,
-                    "block_id": 30,
-                    "name": "Xuhui"
-                },
-                {
-                    "position": 24,
-                    "block_id": 31,
-                    "name": "Jingan"
-                },
-                {
-                    "position": 25,
-                    "block_id": 15,
-                    "name": "Beijing"
-                },
-                {
-                    "position": 26,
-                    "block_id": 32,
-                    "name": "Haidian"
-                },
-                {
-                    "position": 27,
-                    "block_id": 33,
-                    "name": "Chaoyang"
-                },
-                {
-                    "position": 28,
-                    "block_id": 12,
-                    "name": "Water Work"
-                },
-                {
-                    "position": 29,
-                    "block_id": 34,
-                    "name": "Dongcheng"
-                },
-                {
-                    "position": 30,
-                    "block_id": 8,
-                    "name": "Go to Jail"
-                },
-                {
-                    "position": 31,
-                    "block_id": 35,
-                    "name": "Nanshan"
-                },
-                {
-                    "position": 32,
-                    "block_id": 36,
-                    "name": "Futian"
-                },
-                {
-                    "position": 33,
-                    "block_id": 9,
-                    "name": "Community Chest"
-                },
-                {
-                    "position": 34,
-                    "block_id": 37,
-                    "name": "Luohu"
-                },
-                {
-                    "position": 35,
-                    "block_id": 14,
-                    "name": "Guangzhou"
-                },
-                {
-                    "position": 36,
-                    "block_id": 10,
-                    "name": "Chance"
-                },
-                {
-                    "position": 37,
-                    "block_id": 38,
-                    "name": "Liwan"
-                },
-                {
-                    "position": 38,
-                    "block_id": 11,
-                    "name": "Super Tax"
-                },
-                {
-                    "position": 39,
-                    "block_id": 39,
-                    "name": "Dongshan"
-                }
-            ],
-            "type": "block"
-        },
-        {
-            "data": [
-                {
                     "house_number": 0,
                     "payment": [
                         {
@@ -1006,7 +801,7 @@
                     "status": -1
                 },
                 {
-                    "house_number": 0,
+                    "house_number": 1,
                     "payment": [
                         {
                             "house_number": 1,
@@ -1039,7 +834,7 @@
                     "street_id": 8,
                     "mortgage_value": 200.0,
                     "position": 39,
-                    "owner_id": "99",
+                    "owner_id": "100",
                     "name": "Dongshan",
                     "status": -1
                 }
@@ -1176,7 +971,7 @@
                     ],
                     "mortgage_value": 75.0,
                     "position": 12,
-                    "owner_id": "99",
+                    "owner_id": "101",
                     "name": "Power Station",
                     "status": -1
                 },
@@ -1195,7 +990,7 @@
                     ],
                     "mortgage_value": 75.0,
                     "position": 28,
-                    "owner_id": "99",
+                    "owner_id": "100",
                     "name": "Water Work",
                     "status": -1
                 }
@@ -1209,7 +1004,7 @@
                     "cash": 1000,
                     "cur_status": 1,
                     "alliance": "Asia",
-                    "position": 0,
+                    "position": 3,
                     "property": [],
                     "id": "100",
                     "name": "Player1",
@@ -1221,25 +1016,35 @@
                     "cash": 1000,
                     "cur_status": 1,
                     "alliance": "Europe",
-                    "position": 0,
+                    "position": 4,
                     "property": [],
                     "id": "101",
                     "name": "Player2",
                     "pre_position": 0,
                     "avatar":[1,6]
                 }
+
             ],
             "type": "player"
         },
         {
             "data": [
                 {
-                    "cur_rate": 0,
+                    "cur_rate": 0.8,
                     "variation": 0.05
                 }
             ],
             "type": "ef"
+        },
+        {
+            "type": "bank",
+            "data": [
+                {
+                    "house_number": 32,
+                    "hotel_number": 12
+                }
+            ]
         }
     ],
-    "type": "init"
+    "type": "update"
 }
