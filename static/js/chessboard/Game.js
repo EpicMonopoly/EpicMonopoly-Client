@@ -25,6 +25,7 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
+    game.load.json('record', 'static/json/record.json');
     ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id="+sessionStorage.uid+"&roomid="+sessionStorage.room_id);
 }
 
@@ -651,6 +652,7 @@ function WebSocketTest() {
                     }
                 }
 
+                addToRecords(record);
             } catch (e) {
                 // 不符合json格式的字符串打印出来
 
@@ -660,6 +662,7 @@ function WebSocketTest() {
         ws.onclose = function () {
 
         };
+                
     } else {
 
     }
@@ -1014,10 +1017,10 @@ function get_hint() {
 }
 
 
-
-function addToRecords(newEvent) {
+var record = game.cache.getJSON('record');
+function addToRecords(record) {
     var recordContent = document.getElementById("recordContent");
-    recordContent.textContent += newEvent +'\r\n';
+    recordContent.textContent += record.data[0].message + '\r\n';
     recordContent.scrollTop = recordContent.scrollHeight;
 }
 
@@ -1035,6 +1038,3 @@ function setAvatar() {
 function startGame() {
     ws.send("start");
 }
-
-
-
