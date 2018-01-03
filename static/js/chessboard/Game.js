@@ -26,7 +26,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.json('json','json/init_result.json');
         }
         var block = new Array(40);//to save the object of every block
-        var i,j;
+        
         /*This array is to store the information:
         name:The block name
         owner: owner
@@ -609,6 +609,7 @@ function WebSocketTest() {
             }
         }
 
+    }
 }
 
 
