@@ -632,7 +632,7 @@ function WebSocketTest() {
                 if (dat.type == 'hint') {
 
                     var myText = dat.data[0].message;
-                    alert(myText);
+                   
                     this.instructions = this.add.text(game.world.centerX, game.world.centerY,
                         myText, {
                             font: '50px lato',
@@ -646,6 +646,7 @@ function WebSocketTest() {
                     this.instructions.setShadow(1, 1, "#333333", 1, true, false);
                     this.instructions.anchor.setTo(0.5, 0.5);
                     this.time.events.add(1000, this.instructions.destroy, this.instructions);
+                    alert(myText);
                 }
 
                 // var dat5 = game.cache.getJSON('dice_result');
