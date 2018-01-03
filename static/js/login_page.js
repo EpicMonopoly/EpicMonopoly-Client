@@ -159,9 +159,9 @@ function createRoom() {
         roomJson
 
     ];
+
     $.post("/joingame", JSON.stringify(createJson), function (data) {
-        alert(data);
-        // window.location.href='test.sustech.pub:8888/ingame';
+        window.location.href='test.sustech.pub:8888/ingame';
     });
 }
 
@@ -180,7 +180,6 @@ function joinRoom(event) {
     ];
     
     $.post("/joingame", JSON.stringify(joinJson), function (data) {
-        alert(data);
-        // window.location.href='test.sustech.pub:8888/ingame';
+        window.location.href='test.sustech.pub:8888/ingame';
     });
 }

@@ -173,3 +173,12 @@ input[type="checkbox"]:checked + label span {
     background-size: 12px 12px;
 }
 
+#startBtn {
+    position: relative;
+    left: 250px;
+    top: 250px;
+    width: 200px;
+    height: 50px;
+    font-size: 22px;
+    background-color: darkorange;
+}

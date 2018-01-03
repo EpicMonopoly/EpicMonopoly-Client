@@ -19,3 +19,8 @@ function setAvatar() {
     avatar1.src = "static/img/avatar/icon_bug.svg";
 }
 
+function startGame() {
+    var roomID = 0;
+    $.post("/start?roomid="+roomID, function () {
+    });
+}
