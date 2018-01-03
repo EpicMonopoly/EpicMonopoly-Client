@@ -520,6 +520,7 @@ function listener(sprite, pointer) {
 function roll_dice() {
     setInterval(dice1.animations.play('dice1'), 3000);
     setInterval(dice2.animations.play('dice2'), 3000);
+    var string;
     string = {
         "type": "input",
         "data": [{
@@ -528,6 +529,7 @@ function roll_dice() {
         }]
     }
     ws.send(JSON.stringify(string));
+    button1.visible = false;
     // var dice = dice_1 + dice_2;
 }
 
@@ -623,9 +625,9 @@ function WebSocketTest() {
                 }
                 // var dat3 = game.cache.getJSON('choice');
                 if (dat.type == 'choice') {
-                    var choice = document.getElementById("choiceWindow");
-                    choice.style.visibility = "visible";
-                    var string
+                    var choice_window = document.getElementById("choiceWindow");
+                    choice_window.style.visibility = "visible";
+                    var string;
                     if (click_choose == 1) {
                         string = {
                             "type": "input",
@@ -644,6 +646,7 @@ function WebSocketTest() {
                             }]
                         }
                     }
+                    click_choose = 0;
                     ws.send(JSON.stringify(string));
                 }
                 // var dat4 = game.cache.getJSON('hint');
@@ -715,7 +718,6 @@ var click_choose = 0;
 function choose_yes() {
     choose = 1;
     click_choose = 1;
-
 }
 
 function choose_no() {
@@ -1134,8 +1136,8 @@ var dice1_num;
 var dice2_num;
 
 function set_dice(num1, num2) {
-    dice1.frame = num1;
-    dice2.frame = num2;
+    dice1.frame = num1 - 1;
+    dice2.frame = num2 - 1;
 }
 
 
