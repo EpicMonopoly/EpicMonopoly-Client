@@ -1,73 +1,3 @@
-
-<<<<<<< HEAD
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "midPart", { preload: preload, create: WebSocketTest });
-
-
-function preload() {
-
-    game.load.image("background", "static/img/chessboard_bgd.png");
-    game.load.image("chance", "static/img/icon_chessboard/chance.png");
-    game.load.image("community_chest", "static/img/icon_chessboard/community_chest.png");
-    game.load.image("electricity", "static/img/icon_chessboard/electricity.png");
-    game.load.image("go", "static/img/icon_chessboard/go.png");
-    game.load.image("go_jail", "static/img/icon_chessboard/go_jail.png");
-    game.load.image("hotel", "static/img/icon_chessboard/hotel.png");
-    game.load.image("house", "static/img/icon_chessboard/house.png");
-    game.load.image("in_jail", "static/img/icon_chessboard/in_jail.png");
-    game.load.image("income_tax", "static/img/icon_chessboard/income_tax.png");
-    game.load.image("luxury_tax", "static/img/icon_chessboard/luxury_tax.png");
-    game.load.image("parking_lot", "static/img/icon_chessboard/parking_lot.png");
-    game.load.image("railway_station", "static/img/icon_chessboard/railway_station.png");
-    game.load.spritesheet("street_colors", "static/img/icon_chessboard/street_colors.png", 165, 240);
-    game.load.spritesheet("avatar", "static/img/icon_chessboard/avatars.png", 200, 200);
-    game.load.image("water", "static/img/icon_chessboard/water.png");
-    game.load.spritesheet("dice", "static/img/icon_chessboard/dice.png", 140, 140);
-    game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
-    game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
-    game.load.json('json', 'static/json/init_result.json');
-    game.load.json('hint', 'static/json/hint.json');
-}
-var block = new Array(40);//to save the object of every block
-
-/*This array is to store the information:
-name:The block name
-owner: owner
-original price
-current rent:current rent depend on the economic factor
-original rent
-with_one_house:the rent when there is one house
-with_two-house:the rent when there are two houses
-with_three_house；the rent when there are three houses
-with_four_house:the rent when there are four houses
-with_one_hotel:the rent with one hotel
-house_cost:the cost when build a house
-hotel_cost:the cost when build a hotel
-mortgage_value:
-house_amount:the amount of the house of the block
-hotel_amount:the amount of the hotel of the block
-*/
-var block_information = new Array(40);
-function initial_block_information() {
-    for (var i = 0; i < 40; i++) {
-        /*
-        information for stations
-         */
-        if (i == 5 || i == 15 || i == 25 || i == 35) {
-            block_information[i] = {
-                "name": "",
-                "block_id": "",
-                "position": 0,
-                "owner_id": "",
-                "owner_name": "",
-                "estate_value": 0,
-                "status": 0,
-                "mortgage_value": 0,
-                "payment": "",
-                "with_one_station": 0,
-                "with_two_station": 0,
-                "with_three_station": 0,
-                "with_four_station": 0
-=======
 var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, create: WebSocketTest});
 
 
@@ -190,9 +120,6 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                         "with_six_house":0
                     }
                 }
-
-
->>>>>>> a656b99c163c9020086717f6558b1c1468cb4ecc
             }
         }
         /*
