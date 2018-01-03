@@ -71,14 +71,14 @@ function hideWindow(windowId) {
 
 function getPlayerJson() {
     var name = document.getElementById("UserName").value;
-    var avatar = document.getElementById("selectAvatar").selectedIndex;
+    var avatarID = document.getElementById("selectAvatar").selectedIndex;
 
     var player = {};
     player.type = "player";
     player.data = [
         {
             "name": name,
-            "avatar_id": avatar
+            "avatar": [avatarID, 0]
         }
     ];
     return player;
