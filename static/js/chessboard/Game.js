@@ -671,6 +671,11 @@ function WebSocketTest() {
                         button2.visible = false;
                     }
                 }
+
+                if (dat.type == 'record') {
+                    addToRecords(dat.data[0].message);
+                }
+                
             } catch (e) {
                 //not json format
             }
