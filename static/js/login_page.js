@@ -1,5 +1,3 @@
-
-
 window.onload = window.onresize = function () {
     var theCanvas = document.getElementById("canvasPanel");
     var context = theCanvas.getContext("2d");
@@ -73,14 +71,14 @@ function hideWindow(windowId) {
 
 function getPlayerJson() {
     var name = document.getElementById("UserName").value;
-    var avatar = document.getElementById("selectAvatar").value;
+    var avatarID = document.getElementById("selectAvatar").selectedIndex;
 
     var player = {};
     player.type = "player";
     player.data = [
         {
             "name": name,
-            "avatar": avatar
+            "avatar": [avatarID, 0]
         }
     ];
     return player;
@@ -137,10 +135,14 @@ function createRoom() {
         roomJson
 
     ];
-    jQuery.post("/joingame", JSON.stringify(createJson), window.location.href='test.sustech.pub:8888/ingame', "json");
+    $.post("/joingame", JSON.stringify(createJson), function (data) {
+        alert(data);
+    });
 }
 
 function joinRoom(event) {
+    if(event.target.type !== 'submit')
+        return;
     var playerJson = getPlayerJson();
     var roomID = event.target.id;
     var joinJson = {};
@@ -151,5 +153,8 @@ function joinRoom(event) {
             "room_id": roomID
         }
     ];
-    jQuery.post("/joingame", JSON.stringify(joinJson), window.location.href='test.sustech.pub:8888/ingame', "json");
+
+    $.post("/joingame", JSON.stringify(joinJson), function (data) {
+        alert(data);
+    });
 }

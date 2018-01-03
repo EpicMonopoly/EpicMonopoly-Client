@@ -379,3 +379,48 @@ function path(x1_input,x2_input)
 // function add_item(name, value) {
 //     document.getElementById("demo").innerHTML += name + ": " + value + "<br/>";
 // }
+
+// var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
+// var i, j;
+// function WebSocketTest() {
+//     if ("WebSocket" in window) {
+//         ws.onopen = function () {
+//             ws.send("Message to send");
+//         };
+//         ws.onmessage = function (evt) {
+//             var received_msg = evt.data;
+//             try {
+//                 //parse json file
+//                 var dat = JSON.parse(received_msg);
+//                 //this part is to initial block
+//                 if (dat.type=="init")
+//                 {
+//                     /*
+//                     Firstly, initialize the chessboard
+//                       Create the part that never change:four corners, tax, community chest
+//                      */
+//                     create_ChessBoard();
+//                     var information=dat.data[0];
+//                     block_iter(information['block']);
+//                     estate_iter(information['estate']);
+//                     utility_iter(information['utility']);
+//                     station_iter(information['station']);
+//                     player_iter(information['player']);
+//                 }
+//                 if (dat.data_type == "update")
+//                 {
+//
+//                 }
+//             } catch (e) {
+//                 // 不符合json格式的字符串打印出来
+//
+//
+//             }
+//         };
+//         ws.onclose = function () {
+//
+//         };
+//     } else {
+//
+//     }
+// }

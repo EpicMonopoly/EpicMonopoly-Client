@@ -476,7 +476,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
             }
 
-            
+
         }
 
 
@@ -556,24 +556,16 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
        }
 
 
-        function roll_dice(dice_1, dice_2) {
-            setInterval(dice1.animations.play('dice1'), 5000);
-            setInterval(dice2.animations.play('dice2'), 5000);
-            var dice = dice_1 + dice_2;
-            for (var i = 0; i < 5; ++i) {
-                var dice_num = Math.floor(Math.random() * 6) + 1;
-                switch (dice_num) {
-                    case 1:
-                        game.load.image('img/dice/dice1.png');
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
+        function roll_dice() {
+            setInterval(dice1.animations.play('dice1'), 3000);
+            setInterval(dice2.animations.play('dice2'), 3000);
+            // var dice = dice_1 + dice_2;
         }
 
+
+        function buy() {
+
+        }
 
 //
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
@@ -617,7 +609,6 @@ function WebSocketTest() {
             }
         }
 
-    }
 }
 
 
@@ -709,9 +700,6 @@ function push() {
 function S4() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
-
-
-
 
 
 
@@ -923,7 +911,7 @@ function utility_update(data) {
         block_information[blockid].rate_with_one_utility=dat.payment[0].rate;
         block_information[blockid].rate_with_two_utility=dat.payment[1].rate;
     }
-    
+
 }
 function  station_update(data) {
     for(var i = 0; i < data.length; i++) {
@@ -1001,7 +989,7 @@ function initial_button() {
             dice2.animations.stop();
             dice1.frame = dice1_num;
             dice2.frame = dice2_num;
-        }, 5000);
+        }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
     button1.height = 30;
