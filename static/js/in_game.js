@@ -18,3 +18,4 @@ function setAvatar() {
     avatar1.addClass("svg-red");
     avatar1.src = "static/img/avatar/icon_bug.svg";
 }
+
