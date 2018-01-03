@@ -535,7 +535,7 @@ function buy() {
 //
 // }
 
-
+var cur_player;
 function WebSocketTest() {
     if ("WebSocket" in window) {
         ws.onopen = function () {
@@ -666,6 +666,9 @@ function WebSocketTest() {
                     console.log(dice2_num);
                 }
                 
+                if(dat.type == 'newturn') {
+                    cur_player = dat.data[0].id;
+                }
             } catch (e) {
                 //not json format
             }
@@ -1117,6 +1120,7 @@ function set_dice(num1, num2) {
     dice2.frame = num2;
 }
 
+
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
@@ -1136,6 +1140,15 @@ function initial_button() {
     button2.width = 90;
     button2.height = 30;
     button2.input.useHandCursor = true;
+
+    if (sessionStorage.id == cur_player) {
+        button1.visible = true;
+        button2.visible = true;
+    }
+    else{
+        button1.visible = false;
+        button2.visible = false;
+    }
 }
 
 function get_hint() {
