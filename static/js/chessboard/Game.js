@@ -1,5 +1,5 @@
-// var ws ;
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "midPart", {preload: preload, create: WebSocketTest});
+var ws;
+var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", { preload: preload, create: WebSocketTest });
 
 
 function preload() {
@@ -25,8 +25,8 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
-    game.load.json('hint','static/json/hint.json');
-    // ws = new WebSocket(sessionStorage.website);
+    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
+    game.load.json('record', 'static/json/record.json');
 }
 
 var block = new Array(40);//to save the object of every block
@@ -555,22 +555,43 @@ function buy() {
 
 
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
+// function WebSocketTest() {
+//     var dat1 = game.cache.getJSON('json');
+//
+// }
+
+
 function WebSocketTest() {
-    var dat1 = game.cache.getJSON('json');
-    if (dat1.type == "init") {
-            /*
-            Firstly, initialize the chessboard
-              Create the part that never change:four corners, tax, community chest
-             */
-            var canvas = document.getElementById("game");
-            canvas.style.visibility = "visible";
-            initial_position();
-            initial_block_information();
-            initial_player();
-            create_ChessBoard();
-            initial_dice();
-            initial_button();
-            initial_block_sprite();
+    if ("WebSocket" in window) {
+        ws.onopen = function () {
+            ws.send("Message to send");
+        };
+        ws.onmessage = function (evt) {
+            var received_msg = evt.data;
+            console.log(received_msg);
+            try {
+                //parse json file
+                var dat = JSON.parse(received_msg);
+                //this part is to initial block
+                console.log(dat);
+                if (dat.type == "init") {
+                    console.log("init");
+                    /*
+                    Firstly, initialize the chessboard
+                      Create the part that never change:four corners, tax, community chest
+                     */
+                    var canvas = document.getElementById("game");
+                    canvas.style.visibility = "visible";
+                    var startBtn = document.getElementById("startBtn");
+                    startBtn.style.visibility = "hidden";
+                    console.log("visible");
+                    initial_position();
+                    initial_block_information();
+                    initial_player();
+                    create_ChessBoard();
+                    initial_dice();
+                    initial_button();
+                    initial_block_sprite();
 
             var information = dat1.data;
             for (var j = 0; j < information.length; j++) {
@@ -1121,15 +1142,20 @@ function initial_dice() {
 var dice1_num = 3;
 var dice2_num = 4;
 
+function set_dice(num1, num2) {
+    dice1.frame = num1;
+    dice2.frame = num2;
+}
+
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
-        setTimeout(function () {
-            dice1.animations.stop();
-            dice2.animations.stop();
-            dice1.frame = dice1_num;
-            dice2.frame = dice2_num;
-        }, 3000);
+        // setTimeout(function () {
+        //     dice1.animations.stop();
+        //     dice2.animations.stop();
+        //     dice1.frame = dice1_num;
+        //     dice2.frame = dice2_num;
+        // }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
     button1.height = 30;
@@ -1152,7 +1178,7 @@ function get_hint() {
 
 function addToRecords(newEvent) {
     var recordContent = document.getElementById("recordContent");
-    recordContent.textContent += newEvent +'\r\n';
+    recordContent.textContent += newEvent + '\r\n';
     recordContent.scrollTop = recordContent.scrollHeight;
 }
 
@@ -1170,6 +1196,3 @@ function setAvatar() {
 function startGame() {
     ws.send("start");
 }
-
-
-

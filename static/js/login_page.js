@@ -157,13 +157,25 @@ function createRoom() {
     createJson.data = [
         playerJson,
         roomJson
-
     ];
-
     $.post("/joingame", JSON.stringify(createJson), function (data) {
         data = JSON.parse(data);
-        sessionStorage.room_info = data;
-        alert(sessionStorage.room_info);
+        data = data["data"];
+        for (var d in data){
+            if (data[d]["type"] === "player"){
+                playerInfo = data[d]["data"][0];
+                sessionStorage.uid = playerInfo["uid"];
+                sessionStorage.name = playerInfo["name"];
+            } else if (data[d]["type"] === "room"){
+                roomInfo = data[d]["data"][0];
+                sessionStorage.room_id = roomInfo["room_id"];
+                sessionStorage.go_salary = roomInfo["go_salary"];
+                sessionStorage.init_fund = roomInfo["init_fund"];
+                sessionStorage.room_name = roomInfo["room_name"];
+                sessionStorage.is_limited = roomInfo["is_limited"];
+                sessionStorage.level = roomInfo["level"];
+            }
+        }
         window.location.href='/ingame';
     });
 }
@@ -181,10 +193,18 @@ function joinRoom(event) {
             "room_id": roomID
         }
     ];
-    
+
     $.post("/joingame", JSON.stringify(joinJson), function (data) {
-        sessionStorage.room_info = JSON.parse(data);
-        alert(sessionStorage.room_info);
+        data = JSON.parse(data);
+        data = data["data"];
+        for (var d in data){
+            if (data[d].hasOwnProperty("data")){
+                sessionStorage.uid = data[d]["data"][0]["uid"];
+                sessionStorage.name = data[d]["data"][0]["name"];
+            } else if (data[d].hasOwnProperty("room_id")){
+                sessionStorage.room_id = data[d]["room_id"];
+            }
+        }
         window.location.href='/ingame';
     });
 }
