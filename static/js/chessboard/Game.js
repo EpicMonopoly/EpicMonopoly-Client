@@ -24,6 +24,7 @@ function preload() {
     game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
+    game.load.json('hint', 'static/json/hint.json');
 }
 var block = new Array(40);//to save the object of every block
 
@@ -579,6 +580,7 @@ function WebSocketTest() {
         }
 
     }
+    // get_hint();
 }
 
 
@@ -962,6 +964,10 @@ function initial_button() {
     button2.input.useHandCursor = true;
 }
 
-
+function get_hint() {
+    // pop up hint message
+    var message = game.cache.getJSON('hint');
+    alert(message.data[0].message);
+}
 
 
