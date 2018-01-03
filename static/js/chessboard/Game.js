@@ -632,6 +632,7 @@ function WebSocketTest() {
                 if (dat.type == 'hint') {
 
                     var myText = dat.data[0].message;
+                    alert(myText);
                     this.instructions = this.add.text(game.world.centerX, game.world.centerY,
                         myText, {
                             font: '50px lato',
@@ -1126,11 +1127,6 @@ function initial_dice() {
 var dice1_num;
 var dice2_num;
 
-function set_dice(num1, num2) {
-    dice1.frame = num1 - 1;
-    dice2.frame = num2 - 1;
-}
-
 
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
@@ -1139,8 +1135,8 @@ function initial_button() {
         setTimeout(function () {
             dice1.animations.stop();
             dice2.animations.stop();
-            dice1.frame = dice1_num;
-            dice2.frame = dice2_num;
+            dice1.frame = dice1_num - 1;
+            dice2.frame = dice2_num - 1;
         }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
