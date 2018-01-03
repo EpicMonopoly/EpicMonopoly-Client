@@ -26,6 +26,7 @@ function preload() {
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
     ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
+    game.load.json('record', 'static/json/record.json');
 }
 
 var block = new Array(40);//to save the object of every block
@@ -559,7 +560,7 @@ function roll_dice() {
     setInterval(dice2.animations.play('dice2'), 3000);
     var text = {
         "type": "input",
-        "data":[
+        "data": [
             {
                 "from_player_id": sessionStorage.uid,
                 "request": 2
@@ -668,9 +669,13 @@ function WebSocketTest() {
 
                 if (dat.type = "dice_result") {
                     console.log(dat.data[0]["dice_result"]);
-                    set_dice(dat.data[0]["dice_result"][0],dat.data[0]["dice_result"][1]);
+                    set_dice(dat.data[0]["dice_result"][0], dat.data[0]["dice_result"][1]);
                 }
 
+
+                if (dat.type == 'record') {
+                    addToRecords(dat.data[0].message);
+                }
 
             } catch (e) {
                 // 不符合json格式的字符串打印出来
@@ -681,6 +686,7 @@ function WebSocketTest() {
         ws.onclose = function () {
 
         };
+
     } else {
 
     }
@@ -1040,7 +1046,6 @@ function get_hint() {
 }
 
 
-
 function addToRecords(newEvent) {
     var recordContent = document.getElementById("recordContent");
     recordContent.textContent += newEvent + '\r\n';
@@ -1061,6 +1066,3 @@ function setAvatar() {
 function startGame() {
     ws.send("start");
 }
-
-
-
