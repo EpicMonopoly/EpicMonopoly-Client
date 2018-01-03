@@ -71,7 +71,21 @@ function hideWindow(windowId) {
 
 function getRoomList() {
     $.get("/roomlist", function (data) {
-        alert(data);
+        var roomList = document.getElementById("roomList");
+        for (var room in data){
+            var roomInfo = room["room"];
+            var playerList = room["player_list"];
+            var rowCount = roomList.rows.length;
+            // var cellCount = roomList.rows[0].cells.length;
+            var newRow = roomList.insertRow(++rowCount);
+            newRow.insertCell(0).innerHTML = roomInfo["room_id"];
+            newRow.insertCell(1).innerHTML = roomInfo["room_name"];
+            newRow.insertCell(2).innerHTML = playerList.length;
+            newRow.insertCell(3).innerHTML = roomInfo["level"];
+            newRow.insertCell(4).innerHTML = roomInfo["init_fund"];
+            newRow.insertCell(5).innerHTML = roomInfo["go_salary"];
+            newRow.insertCell(6).innerHTML = roomInfo["is_limited"];
+        }
         showWindow('roomListWindow');
     });
 }
