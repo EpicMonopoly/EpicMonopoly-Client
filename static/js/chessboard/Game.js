@@ -598,51 +598,6 @@ function WebSocketTest() {
 }
 
 
-
-// var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
-// var i, j;
-// function WebSocketTest() {
-//     if ("WebSocket" in window) {
-//         ws.onopen = function () {
-//             ws.send("Message to send");
-//         };
-//         ws.onmessage = function (evt) {
-//             var received_msg = evt.data;
-//             try {
-//                 //parse json file
-//                 var dat = JSON.parse(received_msg);
-//                 //this part is to initial block
-//                 if (dat.type=="init")
-//                 {
-//                     /*
-//                     Firstly, initialize the chessboard
-//                       Create the part that never change:four corners, tax, community chest
-//                      */
-//                     create_ChessBoard();
-//                     var information=dat.data[0];
-//                     block_iter(information['block']);
-//                     estate_iter(information['estate']);
-//                     utility_iter(information['utility']);
-//                     station_iter(information['station']);
-//                     player_iter(information['player']);
-//                 }
-//                 if (dat.data_type == "update")
-//                 {
-//
-//                 }
-//             } catch (e) {
-//                 // 不符合json格式的字符串打印出来
-//
-//
-//             }
-//         };
-//         ws.onclose = function () {
-//
-//         };
-//     } else {
-//
-//     }
-// }
 function req() {
     var text = {"type": "json", "request": "uid"}; //json对象
     ws.send(JSON.stringify(text));//将json转化为字符串输出
@@ -658,9 +613,6 @@ function S4() {
 function guid() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
-
-
-
 
 
 
@@ -766,7 +718,7 @@ function estate_iter(data) {
             block_information[blockid].with_four_house=Number(dat.payment[3].payment);
             block_information[blockid].with_five_house=Number(dat.payment[4].payment);
             block_information[blockid].with_six_house=Number(dat.payment[5].payment);
-            alert(dat.payment[1].payment);
+            // alert(dat.payment[1].payment);
             picture[blockid] = Number(dat.street_id) - 1;
             create_block(blockid);
 
@@ -901,7 +853,4 @@ function initial_button() {
     button2.height = 30;
     button2.input.useHandCursor = true;
 }
-
-
-
 
