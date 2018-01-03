@@ -22,8 +22,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.spritesheet("dice", "static/img/icon_chessboard/dice.png", 140, 140);
             game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
             game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
-            game.load.json('json','json/init_result.json');
-            game.load.json('update','json/update.json');
+            game.load.json('json','static/json/init_result.json');
+            game.load.json('update','static/json/update.json');
         }
         var block = new Array(40);//to save the object of every block
 
@@ -233,12 +233,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     id = i;
                 }
             }
-            player_sprite[i]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
-            player_sprite[i].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
-            player_sprite[i].width=20;
-            player_sprite[i].height=20;
-            player_sprite[i].idleFrame=0;
-            game.physics.enable(player_sprite[i],Phaser.Physics.ARCADE);
+            player_sprite[id]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
+            player_sprite[id].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
+            player_sprite[id].width=20;
+            player_sprite[id].height=20;
+            player_sprite[id].idleFrame=0;
+            game.physics.enable(player_sprite[id],Phaser.Physics.ARCADE);
         }
 
 
@@ -574,8 +574,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 // // var i, j;
 function WebSocketTest() {
-    var dat = game.cache.getJSON('json');
-    if (dat.type == "init") {
+    var dat1 = game.cache.getJSON('json');
+    if (dat1.type == "init") {
         /*
         Firstly, initialize the chessboard
           Create the part that never change:four corners, tax, community chest
@@ -613,9 +613,7 @@ function WebSocketTest() {
         }
 
     }
-<<<<<<< HEAD
-    // get_hint();
-=======
+
     var dat2 = game.cache.getJSON('update');
     if (dat2.type == "update") {
         var information = dat2.data;
@@ -641,7 +639,7 @@ function WebSocketTest() {
             }
         }
     }
->>>>>>> a656b99c163c9020086717f6558b1c1468cb4ecc
+
 }
 
 
@@ -981,13 +979,14 @@ function player_update(data) {
             if(dat.id==player[j].id)
             {
 
-                if(dat.position != player[j].position)
+                if(dat.position != player[j].position){
                     player_sprite[j].kill();
-                player[i].cash = Number(dat.cash);
-                player[i].position = Number(dat.position);
-                player[i].pre_position = Number(dat.pre_position);
-                player[i].card_num = Number(dat.card_num);
-                player[i].property = dat.property;
+                }
+                player[j].cash = Number(dat.cash);
+                player[j].position = Number(dat.position);
+                player[j].pre_position = Number(dat.pre_position);
+                player[j].card_num = Number(dat.card_num);
+                player[j].property = dat.property;
                 create_player(dat.id);
             }
         }
@@ -1045,6 +1044,8 @@ function initial_dice() {
     dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
 }
 
+var dice1_num = 3;
+var dice2_num = 4;
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
