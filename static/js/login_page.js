@@ -141,6 +141,8 @@ function createRoom() {
 }
 
 function joinRoom(event) {
+    if(event.target.type !== 'submit')
+        return;
     var playerJson = getPlayerJson();
     var roomID = event.target.id;
     var joinJson = {};

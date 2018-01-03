@@ -60,7 +60,7 @@
     </form>
 </div>
 <div class="hidden shadowBox" id="roomListWindow" style="left: 850px;">
-    <table id="roomList" onclick="joinRoom(event)">
+    <table id="roomList">
         <thead style="font-weight: bold;"><tr>
             <td>Room id</td>
             <td>Room name</td>
@@ -73,12 +73,12 @@
                 <img title="close" src="static/img/icon_ui/close.png" style="width: 12px; height: 12px"></a>
             </td>
         </tr></thead>
-        <tbody>  <!--TODO use js to display room list, button's id must equal to room id-->
+        <tbody onclick="joinRoom(event)">  <!--TODO use js to display room list, button's id must equal to room id-->
         <tr><td>123</td><td>ahh</td><td>4</td><td>easy</td><td>1500</td><td>0</td><td>on</td>
-            <td><button class="smallBtn" id="123" >join</button></td>
+            <td><button class="smallBtn" id="123">join</button></td>
         </tr>
         <tr><td>321</td><td>ahh</td><td>3</td><td>hard</td><td>1000</td><td>400</td><td>off</td>
-            <td><button class="smallBtn" id="321" >join</button></td>
+            <td><button class="smallBtn" id="321">join</button></td>
         </tr>
         </tbody>
     </table>
@@ -98,12 +98,12 @@
         <img src="static/img/icon_ui/icon_pencil.png" id="Pencil" style="width:20px;height: 20px;">
         <select id="selectAvatar" name="selectAvatar"
                 onchange="document.images['showAvatar'].src=options[selectedIndex].value;" title="">
-            <option id="avatar1" value="static//img//avatar//icon_bug.png" style="text-align: center">picture 1</option>
-            <option id="avatar2" value="static//img//avatar//icon_apple.png" style="text-align: center">picture 2</option>
-            <option id="avatar3" value="static//img//avatar//icon_aircraft.png" style="text-align: center">picture 3</option>
-            <option id="avatar4" value="static//img//avatar//icon_github.png" style="text-align: center">picture 4</option>
-            <option id="avatar5" value="static//img//avatar//icon_google.png" style="text-align: center">picture 5</option>
-            <option id="avatar6" value="static//img//avatar//icon_wifi.png" style="text-align: center">picture 6</option>
+            <option id="avatar1" value="static/img/avatar/icon_bug.png" style="text-align: center">picture 1</option>
+            <option id="avatar2" value="static/img/avatar/icon_apple.png" style="text-align: center">picture 2</option>
+            <option id="avatar3" value="static/img/avatar/icon_aircraft.png" style="text-align: center">picture 3</option>
+            <option id="avatar4" value="static/img/avatar/icon_github.png" style="text-align: center">picture 4</option>
+            <option id="avatar5" value="static/img/avatar/icon_google.png" style="text-align: center">picture 5</option>
+            <option id="avatar6" value="static/img/avatar/icon_wifi.png" style="text-align: center">picture 6</option>
         </select>
     </form>
     <div id="avatarShow" style="position:absolute;left:640px;top:200px;"><img id="showAvatar"
