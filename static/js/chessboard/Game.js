@@ -1,5 +1,8 @@
 var ws;
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", { preload: preload, create: WebSocketTest });
+var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", {
+    preload: preload,
+    create: WebSocketTest
+});
 
 
 function preload() {
@@ -29,7 +32,7 @@ function preload() {
     game.load.json('record', 'static/json/record.json');
 }
 
-var block = new Array(40);//to save the object of every block
+var block = new Array(40); //to save the object of every block
 
 /*This array is to store the information:
 name:The block name
@@ -88,8 +91,7 @@ function initial_block_information() {
                 "rate_with_two_utility": 0,
                 "owner_name": ""
             }
-        }
-        else if (i == 0 || i == 10 || i == 20 || i == 30 || i == 2 || i == 4 || i == 7 || i == 17 || i == 22 || i == 33 || i == 36 || i == 38) {
+        } else if (i == 0 || i == 10 || i == 20 || i == 30 || i == 2 || i == 4 || i == 7 || i == 17 || i == 22 || i == 33 || i == 36 || i == 38) {
             block_information[i] = {
                 "name": "",
                 "owner_name": "",
@@ -98,8 +100,7 @@ function initial_block_information() {
 
             }
 
-        }
-        else {
+        } else {
             block_information[i] = {
                 "name": "",
                 "owner_name": "",
@@ -138,8 +139,7 @@ function show_block_infoContect(blockid) {
         document.getElementById("with_one_utility").innerHTML = block_information[blockid].rate_with_one_utility.toString();
         document.getElementById("with_two_utility").innerHTML = block_information[blockid].rate_with_two_utility.toString();
 
-    }
-    else if (blockid == 5 || blockid == 15 || blockid == 25 || blockid == 35) {
+    } else if (blockid == 5 || blockid == 15 || blockid == 25 || blockid == 35) {
         document.getElementById("station_block_name").innerHTML = block_information[blockid].name;
         document.getElementById("station_owner_name").innerHTML = block_information[blockid].owner_name;
         document.getElementById("station_estate_value").innerHTML = block_information[blockid].estate_value.toString();
@@ -149,8 +149,7 @@ function show_block_infoContect(blockid) {
         document.getElementById("with_three_station").innerHTML = block_information[blockid].with_three_station.toString();
         document.getElementById("with_four_station").innerHTML = block_information[blockid].with_four_station.toString();
 
-    }
-    else if (blockid != 2 && blockid != 17 && blockid != 33 && blockid != 4 && blockid != 38 && blockid != 7 && blockid != 22 && blockid != 36) {
+    } else if (blockid != 2 && blockid != 17 && blockid != 33 && blockid != 4 && blockid != 38 && blockid != 7 && blockid != 22 && blockid != 36) {
         document.getElementById("block_name").innerHTML = block_information[blockid].name;
         document.getElementById("owner_name").innerHTML = block_information[blockid].owner_name;
         document.getElementById("estate_value").innerHTML = block_information[blockid].estate_value.toString();
@@ -172,7 +171,7 @@ function show_block_infoContect(blockid) {
 /*
 picture array stores the pictures of every block
  */
-var picture = new Array(40);//to save the picture of every block
+var picture = new Array(40); //to save the picture of every block
 /*
 position_x:x coordinate of every block position
 position_y:y coordinate of every block position
@@ -326,8 +325,7 @@ function create_block(blockid) {
             chess_sprite[blockid].events.onInputDown.add(listener, this);
 
 
-        }
-        else {
+        } else {
 
             chess_sprite[blockid] = game.add.sprite(width + height * (blockid - 20 - 1), 0, 'street_colors');
             chess_sprite[blockid].frame = picture[blockid];
@@ -353,8 +351,7 @@ function create_block(blockid) {
             chess_sprite[blockid].events.onInputDown.add(listener, this);
 
 
-        }
-        else {
+        } else {
 
             chess_sprite[blockid] = game.add.sprite(0, width + height * (20 - blockid - 1), 'street_colors');
             chess_sprite[blockid].frame = picture[blockid];
@@ -380,8 +377,7 @@ function create_block(blockid) {
             chess_sprite[blockid].events.onInputDown.add(listener, this);
 
 
-        }
-        else {
+        } else {
 
             chess_sprite[blockid] = game.add.sprite(width + height * (10 - blockid - 1), width + height * 9, 'street_colors');
             chess_sprite[blockid].frame = picture[blockid];
@@ -406,8 +402,7 @@ function create_block(blockid) {
             chess_sprite[blockid].events.onInputDown.add(listener, this);
 
 
-        }
-        else {
+        } else {
 
             chess_sprite[blockid] = game.add.sprite(width + height * 9, width + height * (blockid - 30 - 1), 'street_colors');
             chess_sprite[blockid].frame = picture[blockid];
@@ -453,35 +448,29 @@ function create_house(blockid) {
         }
     }
 
-    for (var i = block_house_number[blockid];i<block_information[blockid].has_house;i++)
-    {
-        if(i<4)
-        {
-            block_house[blockid][i]=game.add.sprite(position_x[blockid]+5+25*parseInt(i/2),position_y[blockid]+5+25*(1-i%2),'house');
-            block_house[blockid][i].frame=color;
-            block_house[blockid][i].width=20;
-            block_house[blockid][i].height=20;
-        }
-        else if(i==4)
-        {
+    for (var i = block_house_number[blockid]; i < block_information[blockid].has_house; i++) {
+        if (i < 4) {
+            block_house[blockid][i] = game.add.sprite(position_x[blockid] + 5 + 25 * parseInt(i / 2), position_y[blockid] + 5 + 25 * (1 - i % 2), 'house');
+            block_house[blockid][i].frame = color;
+            block_house[blockid][i].width = 20;
+            block_house[blockid][i].height = 20;
+        } else if (i == 4) {
             block_house[blockid][0].kill();
             block_house[blockid][1].kill();
             block_house[blockid][2].kill();
             block_house[blockid][3].kill();
-            block_house[blockid][4]=game.add.sprite(position_x[blockid]+5,position_y[blockid]+5,'hotel');
-            block_house[blockid][4].frame=color;
-            block_house[blockid][i].width=20;
-            block_house[blockid][i].height=20;
-        }
-        else if(i==5)
-        {
+            block_house[blockid][4] = game.add.sprite(position_x[blockid] + 5, position_y[blockid] + 5, 'hotel');
+            block_house[blockid][4].frame = color;
+            block_house[blockid][i].width = 20;
+            block_house[blockid][i].height = 20;
+        } else if (i == 5) {
 
-            block_house[blockid][5]=game.add.sprite(position_x[blockid]+5,position_y[blockid]+30,'hotel');
-            block_house[blockid][5].frame=color;
-            block_house[blockid][i].width=20;
-            block_house[blockid][i].height=20;
+            block_house[blockid][5] = game.add.sprite(position_x[blockid] + 5, position_y[blockid] + 30, 'hotel');
+            block_house[blockid][5].frame = color;
+            block_house[blockid][i].width = 20;
+            block_house[blockid][i].height = 20;
         }
-        block_house_number[blockid]=block_information[blockid].has_house;
+        block_house_number[blockid] = block_information[blockid].has_house;
     }
 
 
@@ -493,6 +482,7 @@ listener is a array of functions
 these functions are aimed to show a window when click the sprite
  */
 var current_choose_block;
+
 function listener(sprite, pointer) {
 
 
@@ -523,21 +513,17 @@ function listener(sprite, pointer) {
     var infoWindow;
     if (12 == position || 28 == position) {
         infoWindow = document.getElementById("informationWindowUtility");
-    }
-    else if (5 == position || 15 == position || 25 == position || 35 == position) {
+    } else if (5 == position || 15 == position || 25 == position || 35 == position) {
         infoWindow = document.getElementById("informationWindowStation");
-    }
-    else if (position != 2 && position != 17 && position != 33 && position != 4 && position != 38 && position != 7 && position != 22 && position != 36) {
+    } else if (position != 2 && position != 17 && position != 33 && position != 4 && position != 38 && position != 7 && position != 22 && position != 36) {
         infoWindow = document.getElementById("informationWindowEstate");
 
-    }
-    else
-    {
+    } else {
         return;
     }
 
     show_block_infoContect(position);
-    current_choose_block=position;
+    current_choose_block = position;
     infoWindow.style.visibility = "visible";
 }
 
@@ -575,7 +561,7 @@ function WebSocketTest() {
                 //this part is to initial block
                 console.log(dat);
                 if (dat.type == "init") {
-
+                    console.log("init");
                     /*
                     Firstly, initialize the chessboard
                       Create the part that never change:four corners, tax, community chest
@@ -593,7 +579,7 @@ function WebSocketTest() {
                     initial_button();
                     initial_block_sprite();
 
-                    var information = dat.data;
+                    var information = dat1.data;
                     for (var j = 0; j < information.length; j++) {
                         if (information[j].type == 'block') {
                             block_iter(information[j].data);
@@ -618,70 +604,61 @@ function WebSocketTest() {
 
                 }
 
-
-                if (dat.type == "update") {
-                    var information = dat.data;
+                var dat2 = game.cache.getJSON('update');
+                if (dat2.type == "update") {
+                    var information = dat2.data;
                     for (var j = 0; j < information.length; j++) {
                         if (information[j].type == 'estate') {
                             estate_update(information[j].data);
-                        }
-                        else if (information[j].type == 'utility') {
+                        } else if (information[j].type == 'utility') {
                             utility_update(information[j].data);
-                        }
-                        else if (information[j].type == 'station') {
+                        } else if (information[j].type == 'station') {
                             station_update(information[j].data);
-                        }
-                        else if (information[j].type == 'player') {
+                        } else if (information[j].type == 'player') {
                             player_update(information[j].data);
-                        }
-                        else if (information[j].type == 'ef') {
+                        } else if (information[j].type == 'ef') {
                             document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
-                        }
-                        else if (information[j].type == 'bank') {
+                        } else if (information[j].type == 'bank') {
                             document.getElementById("house_in_bank").innerHTML = information[j].data[0].house_number;
                             document.getElementById("hotel_in_bank").innerHTML = information[j].data[0].hotel_number;
                         }
                     }
                 }
-
-                if (dat.type == 'choice') {
+                var dat3 = game.cache.getJSON('choice');
+                if (dat3.type == 'choice') {
                     var choice = document.getElementById("choiceWindow");
                     choice.style.visibility = "visible";
                     var string
                     if (click_choose == 1) {
                         string = {
                             "type": "input",
-                            "data":
-                                [
-                                    {
-                                        "from_player_id": sessionStorage.uid,
-                                        "request": 1
-                                    }
-                                ]
+                            "data": [{
+                                "from_player_id": sessionStorage.uid,
+                                "request": 1
+                            }]
                         }
 
-                    }
-                    else {
+                    } else {
                         string = {
                             "type": "input",
-                            "data":
-                                [
-                                    {
-                                        "from_player_id": sessionStorage.uid,
-                                        "request": 0
-                                    }
-                                ]
+                            "data": [{
+                                "from_player_id": sessionStorage.uid,
+                                "request": 0
+                            }]
                         }
                     }
                     ws.send(JSON.stringify(string));
                 }
-
-                if (dat.type == 'hint') {
+                var dat4 = game.cache.getJSON('hint');
+                if (dat4.type == 'hint') {
 
                     var myText = dat4.data[0].message;
                     this.instructions = this.add.text(game.world.centerX, game.world.centerY,
-                        myText,
-                        {font: '50px lato', fill: '#f5f5f5', align: 'center'}
+                        myText, {
+                            font: '50px lato',
+                            fill: '#f5f5f5',
+                            align: 'center'
+                        }
                     );
                     this.instructions.stroke = "#7f34de";
                     this.instructions.strokeThickness = 16;
@@ -690,43 +667,40 @@ function WebSocketTest() {
                     this.instructions.anchor.setTo(0.5, 0.5);
                     this.time.events.add(1000, this.instructions.destroy, this.instructions);
                 }
-
-
+            } catch (e) {
+                //not json format
             }
         }
     }
 }
 function mortgage() {
-    if(block_information[current_choose_block].owner_id==sessionStorage.uid && block_information[current_choose_block].status==1)
-    {
-        string= {
+    if (block_information[current_choose_block].owner_id == sessionStorage.uid && block_information[current_choose_block].status == 1) {
+        string = {
             "type": "input",
-            "data":
-                [
-                    {
-                        "from_player_id": sessionStorage.uid,
-                        "request": 5,
-                    }
-                ]
+            "data": [{
+                "from_player_id": sessionStorage.uid,
+                "request": 5,
+            }]
         }
     }
     ws.send(JSON.stringify(string));
 
 }
-
 /*
 solve the choice json
  */
 var choose;
-var click_choose=0;
+var click_choose = 0;
+
 function choose_yes() {
-    choose=1;
-    click_choose=1;
+    choose = 1;
+    click_choose = 1;
 
 }
+
 function choose_no() {
-    choose=0;
-    click_choose=1;
+    choose = 0;
+    click_choose = 1;
 }
 
 // function WebSocketTest() {
@@ -965,8 +939,7 @@ function utility_iter(data) {
         }
         if (dat.name == "Power Station") {
             picture[blockid] = 'electricity';
-        }
-        else if (dat.name == "Water Work") {
+        } else if (dat.name == "Water Work") {
             picture[blockid] = 'water';
         }
         create_block(blockid);
@@ -1101,8 +1074,6 @@ function trade_iter(data) {
 }
 
 
-
-
 // read json
 function loadJSON(callback) {
     var xobj = new XMLHttpRequest();
@@ -1187,6 +1158,11 @@ function updateInterest(newInterest) {
     statesContent.rows[0].cells[0].innerHTML += i;
 }
 
+function setAvatar() {
+    var avatar1 = document.getElementById("avatar1");
+    avatar1.addClass("svg-red");
+    avatar1.src = "static/img/avatar/icon_bug.svg";
+}
 
 function startGame() {
     ws.send("start");
