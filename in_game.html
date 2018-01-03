@@ -14,8 +14,8 @@
     <body>
         <div class="hidden shadowBox" id="choiceWindow" style="text-align:center; left: 600px; top: 300px; ">
             <h4 style="margin: 10px">Buy it?</h4>
-            <button class="smallBtn">Yes</button>
-            <button class="smallBtn">No</button>
+            <button class="smallBtn" onclick="choose_yes">Yes</button>
+            <button class="smallBtn" onclick="choose_no">No</button>
         </div>
         <div class="hidden shadowBox" id="tradeWindow">
             <h4 style="margin: 2px">Trading</h4>
@@ -71,7 +71,7 @@
 
                     </tbody>
                 </table>
-                <button class="smallBtn" onclick="">Mortgage</button>
+                <button class="smallBtn" onclick="mortgage">Mortgage</button>
             </div>
         </div>
         <div class="hidden shadowBox" id="informationWindowEstate" style="text-align: center; height: auto">
@@ -101,7 +101,7 @@
                 <hr>
                 <button class="smallBtn" onclick="">Build</button>
                 <button class="smallBtn" onclick="">Sell</button>
-                <button class="smallBtn" onclick="">Mortgage</button>
+                <button class="smallBtn" onclick="mortgage">Mortgage</button>
             </div>
         </div>
         <div class="hidden shadowBox" id="informationWindowStation" style="text-align: center; height: auto">
@@ -126,7 +126,7 @@
                 <hr>
                 <button class="smallBtn" onclick="">Build</button>
                 <button class="smallBtn" onclick="">Sell</button>
-                <button class="smallBtn" onclick="">Mortgage</button>
+                <button class="smallBtn" onclick="mortgage">Mortgage</button>
             </div>
         </div>
         <div class="hidden shadowBox" id="cfgWindow" style="text-align: center; height: auto; left: 615px; top: 280px;">
@@ -188,8 +188,8 @@
                     <!--Your browser does not support "audio" tag-->
                 <!--</audio>-->
             </div>
-            <button class="shadowBox" id="startBtn" title="at least 2 players" onclick="startGame()">Start Game!</button>
-            <div id="midPart" style="visibility: hidden">
+            <!--<button class="shadowBox" id="startBtn" title="at least 2 players" onclick="startGame()">Start Game!</button>-->
+            <div id="midPart" >
                 <div id="game" ></div>
                 <script type="text/javascript" src="static/js/chessboard/Game.js"></script>
             </div>
