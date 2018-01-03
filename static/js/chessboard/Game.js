@@ -536,27 +536,11 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
        }
 
 
-        function roll_dice(dice_1, dice_2) {
-            setInterval(dice1.animations.play('dice1'), 5000);
-            setInterval(dice2.animations.play('dice2'), 5000);
-            var dice = dice_1 + dice_2;
-            for (var i = 0; i < 5; ++i) {
-                var dice_num = Math.floor(Math.random() * 6) + 1;
-                switch (dice_num) {
-                    case 1:
-                        game.load.image('img/dice/dice1.png');
-                        break;
-
-                    default:
-                        break;
-                }
-            }
-
+        function roll_dice() {
+            setInterval(dice1.animations.play('dice1'), 3000);
+            setInterval(dice2.animations.play('dice2'), 3000);
+            // var dice = dice_1 + dice_2;
         }
-
-/*
-just a test
- */
 
 
         function buy() {
@@ -905,7 +889,7 @@ function initial_button() {
             dice2.animations.stop();
             dice1.frame = dice1_num;
             dice2.frame = dice2_num;
-        }, 5000);
+        }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
     button1.height = 30;
