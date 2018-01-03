@@ -161,7 +161,10 @@ function createRoom() {
     ];
 
     $.post("/joingame", JSON.stringify(createJson), function (data) {
-        window.location.href='test.sustech.pub:8888/ingame';
+        data = JSON.parse(data);
+        sessionStorage.room_info = data;
+        alert(sessionStorage.room_info);
+        window.location.href='/ingame';
     });
 }
 
@@ -180,6 +183,8 @@ function joinRoom(event) {
     ];
     
     $.post("/joingame", JSON.stringify(joinJson), function (data) {
-        window.location.href='test.sustech.pub:8888/ingame';
+        sessionStorage.room_info = JSON.parse(data);
+        alert(sessionStorage.room_info);
+        window.location.href='/ingame';
     });
 }
