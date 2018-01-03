@@ -1,0 +1,9 @@
+{
+    "type": "dice_result",
+    "data": [
+        {
+            "dice_result": [3, 4],
+            "player_id": "player2312"
+        }
+    ]
+}

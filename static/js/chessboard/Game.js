@@ -28,6 +28,7 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
+    game.load.json("dice_result", 'static/json/dice_result.json');
     ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
     game.load.json('record', 'static/json/record.json');
 }
@@ -236,18 +237,6 @@ function create_player(playerid) {
     game.physics.enable(player_sprite[id], Phaser.Physics.ARCADE);
 }
 
-
-/* add dice sprite*/
-
-
-// button1 = game.add.button1(275, 430, 'button1', function () {
-//     alert('dice stop');
-//     dice1.animations.stop();
-//     dice2.animations.stop();
-// }, this, 2, 1, 0);
-// button1.width = 50;
-// button1.height = 50;
-// button1.input.useHandCursor = true;
 
 /*
 create_chess_board:this function will create the blocks which will not change during the game
@@ -579,7 +568,7 @@ function WebSocketTest() {
                     initial_button();
                     initial_block_sprite();
 
-                    var information = dat1.data;
+                    var information = dat.data;
                     for (var j = 0; j < information.length; j++) {
                         if (information[j].type == 'block') {
                             block_iter(information[j].data);
@@ -604,9 +593,9 @@ function WebSocketTest() {
 
                 }
 
-                var dat2 = game.cache.getJSON('update');
-                if (dat2.type == "update") {
-                    var information = dat2.data;
+                // var dat2 = game.cache.getJSON('update');
+                if (dat.type == "update") {
+                    var information = dat.data;
                     for (var j = 0; j < information.length; j++) {
                         if (information[j].type == 'estate') {
                             estate_update(information[j].data);
@@ -624,8 +613,8 @@ function WebSocketTest() {
                         }
                     }
                 }
-                var dat3 = game.cache.getJSON('choice');
-                if (dat3.type == 'choice') {
+                // var dat3 = game.cache.getJSON('choice');
+                if (dat.type == 'choice') {
                     var choice = document.getElementById("choiceWindow");
                     choice.style.visibility = "visible";
                     var string
@@ -649,10 +638,10 @@ function WebSocketTest() {
                     }
                     ws.send(JSON.stringify(string));
                 }
-                var dat4 = game.cache.getJSON('hint');
-                if (dat4.type == 'hint') {
+                // var dat4 = game.cache.getJSON('hint');
+                if (dat.type == 'hint') {
 
-                    var myText = dat4.data[0].message;
+                    var myText = dat.data[0].message;
                     this.instructions = this.add.text(game.world.centerX, game.world.centerY,
                         myText, {
                             font: '50px lato',
@@ -667,6 +656,16 @@ function WebSocketTest() {
                     this.instructions.anchor.setTo(0.5, 0.5);
                     this.time.events.add(1000, this.instructions.destroy, this.instructions);
                 }
+
+                // var dat5 = game.cache.getJSON('dice_result');
+                if(dat.type == 'dice_result') {
+                    
+                    dice1_num = dat.data[0].dice_result[0];
+                    dice2_num = dat.data[0].dice_result[1];
+                    console.log(dice1_num);
+                    console.log(dice2_num);
+                }
+                
             } catch (e) {
                 //not json format
             }
@@ -1110,8 +1109,8 @@ function initial_dice() {
     dice2.animations.add('dice2', [4, 1, 0, 5, 3, 1, 5, 2, 0, 2, 1, 3, 4], 15, true);
 }
 
-var dice1_num = 3;
-var dice2_num = 4;
+var dice1_num;
+var dice2_num;
 
 function set_dice(num1, num2) {
     dice1.frame = num1;
@@ -1121,12 +1120,12 @@ function set_dice(num1, num2) {
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
-        // setTimeout(function () {
-        //     dice1.animations.stop();
-        //     dice2.animations.stop();
-        //     dice1.frame = dice1_num;
-        //     dice2.frame = dice2_num;
-        // }, 3000);
+        setTimeout(function () {
+            dice1.animations.stop();
+            dice2.animations.stop();
+            dice1.frame = dice1_num;
+            dice2.frame = dice2_num;
+        }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
     button1.height = 30;
