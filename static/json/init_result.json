@@ -1213,7 +1213,8 @@
                     "property": [],
                     "id": "100",
                     "name": "Player1",
-                    "pre_position": 0
+                    "pre_position": 0,
+                    "avatar":[0,3]
                 },
                 {
                     "bail_card_num": 0,
@@ -1224,7 +1225,8 @@
                     "property": [],
                     "id": "101",
                     "name": "Player2",
-                    "pre_position": 0
+                    "pre_position": 0,
+                    "avatar":[1,6]
                 }
             ],
             "type": "player"
