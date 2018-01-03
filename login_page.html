@@ -60,7 +60,7 @@
     </form>
 </div>
 <div class="hidden shadowBox" id="roomListWindow" style="left: 850px;">
-    <table id="roomList">
+    <table style="text-indent: 10px; text-align: center;">
         <thead style="font-weight: bold;"><tr>
             <td>Room id</td>
             <td>Room name</td>
@@ -73,13 +73,7 @@
                 <img title="close" src="static/img/icon_ui/close.png" style="width: 12px; height: 12px"></a>
             </td>
         </tr></thead>
-        <tbody onclick="joinRoom(event)">  <!--TODO use js to display room list, button's id must equal to room id-->
-        <tr><td>123</td><td>ahh</td><td>4</td><td>easy</td><td>1500</td><td>0</td><td>on</td>
-            <td><button class="smallBtn" id="123">join</button></td>
-        </tr>
-        <tr><td>321</td><td>ahh</td><td>3</td><td>hard</td><td>1000</td><td>400</td><td>off</td>
-            <td><button class="smallBtn" id="321">join</button></td>
-        </tr>
+        <tbody id="roomList" onclick="joinRoom(event)">  <!--TODO use js to display room list, button's id must equal to room id-->
         </tbody>
     </table>
 </div>
@@ -113,12 +107,12 @@
         <button id="createRoom" class="shadowBox" onclick="showWindow('cfgSetWindow')">Create Room</button>
     </div>
     <div id="joinRoomPanel" style="position:absolute;left:660px;top:565px;">
-        <button id="joinRoom" class="shadowBox" onclick="showWindow('roomListWindow')">Join Room</button>
+        <button id="joinRoom" class="shadowBox" onclick="getRoomList()">Join Room</button>
     </div>
 </div>
 <!-- 脚本引用最好放在这里，否则js 在HTML之前load会报错-->
 <!--<script type="text/javascript" src="js/global.js"></script>-->
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <script type="text/javascript" src="static/js/login_page.js"></script>
 </body>
 </html>

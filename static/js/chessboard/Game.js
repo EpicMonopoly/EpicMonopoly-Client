@@ -236,12 +236,12 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     id = i;
                 }
             }
-            player_sprite[id]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
-            player_sprite[id].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
-            player_sprite[id].width=20;
-            player_sprite[id].height=20;
-            player_sprite[id].idleFrame=0;
-            game.physics.enable(player_sprite[id],Phaser.Physics.ARCADE);
+            player_sprite[i]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
+            player_sprite[i].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
+            player_sprite[i].width=20;
+            player_sprite[i].height=20;
+            player_sprite[i].idleFrame=0;
+            game.physics.enable(player_sprite[i],Phaser.Physics.ARCADE);
         }
 
 
@@ -577,8 +577,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
 // // var i, j;
 function WebSocketTest() {
-    var dat1 = game.cache.getJSON('json');
-    if (dat1.type == "init") {
+    var dat = game.cache.getJSON('json');
+    if (dat.type == "init") {
         /*
         Firstly, initialize the chessboard
           Create the part that never change:four corners, tax, community chest
@@ -721,7 +721,7 @@ function WebSocketTest() {
 //     }
 // }
 function req() {
-    var text = {"type": "json", "request": "uid"}; //json对象
+    var text = { "type": "json", "request": "uid" }; //json对象
     ws.send(JSON.stringify(text));//将json转化为字符串输出
 }
 function push() {

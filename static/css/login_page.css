@@ -159,11 +159,6 @@ input[type="checkbox"]:checked + label span {
     background-size: 36px 18px;
 }
 
-#roomList{
-    text-indent: 10px;
-    text-align: center;
-}
-
 #roomList button{
     margin: 1px;
 }
