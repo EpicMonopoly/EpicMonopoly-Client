@@ -432,34 +432,9 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         /*
         create land:
          */
-        //这里是生成地皮的，还没写完
-        var estate=new Array(40);
-        var estate_sprite=new Array(40);
-        function initial_land_information() {
-            for(var i=0;i<40;i++) {
-                estate[i]={
-                    "name": "",
-                    "block_id": 0,
-                    "position": 0,
-                    "owner_id": "",
-                    "estate_value":0,
-                    "status": 0,
-                    "street_id":0,
-                    "house_value": 123456789,
-                    "house_number": 1,
-                    "mortgage_value": 123456789,
-                    "payment": [
-                        {"house_number": 1, "payment": 123456789},
-                        {"house_number": 2, "payment": 123456789},
-                        {"house_number": 3, "payment": 123456789},
-                        {"house_number": 4, "payment": 123456789},
-                        {"house_number": 5, "payment": 123456789},
-                        {"house_number": 6, "payment": 123456789}
-                    ]
-
-                }
-            }
-
+        //盖房子
+        function create_house() {
+            
         }
 
 
@@ -810,7 +785,6 @@ function estate_iter(data) {
             block_information[blockid].with_four_house=Number(dat.payment[3].payment);
             block_information[blockid].with_five_house=Number(dat.payment[4].payment);
             block_information[blockid].with_six_house=Number(dat.payment[5].payment);
-            alert(dat.payment[1].payment);
             picture[blockid] = Number(dat.street_id) - 1;
             create_block(blockid);
 
