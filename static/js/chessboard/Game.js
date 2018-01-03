@@ -18,6 +18,7 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
             game.load.image("parking_lot","static/img/icon_chessboard/parking_lot.png");
             game.load.image("railway_station","static/img/icon_chessboard/railway_station.png");
             game.load.spritesheet("street_colors","static/img/icon_chessboard/street_colors.png",165,240);
+            game.load.spritesheet("avatar","static/img/icon_chessboard/avatars.png",200,200);
             game.load.image("water","static/img/icon_chessboard/water.png");
             game.load.spritesheet("dice", "static/img/icon_chessboard/dice.png", 140, 140);
             game.load.spritesheet("roll_dice_btn", "static/img/icon_chessboard/roll_dice_btn.png");
@@ -215,7 +216,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     "pre_position": 0,
                     "card_num": 0,
                     "property": [1, 2, 3],
-                    "avatar":""
+                    "avatar_id":"",
+                    "avatar_color":""
                 }
 
             }
@@ -231,7 +233,8 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
                     id = i;
                 }
             }
-            player_sprite[i]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position()]+25*(id%3)+5,current_create_player.avatar);
+            player_sprite[i]=game.add.sprite(position_x[current_create_player.position]+parseInt(id/3)*25+5,position_y[current_create_player.position]+25*(id%3)+5,'avatar');
+            player_sprite[i].frame=current_create_player.avatar_id*6+current_create_player.avatar_color;
             player_sprite[i].width=20;
             player_sprite[i].height=20;
             player_sprite[i].idleFrame=0;
@@ -432,10 +435,52 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
         /*
         create land:
          */
+
+
+        //买地皮
+
+
+        //抵押后地皮消失
         //盖房子
-        function create_house() {
+        var block_house=new Array(40)
+        function initial_block_sprite() {
+            for(var i=0;i<40;i++)
+            {
+                for(var j=0;j<6;j++)
+                {
+                    block_house[i][j]="";
+                }
+            }
+
+        }
+        function create_house(blockid) {
+            var color;
+            for(var i=0;i<6;i++)
+            {
+                if(player[i].id==block_information[blockid].owner_id)
+                {
+                    color=player[i].color;
+                }
+            }
+            if(block_information.house_number<=4){
+                block_house[blockid][block_information.house_number-1]=game.add.sprite(position_x[blockid]+(house_number/2)*30+5,position_x[blockid]+(house_number%2)*30+5);
+            }
+            else{
+                //firstly, kill the house sprite, then build hotel
+                for(var i=0;i<4;i++)
+                {
+                    block_house[blockid][i].kill();
+                    block_house[blockid][block_information.house_number-1]=game.add.sprite(position_x[blockid]+(house_number/2)*30+5,position_x[blockid]+(house_number%2)*30+5);
+                }
+
+
+            }
+
             
         }
+
+
+
 
 
 
@@ -529,22 +574,13 @@ var game=new Phaser.Game(655, 655, Phaser.CANVAS,"midPart", { preload: preload, 
 
         }
 
-/*
-just a test
- */
 
-
-        function buy() {
-
-        }
-
-
+//
 // var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
-// var i, j;
+// // var i, j;
 function WebSocketTest() {
     var dat = game.cache.getJSON('json');
-    if (dat.type=="init")
-    {
+    if (dat.type == "init") {
         /*
         Firstly, initialize the chessboard
           Create the part that never change:four corners, tax, community chest
@@ -557,41 +593,36 @@ function WebSocketTest() {
         initial_dice();
         initial_button();
 
-       
-        var information=dat.data;
-        for(var j=0;j<information.length;j++)
-        {
-            if(information[j].type=='block')
-            {
+
+        var information = dat.data;
+        for (var j = 0; j < information.length; j++) {
+            if (information[j].type == 'block') {
                 block_iter(information[j].data);
             }
-            if(information[j].type=='estate')
-            {
+            if (information[j].type == 'estate') {
                 estate_iter(information[j].data);
             }
-            if(information[j].type=='utility')
-            {
+            if (information[j].type == 'utility') {
                 utility_iter(information[j].data);
             }
-            if(information[j].type=='station')
-            {
+            if (information[j].type == 'station') {
                 station_iter(information[j].data);
             }
 
-            if(information[j].type=='player')
-            {
+            if (information[j].type == 'player') {
                 player_iter(information[j].data);
+            }
+            if (information[j].type == 'ef') {
+                document.getElementById("economic_factor").innerHTML = information[j].data[0].cur_rate;
             }
         }
 
     }
-
 }
 
 
 
-// var ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + guid());
-// var i, j;
+// var ws = new WebSocket(sessionStorage.website);
 // function WebSocketTest() {
 //     if ("WebSocket" in window) {
 //         ws.onopen = function () {
@@ -609,13 +640,45 @@ function WebSocketTest() {
 //                     Firstly, initialize the chessboard
 //                       Create the part that never change:four corners, tax, community chest
 //                      */
+//
+//                     initial_position();
+//                     initial_block_information();
+//                     initial_player();
 //                     create_ChessBoard();
-//                     var information=dat.data[0];
-//                     block_iter(information['block']);
-//                     estate_iter(information['estate']);
-//                     utility_iter(information['utility']);
-//                     station_iter(information['station']);
-//                     player_iter(information['player']);
+//                     initial_dice();
+//                     initial_button();
+//
+//
+//                     var information=dat.data;
+//                     for(var j=0;j<information.length;j++)
+//                     {
+//                         if(information[j].type=='block')
+//                         {
+//                             block_iter(information[j].data);
+//                         }
+//                         if(information[j].type=='estate')
+//                         {
+//                             estate_iter(information[j].data);
+//                         }
+//                         if(information[j].type=='utility')
+//                         {
+//                             utility_iter(information[j].data);
+//                         }
+//                         if(information[j].type=='station')
+//                         {
+//                             station_iter(information[j].data);
+//                         }
+//
+//                         if(information[j].type=='player')
+//                         {
+//                             player_iter(information[j].data);
+//                         }
+//                         if(information[j].type=='ef')
+//                         {
+//                             document.getElementById("economic_factor").innerHTML=information[j].data[0].cur_rate;
+//                         }
+//                     }
+//
 //                 }
 //                 if (dat.data_type == "update")
 //                 {
@@ -646,9 +709,7 @@ function push() {
 function S4() {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 }
-function guid() {
-    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
-}
+
 
 
 
@@ -661,17 +722,16 @@ add player information to player list from back end
 function player_iter(data) {
     for(var i = 0; i < data.length; i++) {
         var dat = data[i];
-
-
-                    player[i].name=dat.name;
-                    player[i].id=dat.id;
-                    player[i].alliance=dat.alliance;
-                    player[i].cash=Number(dat.cash);
-                    player[i].position =Number(dat.position);
-                    player[i].pre_position=Number(dat.pre_position);
-                    player[i].card_num=Number(dat.card_num);
-                    player[i].property=dat.property;
-
+        player[i].name=dat.name;
+        player[i].id=dat.id;
+        player[i].alliance=dat.alliance;
+        player[i].cash=Number(dat.cash);
+        player[i].position =Number(dat.position);
+        player[i].pre_position=Number(dat.pre_position);
+        player[i].card_num=Number(dat.card_num);
+        player[i].property=dat.property;
+        player[i].avatar_id=dat.avatar[0];
+        player[i].avatar_color=dat.avatar[1];
         create_player(player[i].id);
     }
 }
@@ -817,6 +877,68 @@ function station_iter(data) {
         block_information[blockid].with_four_station=dat.payment[3].payment;
         picture[blockid]='railway_station';
         create_block(blockid);
+
+    }
+}
+/*
+   refer to build house,
+ */
+function estate_update(data) {
+    for(var i=0;i<data.length;i++)
+    {
+        var dat=data[i];
+        var blockid=dat.position;
+        block_information[blockid].name = dat.name;
+        block_information[blockid].position = dat.position;
+        block_information[blockid].block_id = dat.block_id;
+        block_information[blockid].estate_value = dat.estate_value;
+        block_information[blockid].status = dat.status;
+        block_information[blockid].street_id = dat.street_id;
+        block_information[blockid].house_value = dat.house_value;
+        block_information[blockid].house_number = dat.house_number;
+        block_information[blockid].mortgage_value = dat.mortgage_value;
+        block_information[blockid].with_one_house=Number(dat.payment[0].payment);
+        block_information[blockid].with_two_house=Number(dat.payment[1].payment);
+        block_information[blockid].with_three_house=Number(dat.payment[2].payment);
+        block_information[blockid].with_four_house=Number(dat.payment[3].payment);
+        block_information[blockid].with_five_house=Number(dat.payment[4].payment);
+        block_information[blockid].with_six_house=Number(dat.payment[5].payment);
+        if(house_number>0)
+        {
+            create_house(blockid);
+        }
+    }
+
+}
+function utility_update(data) {
+    for(var i = 0; i < data.length; i++) {
+        var dat = data[i];
+        var blockid=Number(dat.position);
+        block_information[blockid].name=dat.name;
+        block_information[blockid].block_id=dat.block_id;
+        block_information[blockid].position=dat.position;
+        block_information[blockid].estate_value=dat.estate_value;
+        block_information[blockid].status=dat.status;
+        block_information[blockid].mortgage_value=dat.mortgage_value;
+        block_information[blockid].rate_with_one_utility=dat.payment[0].rate;
+        block_information[blockid].rate_with_two_utility=dat.payment[1].rate;
+    }
+    
+}
+function  station_update(data) {
+    for(var i = 0; i < data.length; i++) {
+        var dat = data[i];
+        var blockid=dat.position;
+        block_information[blockid].name=dat.name;
+        block_information[blockid].block_id=dat.block_id;
+        block_information[blockid].position=dat.position;
+        block_information[blockid].estate_value=dat.estate_value;
+        block_information[blockid].status=dat.status;
+        block_information[blockid].mortgage_value=dat.mortgage_value;
+        block_information[blockid].with_one_station=dat.payment[0].payment;
+        block_information[blockid].with_two_station=dat.payment[1].payment;
+        block_information[blockid].with_three_station=dat.payment[2].payment;
+        block_information[blockid].with_four_station=dat.payment[3].payment;
 
     }
 }
