@@ -70,7 +70,10 @@ function hideWindow(windowId) {
 }
 
 function getRoomList() {
-
+    $.get("/roomlist", function (data) {
+        alert(data);
+        showWindow('roomListWindow');
+    });
 }
 
 function getPlayerJson() {
