@@ -1,5 +1,5 @@
 var ws;
-var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", {preload: preload, create: WebSocketTest});
+var game = new Phaser.Game(655, 655, Phaser.CANVAS, "game", { preload: preload, create: WebSocketTest });
 
 
 function preload() {
@@ -25,7 +25,7 @@ function preload() {
     game.load.spritesheet("end_turn_btn", "static/img/icon_chessboard/end_turn_btn.png");
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
-    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id="+sessionStorage.uid+"&roomid="+sessionStorage.room_id);
+    ws = new WebSocket("ws://test.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
 }
 
 var block = new Array(40);//to save the object of every block
@@ -557,6 +557,16 @@ function listener(sprite, pointer) {
 function roll_dice() {
     setInterval(dice1.animations.play('dice1'), 3000);
     setInterval(dice2.animations.play('dice2'), 3000);
+    var text = {
+        "type": "input",
+        "data":[
+            {
+                "from_player_id": sessionStorage.uid,
+                "request": 2
+            }
+        ]
+    }
+    ws.send(JSON.stringify(text));
     // var dice = dice_1 + dice_2;
 }
 
@@ -655,6 +665,12 @@ function WebSocketTest() {
                         }
                     }
                 }
+
+                if (dat.type = "dice_result") {
+                    console.log(dat.data[0]["dice_result"]);
+                    set_dice(dat.data[0]["dice_result"][0],dat.data[0]["dice_result"][1]);
+                }
+
 
             } catch (e) {
                 // 不符合json格式的字符串打印出来
@@ -991,15 +1007,20 @@ function initial_dice() {
 var dice1_num = 3;
 var dice2_num = 4;
 
+function set_dice(num1, num2) {
+    dice1.frame = num1;
+    dice2.frame = num2;
+}
+
 function initial_button() {
     button1 = game.add.button(282, 330, 'roll_dice_btn', function () {
         roll_dice();
-        setTimeout(function () {
-            dice1.animations.stop();
-            dice2.animations.stop();
-            dice1.frame = dice1_num;
-            dice2.frame = dice2_num;
-        }, 3000);
+        // setTimeout(function () {
+        //     dice1.animations.stop();
+        //     dice2.animations.stop();
+        //     dice1.frame = dice1_num;
+        //     dice2.frame = dice2_num;
+        // }, 3000);
     }, this, 2, 1, 0);
     button1.width = 90;
     button1.height = 30;
@@ -1022,7 +1043,7 @@ function get_hint() {
 
 function addToRecords(newEvent) {
     var recordContent = document.getElementById("recordContent");
-    recordContent.textContent += newEvent +'\r\n';
+    recordContent.textContent += newEvent + '\r\n';
     recordContent.scrollTop = recordContent.scrollHeight;
 }
 
