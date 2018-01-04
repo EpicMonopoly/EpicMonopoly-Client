@@ -66,6 +66,7 @@ body {
     background-color: white;
     align-items: center;
     display: flex;
+    visibility: hidden;
 }
 
 .playerInfo-none {
@@ -77,6 +78,10 @@ body {
     height: 40px;
     float: left;
     margin: 3px;
+}
+
+.playerInfo span{
+    margin: 10px;
 }
 
 .tradeBtn{

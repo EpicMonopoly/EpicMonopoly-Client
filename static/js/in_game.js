@@ -13,22 +13,3 @@ function setCfg() {
     // setAvatar('avatar1', sessionStorage.avatar[0], sessionStorage.avatar[1]);
 }
 
-function setAvatar(objID, avatarID, colorID) {
-    img = document.getElementById(objID);
-    switch (avatarID){
-        case 0:img.src = "static/img/avatar/icon_bug.svg";break;
-        case 1:img.src = "static/img/avatar/icon_apple.svg";break;
-        case 2:img.src = "static/img/avatar/icon_aircraft.svg";break;
-        case 3:img.src = "static/img/avatar/icon_github.svg";break;
-        case 4:img.src = "static/img/avatar/icon_google.svg";break;
-        case 5:img.src = "static/img/avatar/icon_wifi.svg";break;
-    }
-    switch (colorID){
-        case 0:img.addClass("player-0");break;
-        case 1:img.addClass("player-1");break;
-        case 2:img.addClass("player-2");break;
-        case 3:img.addClass("player-3");break;
-        case 4:img.addClass("player-4");break;
-        case 5:img.addClass("player-5");break;
-    }
-}

@@ -635,20 +635,20 @@ function WebSocketTest() {
 
                     var myText = dat.data[0].message;
                     alert(myText);
-                    this.instructions = this.add.text(game.world.centerX, game.world.centerY,
-                        myText, {
-                            font: '50px lato',
-                            fill: '#f5f5f5',
-                            align: 'center'
-                        }
-                    );
-                    this.instructions.stroke = "#7f34de";
-                    this.instructions.strokeThickness = 16;
-                    //  Apply the shadow to the Stroke only
-                    this.instructions.setShadow(1, 1, "#333333", 1, true, false);
-                    this.instructions.anchor.setTo(0.5, 0.5);
-                    this.time.events.add(1000, this.instructions.destroy, this.instructions);
-                    alert("here");
+                    // this.instructions = this.add.text(game.world.centerX, game.world.centerY,
+                    //     myText, {
+                    //         font: '50px lato',
+                    //         fill: '#f5f5f5',
+                    //         align: 'center'
+                    //     }
+                    // );
+                    // this.instructions.stroke = "#7f34de";
+                    // this.instructions.strokeThickness = 16;
+                    // //  Apply the shadow to the Stroke only
+                    // this.instructions.setShadow(1, 1, "#333333", 1, true, false);
+                    // this.instructions.anchor.setTo(0.5, 0.5);
+                    // this.time.events.add(1000, this.instructions.destroy, this.instructions);
+                   
 
                 }
 
@@ -686,6 +686,7 @@ function WebSocketTest() {
     }
 }
 function mortgage() {
+
     if (block_information[current_choose_block].owner_id == sessionStorage.uid && block_information[current_choose_block].status == 1) {
         string = {
             "type": "input",
@@ -857,6 +858,17 @@ function player_iter(data) {
         player[i].avatar_id = dat.avatar[0];
         player[i].avatar_color = dat.avatar[1];
         create_player(player[i].id);
+        var string="player"+((i+1).toString());
+        var avatar="avatar"+((i+1).toString());
+        var cash="player"+((i+1).toString())+"_cash";
+        setAvatar(avatar,player[i].avatar_id,player[i].avatar_color);
+        var player_info=document.getElementById(string);
+        player_info.style.visibility="visible";
+        string=string+"_name";
+        var player_name=document.getElementById(string);
+        player_name.innerHTML=player[i].name;
+        var player_cash=document.getElementById(cash);
+        player_cash.innerHTML=player[i].cash;
 
     }
 }
@@ -1210,12 +1222,19 @@ function updateInterest(newInterest) {
     statesContent.rows[0].cells[0].innerHTML += i;
 }
 
-function setAvatar() {
-    var avatar1 = document.getElementById("avatar1");
-    avatar1.addClass("svg-red");
-    avatar1.src = "static/img/avatar/icon_bug.svg";
-}
 
 function startGame() {
     ws.send("start");
+}
+function setAvatar(objID, avatarID, colorID) {
+    img = document.getElementById(objID);
+    switch (avatarID){
+        case 0:img.src = "static/img/avatar/icon_bug.svg";break;
+        case 1:img.src = "static/img/avatar/icon_apple.svg";break;
+        case 2:img.src = "static/img/avatar/icon_aircraft.svg";break;
+        case 3:img.src = "static/img/avatar/icon_github.svg";break;
+        case 4:img.src = "static/img/avatar/icon_google.svg";break;
+        case 5:img.src = "static/img/avatar/icon_wifi.svg";break;
+    }
+   
 }
