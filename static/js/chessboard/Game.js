@@ -1073,13 +1073,14 @@ function player_update(data) {
 
                 if (dat.position != player[j].position) {
                     player_sprite[j].kill();
+                    player[j].position = Number(dat.position);
+                    player[j].pre_position = Number(dat.pre_position);
+                    create_player(dat.id);
                 }
                 player[j].cash = Number(dat.cash);
-                player[j].position = Number(dat.position);
-                player[j].pre_position = Number(dat.pre_position);
                 player[j].card_num = Number(dat.card_num);
                 player[j].property = dat.property;
-                create_player(dat.id);
+
             }
         }
 
