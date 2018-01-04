@@ -625,6 +625,8 @@ function WebSocketTest() {
                 }
                 // var dat3 = game.cache.getJSON('choice');
                 if (dat.type == 'choice') {
+                    var choice_text=document.getElementById("choice_text");
+                    choice_text.innerHTML=dat.data[0].message;
                     var choice_window = document.getElementById("choiceWindow");
                     choice_window.style.visibility = "visible";
                 }
@@ -692,8 +694,16 @@ function mortgage() {
                 "request": 5,
             }]
         }
+        string_2 = {
+            "type": "input",
+            "data": [{
+                "from_player_id": sessionStorage.uid,
+                "request": block_information[current_choose_block].block_id
+            }]
+        }
     }
     ws.send(JSON.stringify(string));
+    ws.send(JSON.stringify(string_2));
 
 }
 /*
@@ -712,6 +722,7 @@ function choose_yes() {
     ws.send(JSON.stringify(string));
     var choice_window = document.getElementById("choiceWindow");
     choice_window.style.visibility = "hidden";
+    
 }
 
 function choose_no() {
