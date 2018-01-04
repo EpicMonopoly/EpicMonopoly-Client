@@ -1103,7 +1103,10 @@ function player_update(data) {
                 player[j].cash = Number(dat.cash);
                 player[j].card_num = Number(dat.card_num);
                 player[j].property = dat.property;
-
+                var cash="player"+((j+1).toString())+"_cash";
+                var player_cash=document.getElementById(cash);
+                player_cash.innerHTML=player[j].cash;
+               
             }
         }
 
