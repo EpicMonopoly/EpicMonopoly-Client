@@ -29,7 +29,8 @@ function preload() {
     game.load.json('json', 'static/json/init_result.json');
     game.load.json('update', 'static/json/update.json');
     game.load.json("dice_result", 'static/json/dice_result.json');
-    ws = new WebSocket("ws://10.20.2.35:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
+    // ws = new WebSocket("ws://10.20.2.35:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
+    ws = new WebSocket("ws://self.sustech.pub:8888/websocket?Id=" + sessionStorage.uid + "&roomid=" + sessionStorage.room_id);
     game.load.json('record', 'static/json/record.json');
 }
 
